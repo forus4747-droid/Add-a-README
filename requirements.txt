@@ -1,0 +1,5 @@
+requests>=2.31
+anthropic>=0.90
+youtube-transcript-api>=0.6
+# Step 5 only (runs on your own machine, needs `notebooklm login` first):
+# notebooklm-py[browser]>=0.8.0
