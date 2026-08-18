@@ -26,7 +26,22 @@ Do not start from an idea. Start from a number showing more demand than supply.
 
 ## The four computable demand signals
 
-### A1 — Engagement per unit of supply *(the strongest signal, and it is public)*
+### A1 — Engagement per unit of supply *(public, but never use the mean)*
+
+> ⚠️ **A mean over a power law measures the leader, not the market.** Verified failure:
+> Shopify's Product Reviews category averaged 224 reviews/app against a 92 baseline — a
+> 2.4× "demand gap". One app (Judge.me) held **56% of all reviews in the category**. Strip
+> it and the rest average 98, or 1.07× baseline. The category was not underserved; buyers
+> searched, found the winner, and stopped. The mean inverted the truth.
+
+**Read leader share first, not the average:**
+1. **Leader review share** = reviews of the #1 app ÷ category total. **High = closed.**
+2. **Median** reviews per listing — never the mean.
+3. **Reviews of listings ranked 5–10** — a starving tail means winner-take-all.
+
+A category is open when demand is high **and spread**. High and concentrated is a category
+with a winner already in it.
+
 In any marketplace, **reviews ÷ number of listings** measures demand concentrated on supply.
 A category far above the marketplace baseline means buyers are searching, installing and
 reviewing a small number of options — they arrived wanting something and found few choices.
