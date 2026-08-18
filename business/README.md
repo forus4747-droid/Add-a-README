@@ -1,3 +1,5 @@
+> ⚠️ **INVALIDATED — see [KILLED.md](KILLED.md) before reading further.** A competitor check run after these docs were written found Podium ($399/mo) and Birdeye ($299/mo) already ship this as an automated AI feature.
+
 # Review Rescue — the build
 
 A complete productized-service business, ready to run. Derived from the evidence
