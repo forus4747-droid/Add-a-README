@@ -1,48 +1,109 @@
 ---
 name: opportunity-screen
-description: Kill a business idea before building it. Runs eight ordered falsification gates — software substitute, incumbent services, existing budget line, reachable distribution, why-now, schlep test, public pain evidence, unit economics — each with a hard kill criterion and a required evidence standard. Use BEFORE writing any offer, landing page, pricing, outreach or playbook, and whenever the user proposes a business idea, service offer, product concept, niche, or asks "would this work" / "is there a market for". Also use to audit an offer that was already built.
+description: Find and screen business opportunities demand-first. Phase A locates measurable demand-to-supply imbalances (reviews-per-app, unserved population share, humans paid for repetitive tasks, untracked query volume) BEFORE any idea exists. Phase B tests whether supply can be beaten. Phase C tests whether the money works. Use whenever the user asks what business to start, where the opportunities are, whether an idea would work, or is about to build an offer, pricing, landing page or outreach. Also use to audit something already built.
 ---
 
 # Opportunity Screen
 
-**Rule zero: no artefact gets built until every gate passes.** No offer doc, no pricing,
-no landing page, no outreach sequence. Building first and screening after produces
-confident, well-written work about a dead idea.
+**Demand first, then supply.** Looking at competitors first produces validation of ideas you
+already had. Looking at demand first produces ideas you would not have thought of.
 
-A screen costs ~30 minutes and about 15 searches. Building first costs hours and
-produces something that has to be retracted.
+**Rule zero: no artefact gets built until Phase A finds a measured imbalance.** No offer doc,
+no pricing, no landing page, no outreach. Building first produces confident, well-written
+work about a dead idea.
 
 ## Why this exists
 
-The failure mode this prevents: an idea is plausible, the writing is good, the economics
-look fine on paper — and a single search that was never run ("does software already do
-this?") would have killed it in four minutes.
+An idea can be plausible, well-written and economically sound on paper, and still be dead
+because one question was never asked. **More research does not fix this** — a research engine
+answers the question it is given. The discipline is the order of the questions.
 
-**More research does not fix this.** A deep-research agent answers the question it is
-given. If the killing question is never asked, a better engine returns a longer,
-better-cited report about a dead idea. The discipline is the ordered list of questions,
-not the tooling.
+---
 
-## The gates
+# PHASE A — Find demand before you have an idea
+
+Do not start from an idea. Start from a number showing more demand than supply.
+
+## The four computable demand signals
+
+### A1 — Engagement per unit of supply *(the strongest signal, and it is public)*
+In any marketplace, **reviews ÷ number of listings** measures demand concentrated on supply.
+A category far above the marketplace baseline means buyers are searching, installing and
+reviewing a small number of options — they arrived wanting something and found few choices.
+
+Compute for: Shopify App Store, Chrome Web Store, WordPress plugins, Figma, Slack, HubSpot,
+Monday, Airtable, Notion, VS Code, Atlassian.
+
+- Get the marketplace **baseline** first (mean reviews per listing across all listings)
+- Rank categories by ratio to baseline
+- **High ratio = demand exceeds supply.** Low ratio with many new launches = saturated.
+- Cross-check with new-listing velocity: a category absorbing many launches is filling up
+
+### A2 — Unserved share of a known population
+`% of a defined population that lacks a category entirely.` Strong when the population is
+countable and already spending money elsewhere.
+
+Example shape: *"40% of stores running paid ads have no retention tooling at all."* The buyer
+is already spending — on ads — which proves budget exists and reveals the leak.
+
+### A3 — Humans being paid to do it
+Job posts, freelance listings, VA task lists. **People paying humans for a repetitive task is
+unmet software demand with a price tag already attached.** Rank by volume × repetition ×
+hourly rate. Freelance marketplace category growth is the cleanest public version.
+
+### A4 — Untracked query volume
+Demand that exists but does not yet appear in keyword tools — currently conversational
+queries surfaced through AI assistants, which SEO tooling has not caught up to. Uncontested
+by definition, and temporarily so. Verify the demand is real before acting on the scarcity.
+
+## Phase A rules
+
+- **Never start from a solution.** If you began with "I could build X", discard it and go find a ratio.
+- **A number or it did not happen.** "People seem frustrated" is not a demand signal.
+- **Prefer populations already spending.** Existing budget beats stated interest every time.
+- **Record the baseline.** A ratio without a baseline is meaningless.
+
+**EXIT PHASE A ONLY WITH:** a named population, a measured imbalance, the baseline it is
+measured against, and the source.
+
+---
+
+# PHASE B — Now look at supply
+
+
 
 Run in order. **Stop at the first kill.** They are ordered cheapest-kill-first, so most
 dead ideas die in gate 1 or 2 for a few minutes of searching.
 
-### Gate 1 — Software substitute
-> Does software already do this, and what does it charge?
+### B1 — Strict domination *(not "does software exist")*
+> Does an existing product deliver **everything** this offer does, at or below this price,
+> to a buyer who can already find it?
 
-Search: `"<deliverable> software pricing"`, `"<category> tools comparison 2026"`,
-`"best <category> software for <buyer>"`, then the top 3 vendors' pricing pages.
+Software existing is **not** disqualifying and never was. Bookkeepers earn well alongside
+QuickBooks; agencies earn well alongside self-serve ad platforms. Almost every service has
+a software substitute in 2026, so "software exists" would kill nearly every business that
+actually makes money.
 
-**KILL IF** a funded company ships this as an automated feature at or below the intended
-price. You are not entering a market, you are entering a price war against a sales team.
+The real test is **strict domination**: the incumbent does all of what you do, plus more,
+for the same money or less.
 
-**SURVIVES IF** software exists but demonstrably fails at adoption — look for reviews
-citing setup burden, lock-in contracts, surprise billing, abandoned seats. That is a
-services gap, and it is a *narrower, lower-margin* business than a true product gap.
-Say so explicitly rather than treating it as a clean pass.
+Search: `"<deliverable> software pricing"`, `"<category> tools comparison 2026"`, then read
+the top three vendors' pricing pages directly.
 
-### Gate 2 — Incumbent services
+**KILL IF** a funded product ships your entire deliverable as an automated feature, bundled
+into a platform, at or below your price. *(This is what killed Review Rescue: Birdeye at
+$299/mo included the whole deliverable plus a platform, against a $297/mo service.)*
+
+**SURVIVES IF** any of these hold — state which:
+- The software requires configuration and judgement the buyer will not supply (adoption gap)
+- You reach buyers the incumbent's channel cannot (distribution edge)
+- You serve a segment the incumbent prices out or ignores
+- You bundle the software's output with work it does not do
+
+A survival on adoption gap alone is a **narrower, lower-margin** business than a true gap.
+Say so rather than recording a clean pass.
+
+### B2 — Incumbent services
 > Who already sells this as a service, and what do they charge?
 
 Search: `"<service> agency pricing"`, `"<service> monthly retainer cost"`,
@@ -55,7 +116,7 @@ before purchase.
 **KILL IF** a mature white-label reseller ecosystem exists — the margin is already
 competed away.
 
-### Gate 3 — Existing budget line
+### B3 — Existing budget line
 > Does this buyer already spend money on this specific thing?
 
 Search actual spend data, not intent surveys: `"<buyer> spend on <category> per month"`,
@@ -65,7 +126,7 @@ Search actual spend data, not intent surveys: `"<buyer> spend on <category> per 
 hardest sale that exists. Claimed interest is not spend — always find the payment number,
 not the survey number.
 
-### Gate 4 — Reachable distribution
+### B4 — Reachable distribution
 > Can you list 200 of these buyers, with contact details, without paying for access?
 
 **KILL IF** there is no public directory, searchable map, registry, or member list.
@@ -74,7 +135,7 @@ not the survey number.
 Rank the channel honestly against benchmarks — cold email averages ~3.4% reply, under 2%
 in software verticals, ~5.8% on hand-built lists under 50.
 
-### Gate 5 — Why now
+### B5 — Why now
 > What changed in the last 18 months that makes this possible, and wasn't true before?
 
 **KILL IF** nothing changed AND the idea has been technically possible for years AND
@@ -82,7 +143,9 @@ nobody does it. That combination usually means it has been tried and does not wo
 
 The exception is gate 6 — check it before killing on this one.
 
-### Gate 6 — The schlep test *(the only reliable positive signal)*
+# PHASE C — Edge and economics
+
+### C1 — The schlep test *(the only reliable positive signal)*
 > Is this tedious, unglamorous, or unpleasant enough that competent people avoid it?
 
 Per Paul Graham's *schlep blindness*: ideas behind a schlep filter stay underexplored
@@ -93,7 +156,7 @@ that does not require money or reputation.
 **WEAK IF** the work is pleasant, fashionable, or the subject of current course-selling.
 Fashionable categories are saturated by definition — everyone was taught the same play.
 
-### Gate 7 — Public pain evidence
+### C2 — Corroborate the pain in words
 > Can you find 10 real, dated, linkable people describing this problem in public?
 
 Forums, subreddits, review sites, support threads, G2/Capterra complaints.
@@ -104,7 +167,7 @@ Forums, subreddits, review sites, support threads, G2/Capterra complaints.
 Each piece of evidence gets a confidence tag (see below). Ten weak citations do not
 add up to one strong one.
 
-### Gate 8 — Unit economics
+### C3 — Unit economics
 > Price ÷ delivery hours. Churn. Acquisition cost in units of work.
 
 - **KILL IF** effective rate is under ~$100/hour after the offer matures
