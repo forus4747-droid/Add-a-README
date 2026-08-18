@@ -1,0 +1,176 @@
+<title>Review Rescue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#FBFBF9; --card:#FFFFFF; --card-2:#F2F4F1;
+  --ink:#14201E; --ink-2:#465350; --ink-3:#6F7B78;
+  --rule:#DFE4DF; --accent:#0F4C45; --accent-2:#12655B; --accent-soft:#E2EFEB;
+  --warn:#9A5B14; --warn-soft:#FAEEDD;
+  --shadow:0 1px 2px rgba(20,32,30,.05),0 10px 30px -18px rgba(15,76,69,.3);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0D1211; --card:#141A19; --card-2:#1A2220;
+  --ink:#E9EEEC; --ink-2:#AEBAB7; --ink-3:#7F8D89;
+  --rule:#232C2A; --accent:#5FBFAE; --accent-2:#7FD3C2; --accent-soft:#132523;
+  --warn:#D9A45C; --warn-soft:#241B0F;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --bg:#0D1211; --card:#141A19; --card-2:#1A2220;
+  --ink:#E9EEEC; --ink-2:#AEBAB7; --ink-3:#7F8D89;
+  --rule:#232C2A; --accent:#5FBFAE; --accent-2:#7FD3C2; --accent-soft:#132523;
+  --warn:#D9A45C; --warn-soft:#241B0F;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",sans-serif;letter-spacing:-.02em;text-wrap:balance;margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+header{padding:20px 0;border-bottom:1px solid var(--rule)}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.05rem}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+
+.hero{padding:64px 0 48px;display:grid;gap:34px;grid-template-columns:1fr}
+@media(min-width:860px){.hero{grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}}
+h1{font-size:clamp(2.2rem,5.4vw,3.35rem);font-weight:600;line-height:1.05;margin-bottom:18px}
+h1 span{color:var(--accent)}
+.sub{font-size:1.1rem;color:var(--ink-2);max-width:44ch;margin:0 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-block;background:var(--accent);color:var(--bg);font-weight:600;font-size:.97rem;
+  padding:13px 24px;border-radius:7px;text-decoration:none;border:1px solid var(--accent)}
+.btn:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.note{font-size:.88rem;color:var(--ink-3)}
+
+/* demo */
+.demo{display:flex;flex-direction:column;gap:12px}
+.rev{background:var(--card);border:1px solid var(--rule);border-radius:11px;padding:16px 18px;box-shadow:var(--shadow)}
+.rev-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.av{width:30px;height:30px;border-radius:50%;background:var(--card-2);color:var(--ink-2);flex:none;
+  display:grid;place-items:center;font-weight:600;font-size:.8rem}
+.who{font-weight:600;font-size:.92rem;line-height:1.2}
+.when{font-size:.76rem;color:var(--ink-3)}
+.stars{margin-left:auto;color:var(--warn);font-size:.85rem;letter-spacing:1px}
+.rev p{margin:0;font-size:.92rem;color:var(--ink-2);line-height:1.55}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;
+  padding:4px 9px;border-radius:20px;margin-top:11px}
+.tag.bad{background:var(--warn-soft);color:var(--warn)}
+.reply{margin:11px 0 0;padding:13px 15px;background:var(--accent-soft);border-radius:9px;
+  border-left:3px solid var(--accent)}
+.reply .who{color:var(--accent);font-size:.83rem;margin-bottom:4px}
+.reply p{font-size:.89rem;color:var(--ink-2)}
+
+section{padding:52px 0;border-top:1px solid var(--rule)}
+h2{font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600;margin-bottom:12px}
+.lede{color:var(--ink-2);max-width:58ch;margin:0 0 28px}
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:11px;padding:22px}
+.card h3{font-size:1.02rem;font-weight:600;margin-bottom:7px}
+.card p{margin:0;font-size:.92rem;color:var(--ink-2)}
+.step{font-family:"Bricolage Grotesque",sans-serif;font-size:.78rem;font-weight:700;color:var(--accent);
+  letter-spacing:.1em;display:block;margin-bottom:10px}
+
+.price{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:30px;box-shadow:var(--shadow);max-width:520px}
+.tier{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid var(--rule)}
+.tier:last-of-type{border-bottom:none}
+.amt{font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;font-weight:600;letter-spacing:-.03em}
+.per{color:var(--ink-3);font-size:.9rem}
+.what{width:100%;font-size:.92rem;color:var(--ink-2);margin-top:2px}
+ul.ticks{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:9px}
+ul.ticks li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:.93rem;color:var(--ink-2)}
+ul.ticks li::before{content:"✓";color:var(--accent);font-weight:700}
+
+footer{border-top:1px solid var(--rule);padding:26px 0 46px;font-size:.85rem;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;gap:8px 22px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+<header><div class="brand"><span class="dot"></span> Review Rescue</div></header>
+
+<div class="hero">
+  <div>
+    <h1>Your patients wrote to you. <span>Nobody wrote back.</span></h1>
+    <p class="sub">We answer every Google review your practice has — in your voice, within 24 hours — so the people reading them see a practice that's paying attention.</p>
+    <div class="cta">
+      <a class="btn" href="#contact">See five replies, free</a>
+      <a class="btn ghost" href="#pricing">Pricing</a>
+    </div>
+    <p class="note" style="margin-top:14px">No call required. We'll draft five and send them over.</p>
+  </div>
+
+  <div class="demo" aria-label="Example of an unanswered review and the reply we write">
+    <div class="rev">
+      <div class="rev-top">
+        <div class="av" aria-hidden="true">MK</div>
+        <div><div class="who">Maria K.</div><div class="when">3 months ago</div></div>
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+      </div>
+      <p>Dr. Ellis talked my son through the whole filling. He's terrified of dentists and he walked out fine. The front desk fitted us in same day.</p>
+      <span class="tag bad">● No reply · 94 days</span>
+    </div>
+    <div class="rev">
+      <div class="rev-top">
+        <div class="av" aria-hidden="true">MK</div>
+        <div><div class="who">Maria K.</div><div class="when">3 months ago</div></div>
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+      </div>
+      <p>Dr. Ellis talked my son through the whole filling. He's terrified of dentists and he walked out fine. The front desk fitted us in same day.</p>
+      <div class="reply">
+        <div class="who">Reply from the owner</div>
+        <p>Thanks Maria — glad we could get you in the same day. Dr. Ellis takes her time with nervous kids, and it sounds like it paid off. Tell your son we said well done.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <h2>Why unanswered reviews cost you</h2>
+  <p class="lede">Google ranks businesses that respond to reviews above ones that don't. And people read the replies as closely as the reviews — a practice that answers reads as one that cares.</p>
+  <div class="grid">
+    <div class="card"><span class="step">01</span><h3>We clear the backlog</h3><p>Every unanswered review, going back as far as they go. Written to sound like your practice, not a template.</p></div>
+    <div class="card"><span class="step">02</span><h3>We fix your profile</h3><p>Description rewritten, categories corrected, hours and services filled in, four posts scheduled a month.</p></div>
+    <div class="card"><span class="step">03</span><h3>We keep it current</h3><p>Every new review answered within 24 hours. You approve anything sensitive before it goes live.</p></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>Pricing</h2>
+  <p class="lede">No contract. Cancel with 30 days' notice.</p>
+  <div class="price">
+    <div class="tier">
+      <span class="amt">$497</span><span class="per">one-off</span>
+      <span class="what">The backlog. Every unanswered review replied to, profile rewritten, first month of posts.</span>
+    </div>
+    <div class="tier">
+      <span class="amt">$297</span><span class="per">per month</span>
+      <span class="what">Every new review answered within 24 hours, four Google Posts a month, a monthly note on where you stand.</span>
+    </div>
+    <ul class="ticks">
+      <li>You approve every reply before the first batch goes live</li>
+      <li>We never publish clinical details or respond to anything alleging harm</li>
+      <li>No rating or ranking is guaranteed — anyone promising you one is guessing</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>See the work before you pay for it</h2>
+  <p class="lede">Email the name of your practice. We'll reply with five drafted responses to your five most recent reviews, free. If you like them, we'll do the rest. If not, keep them.</p>
+  <a class="btn" href="mailto:REPLACE@yourdomain.com?subject=Five%20replies%20please">REPLACE@yourdomain.com</a>
+</section>
+
+<footer>
+  <span>Review Rescue</span>
+  <span>REPLACE — your business name &amp; postal address</span>
+  <span>Unsubscribe: reply "stop" to any email</span>
+</footer>
+</div>
