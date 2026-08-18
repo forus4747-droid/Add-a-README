@@ -141,3 +141,79 @@ numbers.
 
 **No category is confirmed open.** The strongest-looking candidate turned out to be the
 clearest case of the measurement error. Nothing here supports building yet.
+
+---
+
+# Round 3 — real data obtained, via the one open channel
+
+Retried Firecrawl (still rate-limited) and Apify (still over monthly limit). Then used
+**GitHub**, which is the only unrestricted channel, and found a published Shopify App Store
+dataset: `markthomas93/Shopify-App-Store-Data-Science` (originating from Kaggle).
+
+Committed to `research/data/` — 2,510 apps, 3,530 category rows, 287,453 reviews.
+Analysis script: `research/tools/analyse_dataset.py`.
+
+## ⚠️ Vintage: 2019
+
+Last commit **2019-03-04**. The store held **2,510 apps** then; Shopify's own site now says
+**over 16,000**. **This data cannot tell us where opportunity is in 2026** and no current
+conclusion should be drawn from the category rankings below.
+
+What it *can* do is settle two methodological questions with real numbers, and that turns
+out to be the more valuable result.
+
+## Finding 1 — the "reviews per app" baseline is meaningless
+
+| Statistic | Value |
+|---|---|
+| **Mean** reviews per app | **128** |
+| **Median** reviews per app | **8** |
+| Apps with **zero** reviews | **13.6%** |
+
+**The mean is 16× the median.** Every vendor analysis — and my own earlier one — compared
+categories against a *mean* baseline of ~92. A mean over this distribution measures the
+winners, not the market. **Any category comparison built on it is invalid**, including the
+"six categories above 250 reviews/app" claim.
+
+The honest base rate for a new app: **half of all apps have 8 or fewer reviews**, and one in
+seven has none at all. Not "under $1,000/month" — under ten reviews, ever.
+
+## Finding 2 — leader share is scale-dependent *(a new flaw in my own metric)*
+
+Per-category concentration on this data (2019, historical only):
+
+| Category | Apps | Leader % | Top-3 % | Median | Mean | Leader |
+|---|---:|---:|---:|---:|---:|---|
+| Places to sell | 66 | 11.1 | 30.8 | 9 | 47 | Facebook channel |
+| Store design | 1,025 | 11.2 | 27.4 | 9 | 157 | Privy |
+| Orders and shipping | 397 | 14.1 | 26.1 | 6 | 49 | AfterShip |
+| Sales and conversion | 618 | 14.5 | 29.0 | 11 | 187 | Sales Pop |
+| Inventory management | 154 | 15.2 | 28.9 | 8 | 37 | Bulk Product Edit |
+| Finding/adding products | 126 | 15.9 | 37.2 | 15 | 112 | Oberlo |
+| Reporting | 150 | 17.3 | 35.1 | 3 | 23 | Compass |
+| Marketing | 545 | 17.5 | 30.1 | 11 | 188 | Privy |
+| Productivity | 95 | 20.0 | 55.2 | 9 | 57 | Kit |
+| Finances | 77 | 21.4 | 40.5 | 3 | 21 | Data Export |
+| Customer support | 205 | 26.8 | 49.5 | 5 | 78 | Answers |
+| **Trust and security** | 72 | **54.7** | 73.6 | 7 | 80 | EU Cookie Bar |
+
+Most leaders hold only 11–27% — which would read as "open". **That reading is an artifact of
+bucket width.**
+
+Compare directly against the live 2026 figure: in the *subcategory* **Product Reviews**,
+Judge.me holds **56%**. But "Store design" — 1,025 apps wide — shows its leader at 11%.
+
+**Leader share dilutes as the bucket widens.** Measured on a top-level nav category it will
+almost always look open; measured on the subcategory a buyer actually shops in, the same
+market can be closed. Only "Trust and security" (72 apps, narrow) showed as closed here —
+and narrowness is exactly why it was visible.
+
+**Correction: always measure at the level the buyer shops at, never the top-level category.**
+
+## Status
+
+Two real methodological corrections, both from data rather than argument. Still **no current
+category is confirmed open**, and the 2019 rankings must not be used as if they were.
+
+To get current readings: run `research/tools/leader_share.py` locally against the live store,
+applied to **subcategories**, not the seven top-level ones.

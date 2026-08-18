@@ -34,6 +34,16 @@ Do not start from an idea. Start from a number showing more demand than supply.
 > it and the rest average 98, or 1.07× baseline. The category was not underserved; buyers
 > searched, found the winner, and stopped. The mean inverted the truth.
 
+> ⚠️ **Second failure, found in real data.** Across 2,510 Shopify apps: **mean 128 reviews,
+> median 8, 13.6% with zero.** The mean is **16x** the median, so any "average reviews per
+> listing" baseline measures the winners, not the market.
+>
+> ⚠️ **Leader share is scale-dependent.** In the narrow subcategory *Product Reviews*, the
+> leader holds 56%. In the 1,025-app bucket *Store design*, the leader holds 11% — the same
+> kind of market, reading as open purely because the bucket is wider. **Measure at the level
+> the buyer actually shops at, never the top-level nav category**, or every broad category
+> will look open.
+
 **Read leader share first, not the average:**
 1. **Leader review share** = reviews of the #1 app ÷ category total. **High = closed.**
 2. **Median** reviews per listing — never the mean.
