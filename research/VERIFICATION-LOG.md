@@ -86,3 +86,58 @@ consistent with the earlier read and is real.
 
 But no category has been confirmed as genuinely open. The one that looked best is now the
 clearest example of the measurement error. **No idea should be built on this data yet.**
+
+---
+
+# Round 2 — all remote routes exhausted
+
+Attempted the full catalogue scrape. Every available route is now blocked:
+
+| Route | Result |
+|---|---|
+| Direct fetch (curl) | **403** at the egress gateway — org policy, not routed around |
+| Apify — `scoutlayer` | Aborted at a **$0.55** platform cost cap; endpoint returns no review counts |
+| Apify — `fatihtahta` | **"Monthly usage hard limit exceeded"** — account quota spent. Confirmed it *does* return `reviewCount`, `ratingBreakdown`, `pricing`, `launched` — the right actor, no quota to run it |
+| Firecrawl | Free-tier rate limit, both attempts |
+| WebSearch | Works, but returns vendor summaries — the thing being checked |
+
+**Total spend: up to $0.55 of Apify credit, for data that did not answer the question.**
+
+## The fix: stop depending on any of them
+
+`tools/leader_share.py` runs on a normal machine, which has no egress policy and no API
+quota. Only dependency is `requests`.
+
+```bash
+python3 research/tools/leader_share.py --pages 15
+```
+
+It paginates each category, parses every listing's review count, and reports the readings
+that survive a power-law distribution:
+
+| Column | Meaning |
+|---|---|
+| **LEAD%** | Leader's share of all category reviews. **≥40% = closed.** |
+| **TOP3%** | Top three combined. ≥65% = closed. |
+| **MEDIAN** | Median reviews per app — printed beside MEAN so the distortion is visible |
+| **TAIL** | Median reviews for apps ranked 5–15. Under 50 = winner-take-all |
+
+Verdicts are mechanical: `CLOSED`, `WINNER-TAKE-ALL`, `CONTESTED`, `OPEN`. A category is
+`OPEN` only when demand is high **and spread** — leader under 20% with a healthy tail.
+
+Outputs `shopify_categories_apps.csv` (every app) and `_summary.json` (per-category stats).
+
+**Two honest limits.** Sampling the top N pages biases toward the head, so leader share is
+an **upper** bound — raise `--pages` until the numbers stop moving. And if Shopify changes
+their markup the regex breaks; the script says so rather than reporting silently wrong
+numbers.
+
+## Alternatives if you would rather not run it
+
+1. **Firecrawl free API key** (firecrawl.dev/signin) — set as an `Authorization: Bearer` header on the connector. Removes the rate limit; I could then do it from here.
+2. **Apify quota reset** next billing cycle. `fatihtahta/shopify-app-store-scraper` at ~$0.002/app — the whole catalogue is roughly $32, one category about $0.50.
+
+## Status
+
+**No category is confirmed open.** The strongest-looking candidate turned out to be the
+clearest case of the measurement error. Nothing here supports building yet.
