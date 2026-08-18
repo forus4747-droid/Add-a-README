@@ -1,0 +1,680 @@
+<title>Proof Before Build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#F1F2F5;
+  --surface:#FFFFFF;
+  --surface-2:#E8EAF0;
+  --ink:#16191C;
+  --ink-2:#454B57;
+  --ink-3:#6E7686;
+  --rule:#D2D6E0;
+  --rule-strong:#B4BAC8;
+  --accent:#20304F;
+  --accent-soft:#DDE3EF;
+  --neg:#9B3024;
+  --neg-soft:#F3E1DE;
+  --pos:#2E5F4A;
+  --pos-soft:#DDEAE3;
+  --caution:#8A6D1F;
+  --caution-soft:#F1E9D4;
+  --shadow:0 1px 2px rgba(22,25,28,.06), 0 8px 24px -12px rgba(32,48,79,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101318;
+    --surface:#171B22;
+    --surface-2:#1E232C;
+    --ink:#E7E9EE;
+    --ink-2:#AEB5C2;
+    --ink-3:#828B9B;
+    --rule:#2A303A;
+    --rule-strong:#3A4250;
+    --accent:#8FA9D8;
+    --accent-soft:#1C2637;
+    --neg:#D98476;
+    --neg-soft:#2E1E1B;
+    --pos:#7FB79C;
+    --pos-soft:#17251F;
+    --caution:#C9A94E;
+    --caution-soft:#26200F;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101318;
+  --surface:#171B22;
+  --surface-2:#1E232C;
+  --ink:#E7E9EE;
+  --ink-2:#AEB5C2;
+  --ink-3:#828B9B;
+  --rule:#2A303A;
+  --rule-strong:#3A4250;
+  --accent:#8FA9D8;
+  --accent-soft:#1C2637;
+  --neg:#D98476;
+  --neg-soft:#2E1E1B;
+  --pos:#7FB79C;
+  --pos-soft:#17251F;
+  --caution:#C9A94E;
+  --caution-soft:#26200F;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+
+/* ---- masthead ---- */
+.masthead{
+  border-bottom:2px solid var(--ink);
+  padding:48px 0 20px;
+  margin-bottom:44px;
+}
+.kicker{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  margin-bottom:22px;
+}
+h1{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:500;
+  font-size:clamp(2.6rem,7vw,4.4rem);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  margin:0 0 18px;
+  text-wrap:balance;
+}
+h1 em{font-style:italic;color:var(--accent)}
+.standfirst{
+  font-family:"Newsreader",Georgia,serif;
+  font-size:clamp(1.15rem,2.4vw,1.42rem);
+  line-height:1.5;
+  color:var(--ink-2);
+  max-width:60ch;
+  margin:0;
+}
+
+/* ---- reading column + margin rail ---- */
+.doc{display:grid;grid-template-columns:1fr;gap:0}
+@media (min-width:940px){
+  .doc{grid-template-columns:minmax(0,1fr) 232px;column-gap:44px;align-items:start}
+  .col{grid-column:1}
+  .rail{grid-column:2}
+}
+.col{max-width:68ch}
+
+section{padding:44px 0;border-top:1px solid var(--rule)}
+section:first-of-type{border-top:none;padding-top:0}
+h2{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:500;
+  font-size:clamp(1.75rem,3.6vw,2.3rem);
+  line-height:1.14;
+  letter-spacing:-.015em;
+  margin:0 0 8px;
+  text-wrap:balance;
+}
+h3{
+  font-family:"IBM Plex Sans",sans-serif;
+  font-weight:600;
+  font-size:1.02rem;
+  letter-spacing:-.005em;
+  margin:34px 0 10px;
+}
+.sec-num{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:block;
+  margin-bottom:14px;
+}
+p{margin:0 0 16px;max-width:66ch}
+p:last-child{margin-bottom:0}
+strong{font-weight:600;color:var(--ink)}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ---- verdict cards ---- */
+.verdict{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--rule-strong);
+  border-radius:3px;
+  padding:24px 26px;
+  margin:26px 0;
+  box-shadow:var(--shadow);
+}
+.verdict.no{border-left-color:var(--neg)}
+.verdict.yes{border-left-color:var(--pos)}
+.verdict.mixed{border-left-color:var(--caution)}
+.verdict-head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:16px;
+}
+.verdict-title{
+  font-family:"Newsreader",Georgia,serif;
+  font-size:1.34rem;
+  font-weight:500;
+  letter-spacing:-.01em;
+  margin:0;
+}
+.stamp{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:4px 9px;
+  border:1px solid currentColor;
+  border-radius:2px;
+  white-space:nowrap;
+}
+.stamp.no{color:var(--neg);background:var(--neg-soft)}
+.stamp.yes{color:var(--pos);background:var(--pos-soft)}
+.stamp.mixed{color:var(--caution);background:var(--caution-soft)}
+
+/* ---- figure rows ---- */
+.figs{
+  display:grid;
+  gap:0;
+  margin:18px 0 4px;
+  border-top:1px solid var(--rule);
+}
+.fig{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:4px 20px;
+  padding:13px 0;
+  border-bottom:1px solid var(--rule);
+  align-items:baseline;
+}
+@media (max-width:560px){.fig{grid-template-columns:1fr;gap:2px}}
+.fig-n{
+  font-family:"IBM Plex Mono",monospace;
+  font-variant-numeric:tabular-nums;
+  font-size:1.32rem;
+  font-weight:500;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  min-width:5.4ch;
+}
+.fig-n.neg{color:var(--neg)}
+.fig-n.pos{color:var(--pos)}
+.fig-t{font-size:.95rem;color:var(--ink-2);line-height:1.5}
+.fig-src{
+  grid-column:1/-1;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  letter-spacing:.06em;
+  color:var(--ink-3);
+  text-transform:uppercase;
+  margin-top:3px;
+}
+@media (min-width:561px){.fig-src{grid-column:2}}
+
+.conf{
+  display:inline-block;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:9.5px;
+  font-weight:600;
+  letter-spacing:.1em;
+  padding:1px 5px;
+  border-radius:2px;
+  margin-right:7px;
+  vertical-align:1px;
+}
+.conf.s{background:var(--pos-soft);color:var(--pos)}
+.conf.m{background:var(--caution-soft);color:var(--caution)}
+.conf.w{background:var(--neg-soft);color:var(--neg)}
+
+/* ---- rail ---- */
+.rail{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding:24px 0 0;
+}
+@media (min-width:940px){
+  .rail{position:sticky;top:24px;padding-top:0}
+}
+.rail-card{
+  background:var(--surface-2);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  padding:16px 17px;
+}
+.rail-h{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin:0 0 10px;
+}
+.rail-card p{font-size:.845rem;line-height:1.55;color:var(--ink-2);margin:0 0 9px;max-width:none}
+.rail-card p:last-child{margin-bottom:0}
+.rail-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.rail-list li{
+  font-size:.845rem;
+  line-height:1.45;
+  color:var(--ink-2);
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:9px;
+  align-items:baseline;
+}
+.rail-list .m{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;font-weight:600}
+.rail-list .m.no{color:var(--neg)}
+.rail-list .m.yes{color:var(--pos)}
+.rail-list .m.mixed{color:var(--caution)}
+
+/* ---- callout ---- */
+.callout{
+  background:var(--accent-soft);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  padding:22px 24px;
+  margin:26px 0;
+}
+.callout .rail-h{color:var(--accent)}
+.callout p{max-width:62ch}
+.callout.warn{background:var(--neg-soft)}
+.callout.warn .rail-h{color:var(--neg)}
+
+/* ---- protocol steps ---- */
+.steps{list-style:none;counter-reset:s;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:0}
+.steps>li{
+  counter-increment:s;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:0 20px;
+  padding:20px 0;
+  border-top:1px solid var(--rule);
+}
+.steps>li::before{
+  content:counter(s,decimal-leading-zero);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--accent);
+  letter-spacing:.04em;
+  padding-top:3px;
+}
+.steps h3{margin:0 0 7px}
+.steps p{font-size:.945rem;color:var(--ink-2);margin-bottom:10px}
+.steps .grid-note{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;
+  color:var(--ink-3);
+  letter-spacing:.03em;
+  line-height:1.6;
+}
+
+/* ---- table ---- */
+.tbl-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:440px;font-size:.9rem}
+th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--rule)}
+th{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  font-weight:600;
+  background:var(--surface-2);
+}
+tr:last-child td{border-bottom:none}
+td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+tfoot td{font-weight:600;background:var(--surface-2)}
+
+ul.plain{padding-left:18px;margin:0 0 16px;max-width:66ch}
+ul.plain li{margin-bottom:9px;color:var(--ink-2)}
+ul.plain li strong{color:var(--ink)}
+
+/* ---- sources ---- */
+.sources{font-size:.85rem;line-height:1.6}
+.sources ol{padding-left:20px;margin:0;columns:1}
+.sources li{margin-bottom:9px;color:var(--ink-2);break-inside:avoid}
+.sources a{word-break:break-word}
+
+footer{
+  border-top:2px solid var(--ink);
+  margin-top:56px;
+  padding-top:20px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 24px;
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="kicker">
+    <span>Evidence review</span>
+    <span>Compiled 18 Aug 2026</span>
+    <span>Constraint: $100 &amp; time</span>
+  </div>
+  <h1>The proof exists.<br>It doesn't point <em>where you'd hope.</em></h1>
+  <p class="standfirst">You asked for a proven system before you build anything. Here is what the actual data says — including the parts that kill three of the four models you were offered, and the part that undercuts my own strongest evidence.</p>
+</header>
+
+<div class="doc">
+<div class="col">
+
+<section>
+  <span class="sec-num">What "proven" can honestly mean</span>
+  <h2>Three different claims, only one of which is provable</h2>
+  <p>"Proven system" gets used to mean three separate things, and the difference is the whole game:</p>
+  <ul class="plain">
+    <li><strong>This model has produced real revenue for real people.</strong> Provable. Public revenue dashboards, platform payout data, tax filings. I have this below.</li>
+    <li><strong>This model produces revenue for most people who try it.</strong> Also provable — and for most "online business" models, the answer is emphatically no. I have this below too, and it is the more useful half.</li>
+    <li><strong>This model will produce revenue for you.</strong> Not provable by any document, mine included. Only a test can answer it.</li>
+  </ul>
+  <p>Anyone selling you the first claim while implying the third is running a con. So this document gives you the first two honestly, then hands you the cheapest possible version of the third.</p>
+</section>
+
+<section>
+  <span class="sec-num">Finding 01</span>
+  <h2>Digital products are a lottery, not a system</h2>
+  <p>The "make something once, sell it forever" model has the cleanest available data, because Gumroad's marketplace has been analysed at scale. The distribution is brutal.</p>
+
+  <div class="figs">
+    <div class="fig"><span class="fig-n neg">$72</span><span class="fig-t">Median monthly earnings of a Gumroad creator — essentially unchanged from $70 in 2020</span><span class="fig-src"><span class="conf m">MODERATE</span>Marketplace analysis of 146,271 products</span></div>
+    <div class="fig"><span class="fig-n neg">99.5%</span><span class="fig-t">Share of all platform revenue captured by the top 1% of creators</span><span class="fig-src"><span class="conf m">MODERATE</span>Same dataset — up from ~60% to top 1% in 2020</span></div>
+    <div class="fig"><span class="fig-n neg">~60%</span><span class="fig-t">Creators who have earned under $500 in their entire lifetime on the platform</span><span class="fig-src"><span class="conf m">MODERATE</span>Same dataset</span></div>
+    <div class="fig"><span class="fig-n neg">&lt;5%</span><span class="fig-t">Creators earning more than $1,000 per month</span><span class="fig-src"><span class="conf m">MODERATE</span>Same dataset</span></div>
+  </div>
+
+  <div class="verdict no">
+    <div class="verdict-head">
+      <p class="verdict-title">Digital product / template shop</p>
+      <span class="stamp no">Ruled out</span>
+    </div>
+    <p>A median outcome of $72/month is not a system, it's a raffle ticket. The top-1% concentration tells you what actually drives sales here: <strong>an audience you already have.</strong> The product is the monetisation layer, not the business. With no audience and a need for income, this is the wrong end of the pipe — it is something to add in year two, not to start with.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">Finding 02</span>
+  <h2>AI already ate the job you were probably going to sell</h2>
+  <p>This is the finding most "use AI to make money" advice omits, and it comes from the strongest source in this document — a peer-reviewed economics study, not a blog.</p>
+
+  <div class="figs">
+    <div class="fig"><span class="fig-n neg">−5.2%</span><span class="fig-t">Monthly earnings for freelance writers on Upwork after ChatGPT's release; jobs fell 2%</span><span class="fig-src"><span class="conf s">STRONG</span>Academic study, n=92,547 freelancers, WashU Olin / AEA</span></div>
+    <div class="fig"><span class="fig-n neg">−9.4%</span><span class="fig-t">Monthly earnings for image and design freelancers after DALL·E and Midjourney; jobs fell 3.7%</span><span class="fig-src"><span class="conf s">STRONG</span>Same study</span></div>
+    <div class="fig"><span class="fig-n neg">−30%</span><span class="fig-t">Decline in freelance writing job postings in the broader multi-year trend</span><span class="fig-src"><span class="conf w">WEAK</span>Industry market report, single source</span></div>
+  </div>
+
+  <p>Read the second-order finding carefully, because it inverts the usual advice: <strong>the highest-rated, best-paid freelancers were hurt the most.</strong> Being good at the commodity task offered no protection. AI did not create a level playing field for newcomers in these categories — it flooded them.</p>
+
+  <div class="callout warn">
+    <p class="rail-h">The trap this sets</p>
+    <p>The instinct when you have AI and no other skill is to sell AI-produced writing, design, or video cheaply. That is precisely the segment the data shows collapsing, and you would be entering it with no reputation, at the bottom of a price war, against everyone else who had the same instinct. Whatever you build, it cannot be this.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">Finding 03</span>
+  <h2>But the market for AI <em>work</em> is genuinely, measurably growing</h2>
+  <p>The same platform that shows writing collapsing shows something else growing fast. The distinction is between selling AI's <em>output</em> and selling AI <em>operation</em>.</p>
+
+  <div class="figs">
+    <div class="fig"><span class="fig-n pos">+109%</span><span class="fig-t">Year-over-year growth in client <em>spending</em> on AI-related freelance skills, 2025 — measured from money spent, not job postings or surveys</span><span class="fig-src"><span class="conf m">MODERATE</span>Upwork In-Demand Skills 2026, via multiple outlets</span></div>
+    <div class="fig"><span class="fig-n pos">+329%</span><span class="fig-t">AI video generation &amp; editing — the fastest-growing category. Clients generate raw output, then pay someone to make it usable</span><span class="fig-src"><span class="conf m">MODERATE</span>Same report</span></div>
+    <div class="fig"><span class="fig-n pos">+178%</span><span class="fig-t">AI integration — embedding AI into workflows a business already runs</span><span class="fig-src"><span class="conf m">MODERATE</span>Same report</span></div>
+    <div class="fig"><span class="fig-n pos">+71%</span><span class="fig-t">AI chatbot development</span><span class="fig-src"><span class="conf m">MODERATE</span>Same report</span></div>
+  </div>
+
+  <p>Notice the shape of every growing category: the client already has AI, and pays a human to <strong>finish the job</strong> — to shape raw generated output into something usable, or to wire AI into a workflow they can't wire themselves. The money has moved from producing the artefact to operating the machine. That is a real, defensible position for someone whose entire advantage is AI fluency.</p>
+</section>
+
+<section>
+  <span class="sec-num">Finding 04</span>
+  <h2>Small businesses will not buy "AI." Check the wallet, not the survey.</h2>
+  <p>Every AI-agency pitch rests on an assumption — that small businesses are desperate to buy AI. The spending data says the appetite is far thinner than the headlines.</p>
+
+  <div class="figs">
+    <div class="fig"><span class="fig-n neg">17.7%</span><span class="fig-t">US small businesses that have <em>actually paid</em> for an AI tool — against far higher claimed adoption</span><span class="fig-src"><span class="conf w">WEAK</span>Single secondary source, unverified</span></div>
+    <div class="fig"><span class="fig-n neg">33%</span><span class="fig-t">SMB owners spending <em>nothing</em> on AI tools — free tiers absorb most demand</span><span class="fig-src"><span class="conf m">MODERATE</span>Bluevine 2026 Small Business AI Trends Report</span></div>
+    <div class="fig"><span class="fig-n">28% / 16% / 10%</span><span class="fig-t">Share spending $25–99 / $100–249 / $250+ per month on AI</span><span class="fig-src"><span class="conf m">MODERATE</span>Same report</span></div>
+    <div class="fig"><span class="fig-n pos">80%+</span><span class="fig-t">Of those who <em>did</em> pay, share reporting real productivity gains</span><span class="fig-src"><span class="conf m">MODERATE</span>Same report</span></div>
+  </div>
+
+  <p>Those last two numbers together are the whole strategy. The product <strong>works</strong> for the people who buy it — but almost nobody is buying it framed as "AI," and the ones who do spend under $100 a month. Meanwhile the generalist AI-automation-agency tier is described by practitioners as saturated, precisely because it's the path every course teaches: cold-emailing tech-forward startups who already get ten identical pitches a week.</p>
+
+  <div class="verdict mixed">
+    <div class="verdict-head">
+      <p class="verdict-title">"AI automation agency"</p>
+      <span class="stamp mixed">Only if inverted</span>
+    </div>
+    <p>Do not sell AI. Sell a <strong>named business outcome</strong> at a fixed price — more booked jobs, a month of published content, a backlog of unanswered reviews cleared — to a buyer who neither knows nor cares that AI produced it. AI is your <em>cost structure</em>, not your product. That reframing is the difference between competing with every course graduate and competing with the local agency charging ten times your price.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">Finding 05</span>
+  <h2>The model with the deepest public track record is the least glamorous one</h2>
+  <p>Productized services — one fixed scope, one fixed price, sold repeatedly — have something the other models lack: operators publishing live revenue dashboards for years.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Operation</th><th>Model</th><th class="num">Public revenue</th></tr></thead>
+    <tbody>
+      <tr><td>180Sites</td><td>Website packages, $180/mo, ~500 customers</td><td class="num">~$950k ARR</td></tr>
+      <tr><td>The Match Artist</td><td>Dating-app photography, B2C</td><td class="num">~$896k/yr</td></tr>
+      <tr><td>Tech-enabled consultancy</td><td>Repeatable 2-week engagement, tiered $10k/$20k/$30k</td><td class="num">~$1.7M/yr</td></tr>
+      <tr><td>Designfly</td><td>Productized design subscription</td><td class="num">$10k MRR</td></tr>
+      <tr><td>MixBloom</td><td>White-label social content, $199–549/mo</td><td class="num">undisclosed</td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="2">Typical range for a solo operator</td><td class="num">$50k–$300k ARR</td></tr></tfoot>
+  </table>
+  </div>
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase;margin-top:-8px"><span class="conf m">MODERATE</span>Self-reported public dashboards &amp; category roundups — see survivorship warning below</p>
+
+  <p>Designfly took <strong>18 months</strong> to reach $10k/month. 180Sites has been compounding since 2018. That is the honest timeline, and it is the number that most matters to you: this model is proven, and it is slow at the start.</p>
+
+  <div class="verdict yes">
+    <div class="verdict-head">
+      <p class="verdict-title">Fixed-scope productized service</p>
+      <span class="stamp yes">Best supported</span>
+    </div>
+    <p>It clears every constraint you named. Near-zero startup cost. No audience required. No inventory. Cash from the first customer rather than month nine. And it is the one model where AI fluency is a genuine margin advantage rather than a commodity — you deliver in four hours what a buyer expects to take a week, and you charge for the outcome, not the hours.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">Finding 06</span>
+  <h2>The arithmetic of getting anyone to answer you</h2>
+  <p>Every proven path above shares one requirement no course emphasises, because it is unpleasant: <strong>you have to go find the customers.</strong> Here is what that costs in raw volume.</p>
+
+  <div class="figs">
+    <div class="fig"><span class="fig-n">3.4%</span><span class="fig-t">Average B2B cold email reply rate, 2026 benchmark (27.7% open rate)</span><span class="fig-src"><span class="conf m">MODERATE</span>Aggregated 2026 benchmark reports</span></div>
+    <div class="fig"><span class="fig-n pos">5.8%</span><span class="fig-t">Reply rate for campaigns under 50 recipients — versus 2.1% for large blasts</span><span class="fig-src"><span class="conf m">MODERATE</span>Same benchmarks</span></div>
+    <div class="fig"><span class="fig-n">&gt;5% / &gt;10%</span><span class="fig-t">Threshold for "strong" and "top-performing" campaigns respectively</span><span class="fig-src"><span class="conf m">MODERATE</span>Same benchmarks</span></div>
+    <div class="fig"><span class="fig-n neg">&lt;2%</span><span class="fig-t">Reply rate selling to SaaS/software — the worst-performing vertical. Legal services tops out near 10%</span><span class="fig-src"><span class="conf m">MODERATE</span>Same benchmarks</span></div>
+  </div>
+
+  <p>Two decisions fall straight out of this. <strong>Small hand-built lists beat volume</strong> — nearly 3× the reply rate. And <strong>do not sell to tech companies</strong>; they are the hardest audience on the board and they are exactly who the saturated AI-agency tier is pitching. Boring, offline, local businesses reply at several times the rate.</p>
+</section>
+
+<section>
+  <span class="sec-num">Finding 07</span>
+  <h2>Base rates, so you're calibrated</h2>
+  <div class="figs">
+    <div class="fig"><span class="fig-n">22.1%</span><span class="fig-t">New US private-sector businesses that fail within year one (Mar 2024–Mar 2025)</span><span class="fig-src"><span class="conf m">MODERATE</span>Census-derived analysis</span></div>
+    <div class="fig"><span class="fig-n">~50% / 65%</span><span class="fig-t">Cumulative failure by year five / year ten</span><span class="fig-src"><span class="conf m">MODERATE</span>Same</span></div>
+    <div class="fig"><span class="fig-n neg">28.4%</span><span class="fig-t">Year-one failure rate in the information sector — the <em>highest</em> of any industry</span><span class="fig-src"><span class="conf m">MODERATE</span>Same</span></div>
+    <div class="fig"><span class="fig-n neg">60–90%</span><span class="fig-t">E-commerce businesses failing within the first few years</span><span class="fig-src"><span class="conf w">WEAK</span>Widely repeated, poorly sourced range</span></div>
+  </div>
+  <p>Roughly one in five businesses closes in year one doing everything right. That is not a reason to avoid starting — it's the reason to make your first test cost $60 instead of $6,000.</p>
+</section>
+
+<section>
+  <span class="sec-num">The part that matters most</span>
+  <h2>Where all of this evidence is weak</h2>
+  <div class="callout warn">
+    <p class="rail-h">Survivorship bias — read this before you trust the table above</p>
+    <p>Every public revenue dashboard in Finding 05 is a <strong>survivor</strong>. Nobody publishes a dashboard for the productized service that made $0 and got quietly shut down after four months. I cannot tell you the denominator — how many people ran that exact play and got nothing — because that number is not collected by anyone. This is the single biggest weakness in this document, and it applies to essentially all "proof" of this kind that you will ever be shown, including from people charging you for it.</p>
+  </div>
+
+  <p>Two further caveats you're owed:</p>
+  <ul class="plain">
+    <li><strong>I could not open the primary documents.</strong> This environment's network blocked direct page fetches, so every figure here except the academic study comes from search-result summaries of those sources. The confidence tags are honest: <span class="conf s">STRONG</span> means peer-reviewed or official, <span class="conf m">MODERATE</span> means a credible report I could not open myself, <span class="conf w">WEAK</span> means a single unverifiable secondary source. Re-check anything tagged WEAK at the linked source before you bet on it.</li>
+    <li><strong>Base rates are not your rate.</strong> Population statistics describe the average attempt, which includes everyone who quit in week two. They bound your expectations; they don't determine your outcome.</li>
+  </ul>
+</section>
+
+<section>
+  <span class="sec-num">The actual proof of concept</span>
+  <h2>A falsifiable test, under $100, answer in three weeks</h2>
+  <p>No document can prove this works <em>for you</em>. What it can do is design the cheapest experiment that produces a real yes or no. This is that experiment. It is numbered because the order genuinely matters — each step is only valid if the one before it held.</p>
+
+  <ol class="steps">
+    <li>
+      <h3>Pick one narrow niche of offline businesses</h3>
+      <p>Not "small businesses." Something like independent dental practices in one metro area, HVAC contractors, boutique law firms, med spas, driving schools. Three requirements: they already spend money on marketing, you can find 200+ of them with names and emails, and they are <em>not</em> tech companies.</p>
+      <p class="grid-note">WHY → Reply rates run 5× higher outside software · saturation is concentrated in tech-forward buyers</p>
+    </li>
+    <li>
+      <h3>Pick one outcome you can deliver in under four hours</h3>
+      <p>Fixed scope, fixed price, visible result. Examples that fit the growth categories in Finding 03: a month of short-form vertical video cut from footage they already have; their Google Business Profile rewritten plus 30 backlogged review replies drafted; a 10-page location-targeted content pack. Never describe it as AI. Describe the deliverable and the date.</p>
+      <p class="grid-note">WHY → Finding 04: they buy outcomes, not AI · Finding 02: never sell the commodity output itself</p>
+    </li>
+    <li>
+      <h3>Do the work first, unpaid, for ten of them</h3>
+      <p>Build the list by hand from Google Maps. Then actually produce the deliverable for ten named businesses <em>before</em> contacting them, and send it finished — not a pitch, the thing itself, with a note offering the same monthly at a fixed price. This is the one move only you can afford: your marginal cost of production is near zero, and theirs isn't.</p>
+      <p class="grid-note">WHY → Small lists reply at 5.8% vs 2.1% · a finished deliverable is not a cold pitch, it's a demonstration</p>
+    </li>
+    <li>
+      <h3>Then send 90 more, in batches of 20</h3>
+      <p>Same niche, same offer, personalised opening line referencing something specific. One follow-up each, four days later. Change nothing else until all 100 are sent — you are measuring one offer against one market, and two variables at once tells you nothing.</p>
+      <p class="grid-note">EXPECT → 3–6 replies per 100 at benchmark · under 2 means the list or offer is wrong, not the model</p>
+    </li>
+    <li>
+      <h3>Price the first three clients at $300–750 fixed</h3>
+      <p>Never hourly — hourly caps you at your speed and gives away the entire AI advantage. Fixed price means a four-hour delivery at $500 is a $125/hour business. Take payment through a Stripe payment link before you start work.</p>
+      <p class="grid-note">WHY → Finding 05: fixed scope is the mechanism that makes the margin · $199–549/mo is the documented band</p>
+    </li>
+    <li>
+      <h3>Apply the kill criteria without negotiating with yourself</h3>
+      <p>These are decided now, in advance, precisely so you cannot rationalise later. Write them down before you send email one.</p>
+      <p class="grid-note">100 SENT, &lt;2 REPLIES → change the <em>offer</em>, keep the niche<br>200 SENT, 0 CALLS BOOKED → change the <em>niche</em>, keep the offer<br>300 SENT, 0 PAID → kill this offer entirely, restart at step 2<br>3 OFFERS × 300 SENT, 0 PAID → cold email is not your channel; the model is not disproven</p>
+    </li>
+  </ol>
+
+  <h3>What it costs</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Item</th><th>Why it's needed</th><th class="num">Month 1</th></tr></thead>
+    <tbody>
+      <tr><td>Domain name</td><td>Never send cold email from a free Gmail address</td><td class="num">$12</td></tr>
+      <tr><td>Google Workspace</td><td>Deliverability — a new domain without it lands in spam</td><td class="num">$7</td></tr>
+      <tr><td>AI subscription</td><td>Your entire production capacity</td><td class="num">$20</td></tr>
+      <tr><td>Landing page</td><td>GitHub Pages or Carrd free tier</td><td class="num">$0</td></tr>
+      <tr><td>Payments</td><td>Stripe payment link — per-transaction fee only</td><td class="num">$0</td></tr>
+      <tr><td>Prospect list</td><td>Built by hand from Google Maps</td><td class="num">$0</td></tr>
+      <tr><td>Email sending</td><td>Manually, 20–30/day, from your inbox</td><td class="num">$0</td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="2">Total to a definitive answer</td><td class="num">$39</td></tr></tfoot>
+  </table>
+  </div>
+
+  <div class="callout">
+    <p class="rail-h">Two things that will produce a false negative</p>
+    <p><strong>Deliverability.</strong> A brand-new domain sending cold email gets spam-foldered. Warm it up for 10–14 days with normal low-volume sending before the test, or you'll measure your spam score rather than your offer.</p>
+    <p><strong>Legality.</strong> Unsolicited B2B email is lawful in the US under CAN-SPAM if you include a real physical address and a working opt-out, and never use deceptive subject lines. The UK and EU are considerably stricter under GDPR/PECR. Check the rules for wherever your prospects are before sending, not after.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">Bottom line</span>
+  <h2>What the evidence actually supports</h2>
+  <p>Four constraints, jointly, survive everything above: <strong>sell a service, not a product</strong> (median product outcome is $72/month). <strong>Sell to businesses, not consumers</strong> (they have budgets and a reason to spend them). <strong>Sell an outcome, never "AI"</strong> (82% never pay for AI as such; the ones who buy results are satisfied). <strong>Sell to boring offline niches, not tech</strong> (5× the reply rate, and that's where the saturation isn't).</p>
+  <p>What no evidence supports is anything passive, anything without outreach, or anything that skips the part where you talk to strangers who don't want to hear from you. Every documented winner in this file has a distribution channel they worked. That is the actual system — and it's the part the people selling you systems leave out.</p>
+  <p>Run the $39 test. It will tell you more in three weeks than any further reading will.</p>
+</section>
+
+<section class="sources">
+  <span class="sec-num">Sources</span>
+  <h2>Every claim, traceable</h2>
+  <ol>
+    <li>Hui, Reshef &amp; Zhou — <a href="https://olin.washu.edu/about/news-and-media/news/2023/08/study-ai-tools-cause-a-decline-in-freelance-work-and-incomeat-least-in-the-short-run.php">Study: AI tools cause a decline in freelance work and income</a>, WashU Olin Business School · <a href="https://www.aeaweb.org/conference/2025/program/paper/T485kaTk">AEA conference paper</a> <span class="conf s">STRONG</span></li>
+    <li>Upwork Inc. — <a href="https://investors.upwork.com/news-releases/news-release-details/upworks-demand-skills-2026-demand-top-ai-skills-more-doubles-ai">In-Demand Skills 2026: Demand for Top AI Skills More Than Doubles</a> · coverage via <a href="https://qz.com/demand-is-rising-for-these-ai-skills-in-2026">Quartz</a> and <a href="https://www.selfemployed.com/news/ai-freelance-skills-demand-2026/">SelfEmployed</a></li>
+    <li>Bluevine — <a href="https://www.bluevine.com/blog/small-business-ai-trends-report-2026">2026 Small Business AI Trends Report</a></li>
+    <li>JPMorganChase Institute — <a href="https://www.jpmorganchase.com/institute/all-topics/business-growth-and-entrepreneurship/understanding-ai-use-by-small-businesses">Understanding the use of AI among small businesses</a> (transaction-based, Chase Business Banking 2019–2025)</li>
+    <li>InsightRaider — <a href="https://insightraider.com/en/state-of-gumroad-2026">State of Gumroad 2026</a> and <a href="https://insightraider.com/en/data/gumroad-statistics-2026">146,271 Gumroad Products Analyzed</a> · original platform data: <a href="https://gumroad.gumroad.com/p/last-year-in-the-creator-economy">Gumroad, Last Year in the Creator Economy</a></li>
+    <li>ManyRequests — <a href="https://manyrequests.com/blog/productized-service-revenue">15 Success Stories of Productized Services (with Revenue Numbers)</a></li>
+    <li>Indie Hackers — <a href="https://www.indiehackers.com/post/services/building-a-1-7m-yr-tech-enabled-consultancy-by-productizing-a-repeatable-2-week-service-ss4jghP8eGhgaTs70kks">Building a $1.7M/yr tech-enabled consultancy</a></li>
+    <li>Instantly — <a href="https://instantly.ai/cold-email-benchmark-report-2026">Cold Email Benchmark Report 2026</a> · <a href="https://www.cleanlist.ai/blog/2026-02-18-cold-email-response-rate-statistics">Cleanlist 2026 response-rate data</a> · <a href="https://www.cleverly.co/blog/cold-email-benchmarks-by-industry">Cleverly, benchmarks by industry</a></li>
+    <li>LendingTree — <a href="https://www.lendingtree.com/business/small/failure-rate/">22.1% of New US Businesses Close Within a Year</a> · <a href="https://www.commerceinstitute.com/business-failure-rate/">Commerce Institute failure-rate data</a></li>
+    <li>Ciela AI — <a href="https://ciela.ai/blogs/is-ai-agency-market-saturated-reddit">Is the AI Agency Market Saturated?</a> (practitioner accounts, treat as anecdote)</li>
+  </ol>
+</section>
+
+</div>
+
+<aside class="rail">
+  <div class="rail-card">
+    <p class="rail-h">Verdicts</p>
+    <ul class="rail-list">
+      <li><span class="m yes">YES</span><span>Fixed-scope productized service to offline businesses</span></li>
+      <li><span class="m mixed">MAYBE</span><span>AI services — only if sold as an outcome, never as "AI"</span></li>
+      <li><span class="m no">NO</span><span>Digital product shop — median $72/mo</span></li>
+      <li><span class="m no">NO</span><span>Commodity AI writing/design — the segment AI collapsed</span></li>
+      <li><span class="m no">NO</span><span>Content/affiliate site — 12–24mo to income, fails your cash constraint</span></li>
+    </ul>
+  </div>
+  <div class="rail-card">
+    <p class="rail-h">Confidence key</p>
+    <ul class="rail-list">
+      <li><span class="conf s">STRONG</span><span>Peer-reviewed or official filing</span></li>
+      <li><span class="conf m">MODERATE</span><span>Credible report, primary source unopened</span></li>
+      <li><span class="conf w">WEAK</span><span>Single unverifiable secondary source</span></li>
+    </ul>
+  </div>
+  <div class="rail-card">
+    <p class="rail-h">The test at a glance</p>
+    <p><strong>$39</strong> total cost · <strong>3 weeks</strong> to a definitive answer · <strong>100 emails</strong> to one narrow niche · kill criteria fixed in advance.</p>
+  </div>
+</aside>
+
+</div>
+
+<footer>
+  <span>Evidence review</span>
+  <span>18 August 2026</span>
+  <span>Figures as-reported — verify WEAK tags at source</span>
+</footer>
+
+</div>
