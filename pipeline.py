@@ -43,6 +43,10 @@ FIELDS = [
 # status values
 PENDING, DONE, NO_SUBS, SKIPPED, ERROR = "pending", "done", "no_subs", "skipped", "error"
 
+# Long-form only: clips shorter than this are excluded from the knowledge base.
+# Short videos carry headlines; the unit economics live in the long ones.
+LONG_FORM_MIN = 600  # seconds (10:00)
+
 
 # ---------------------------------------------------------------- utilities
 
@@ -134,7 +138,7 @@ def keep_video(vid, src):
         # unknown duration (live/premiere placeholder) -> skip, cheaper than a bad fetch
         return False, "no-duration"
 
-    min_dur = src.get("min_duration", 480)
+    min_dur = src.get("min_duration", LONG_FORM_MIN)
     if dur < min_dur:
         return False, f"too-short({int(dur)}s<{min_dur}s)"
 
