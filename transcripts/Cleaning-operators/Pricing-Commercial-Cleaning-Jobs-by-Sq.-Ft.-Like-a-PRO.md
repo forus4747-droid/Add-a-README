@@ -1,0 +1,28 @@
+# Pricing Commercial Cleaning Jobs by Sq. Ft. Like a PRO
+
+- **Channel:** Cleaning operators
+- **Duration:** unknown
+- **URL:** https://www.youtube.com/watch?v=6nvpt3APVws
+- **Track:** B · **Tier:** 3
+- **Words:** 1005
+
+---
+If you're too expensive the customer is going to throw your proposal out the window. If you are too cheap they likely won't take you because it looks suspicious. Or if you're unlucky enough to get picked by being the cheapest and your numbers are wrong, then you end up funding that project out of your pocket, which means you either have to do it yourself — now you become a glorified cleaner, not a business owner — or pay somebody else, but you don't have proper numbers estimated which means you pay them less, which means they are not happy. If they're not happy the service is not delivered well, then the customer is not happy, the customer comes back and complains, and it sucks up your energy. You're looking backwards trying to address an unhappy cleaner and an unhappy customer without being able to go forward and get new jobs.
+
+In commercial cleaning we need to understand the production rate — how much a cleaner is able to clean per hour. It is commonly accepted to be about 3,000 square ft. I've seen it go to 4,000 sq ft if your cleaners are fast. Some are slower — I've seen 2,500 sq ft. For this video we're going to use 3,000 sq ft, but adjust the number based on your cleaners.
+
+Keep in mind this is not for specialty, not for deep cleaning, not for disinfecting — in those cases the production ratio will go down. This is for regular quick mop, quick vacuum, take out the trash maintenance services. Calculating your cost. Labor is what takes the most in the cleaning industry. Let's say you're paying $20 an hour, which is a relatively close number, and your cleaners cover 3,000 sq ft in that hour.
+
+Take the labor cost of $20 and divide by the production ratio of 3,000 sq ft, and this gives you $0.0067 per square foot. Remember overhead expenses always need to be added, and if not properly done this will poke a hole in your ship and you will start bleeding. Your overhead expense is your advertisement, your salary, your insurance, your office, your vacation, your admin, the paper you print on, the Wi-Fi you pay for, the computer, the tools — the list goes on. Let's say you added this all up and it came to $0.004 a square foot. Then your total cost per square foot is labor $0.0067 plus overhead $0.004, which comes to $0.0107 per square ft.
+
+This is your net cost to do recurring cleaning services per square foot. To set your price, add a profit margin to your total cost. If you aim for 50% profit margin, the calculation is total cost per square foot multiplied by (1 + profit margin). Take that per square footage price of $0.0107 and multiply by 1.5, and the number is about $0.016 cents a square ft. Now you have your total price per square ft which already includes 50% profit margin.
+
+Example: a 10,000 square ft building. Total price per square foot times total square footage: $0.016 times 10,000 gives you $160 per session, which is per cleaning. Now the breakdown if the job was five times a week. Labor cost is $20 an hour; 10,000 sq ft divided by 3,000 = 3.33 hours. Someone is working there 3.33 hours, so slightly over 3 hours, and if you pay them $20 an hour you're paying that person $66.60 to do one-time cleaning for that job.
+
+Your overhead cost comes to $40. Your total cost for that particular job is $66.60 plus $40 = $106.60 — that's your cost to get the job done with overhead. We were charging $160, so from $160 subtract $106.60 and this puts you at $53.40 in profit for that job. Monthly math for five times a week cleaning: multiply the cost per service of $160 by five for cost per week, then multiply by 52 for cost per year, then divide by 12 for cost per month. In this case that is $3,466 per month.
+
+Out of which, the cleaner cost of $66.60 per service works out to $1,443 per month, and your overhead cost at $40 per service works out to $866. Total cost for that one month is $1,443 plus $866 = $2,309. Monthly revenue $3,466 minus $2,309 leaves $1,157 as profit. Two things to keep in mind when pricing: efficiency and transparency. Improving your efficiency through training and better equipment can reduce the cost and increase your profit margin, which means providing a better quality of service — your cleaners are faster, they've got nicer equipment, the place smells better.
+
+If they knock this out quicker then you've got a little bit more profit, or at least if you don't take that profit then your cleaners are faster, your customer is happy, and more money to your cleaners — the happier they are the happier your customer. Be transparent about how you calculate prices. In general customers appreciate and understand what they're paying for and it builds trust. In some cases you might want to go with an hourly rate. If you go hourly you can tell the customer "I estimate it may take 4 hours" — 3.33 in this case — to clean the 10,000 sq ft.
+
+Customers don't like to leave an open check. If you say "if it takes me more I'll bill you more on this hourly rate", clients might not like this. So implement NTE, which is a not-to-exceed price: "in my experience I normally service these facilities and it takes me 3 hours and 33 minutes, but I know I will not go over 4.5 hours." The goal is not just to make a profit but to build a sustainable business that provides value to your clients and a great working environment for your team — that is the only recipe for how you can grow, and the goal is to make you a business owner and not a glorified cleaner.

@@ -564,6 +564,7 @@ def cmd_ingest(args):
     os.makedirs(INBOX, exist_ok=True)
     rows = load_manifest()
     by_id = index_by_id(rows)
+    queue = load_queue()
     ingested = 0
 
     for fname in sorted(os.listdir(INBOX)):
@@ -577,11 +578,20 @@ def cmd_ingest(args):
         row = by_id.get(vid)
         if row is None:
             side = os.path.join(INBOX, vid + ".json")
-            if not os.path.exists(side):
-                log(f"  ! {vid}: no manifest row and no sidecar json, skipped")
+            meta = None
+            if os.path.exists(side):
+                with open(side, encoding="utf-8") as fh:
+                    meta = json.load(fh)
+            else:
+                # fall back to the discovery queue, then to the file's own header
+                meta = queue.get(vid)
+                if meta is None:
+                    _, htitle, hdur = parse_transcript_header(text)
+                    if htitle:
+                        meta = {"title": htitle, "duration": hdur}
+            if meta is None:
+                log(f"  ! {vid}: no manifest row, sidecar, or queue entry, skipped")
                 continue
-            with open(side, encoding="utf-8") as fh:
-                meta = json.load(fh)
             row = {
                 "video_id": vid,
                 "channel": meta.get("channel", "unknown"),
@@ -642,6 +652,20 @@ def parse_transcript_header(text):
             dur)
 
 
+def extract_text_from_json(blob):
+    """Some clients persist a tool result as JSON blocks: [{"type":"text","text":...}]."""
+    try:
+        data = json.loads(blob)
+    except json.JSONDecodeError:
+        return None
+    if isinstance(data, dict):
+        data = [data]
+    if not isinstance(data, list):
+        return None
+    parts = [b.get("text", "") for b in data if isinstance(b, dict) and b.get("type") == "text"]
+    return "\n".join(parts) if parts else None
+
+
 def load_queue():
     """seeds/queue.json maps video_id -> {channel, tier, track} discovered up front."""
     path = os.path.join(ROOT, "seeds", "queue.json")
@@ -666,11 +690,16 @@ def cmd_adopt(args):
     adopted, skipped = 0, 0
 
     for fname in sorted(os.listdir(srcdir)):
-        if not fname.endswith(".txt"):
+        if not fname.endswith((".txt", ".json")):
             continue
         path = os.path.join(srcdir, fname)
         with open(path, encoding="utf-8", errors="replace") as fh:
             text = fh.read()
+        if fname.endswith(".json"):
+            text = extract_text_from_json(text)
+            if text is None:
+                skipped += 1
+                continue
         vid, title, dur = parse_transcript_header(text)
         if not vid:
             skipped += 1
