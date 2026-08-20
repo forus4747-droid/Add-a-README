@@ -1,0 +1,116 @@
+{
+  "_comment": [
+    "Source list from SPEC section 3. tier = priority, track = A (deal craft) or B (operator reality).",
+    "min_duration is in seconds: 240 for Tier 1, 480 elsewhere per the spec.",
+    "include = title must contain one of these (empty = no filter). exclude = title must contain none.",
+    "Channel handles are best-effort; if `discover` reports a source as failed, fix its url here.",
+    "Set \"disabled\": true on any source to skip it without deleting the entry."
+  ],
+  "sources": [
+    {
+      "name": "In The Trenches", "type": "channel", "tier": 1, "track": "A",
+      "url": "https://www.youtube.com/@inthetrenchespodcast/videos",
+      "min_duration": 240, "max_results": 120, "include": [], "exclude": []
+    },
+    {
+      "name": "BDC", "type": "channel", "tier": 1, "track": "A",
+      "url": "https://www.youtube.com/@BDC_ca/videos",
+      "min_duration": 240, "max_results": 200,
+      "include": ["buy", "acquisition", "acquire", "succession", "transition", "financing", "vendor take", "sell", "valuation"],
+      "exclude": []
+    },
+    {
+      "name": "David C Barnett", "type": "channel", "tier": 1, "track": "A",
+      "url": "https://www.youtube.com/@DavidCBarnett/videos",
+      "min_duration": 240, "max_results": 300,
+      "include": ["vendor take", "valuation", "sde", "deal structure", "financing", "csbfp", "how to buy", "seller financing", "due diligence"],
+      "exclude": ["course", "webinar replay", "join", "testimonial"]
+    },
+    {
+      "name": "Village Wellth", "type": "channel", "tier": 1, "track": "A",
+      "url": "https://www.youtube.com/@villagewellth/videos",
+      "min_duration": 240, "max_results": 100, "include": [], "exclude": []
+    },
+
+    { "name": "q: buying a business in Canada", "type": "search", "tier": 1, "track": "A",
+      "query": "buying a business in Canada", "max_results": 15, "min_duration": 480 },
+    { "name": "q: vendor take back financing", "type": "search", "tier": 1, "track": "A",
+      "query": "vendor take back financing", "max_results": 15, "min_duration": 480 },
+    { "name": "q: CSBFP loan business acquisition", "type": "search", "tier": 1, "track": "A",
+      "query": "CSBFP loan business acquisition", "max_results": 15, "min_duration": 480 },
+    { "name": "q: business broker Canada", "type": "search", "tier": 1, "track": "A",
+      "query": "business broker Canada", "max_results": 15, "min_duration": 480 },
+    { "name": "q: sell my business Canada retirement", "type": "search", "tier": 1, "track": "A",
+      "query": "sell my business Canada retirement", "max_results": 15, "min_duration": 480 },
+    { "name": "q: BC small business sale", "type": "search", "tier": 1, "track": "A",
+      "query": "BC small business sale", "max_results": 15, "min_duration": 480 },
+    { "name": "q: Ontario business succession", "type": "search", "tier": 1, "track": "A",
+      "query": "Ontario business succession", "max_results": 15, "min_duration": 480 },
+
+    {
+      "name": "Acquisitions Anonymous", "type": "channel", "tier": 2, "track": "A",
+      "url": "https://www.youtube.com/@AcquisitionsAnonymous/videos",
+      "min_duration": 480, "max_results": 300, "include": [], "exclude": [],
+      "_priority_keywords": ["cleaning", "janitorial", "landscaping", "pest", "hvac", "service business", "route"]
+    },
+    {
+      "name": "UpFlip", "type": "channel", "tier": 2, "track": "B",
+      "url": "https://www.youtube.com/@UpFlip/videos",
+      "min_duration": 480, "max_results": 300,
+      "include": ["cleaning", "janitorial", "landscaping", "pressure washing", "pest control", "service business", "lawn", "snow"],
+      "exclude": ["course", "webinar replay", "join"]
+    },
+    {
+      "name": "Acquiring Minds", "type": "channel", "tier": 2, "track": "A",
+      "url": "https://www.youtube.com/@AcquiringMinds/videos",
+      "min_duration": 480, "max_results": 300,
+      "include": ["cleaning", "janitorial", "landscaping", "pressure washing", "pest control", "service business", "hvac", "route", "snow", "lawn"],
+      "exclude": []
+    },
+
+    {
+      "name": "Owned and Operated", "type": "channel", "tier": 3, "track": "B",
+      "url": "https://www.youtube.com/@ownedandoperatedpodcast/videos",
+      "min_duration": 480, "max_results": 200, "include": [], "exclude": []
+    },
+    {
+      "name": "Sweaty Startup", "type": "channel", "tier": 3, "track": "B",
+      "url": "https://www.youtube.com/@sweatystartup/videos",
+      "min_duration": 480, "max_results": 200, "include": [],
+      "exclude": ["motivation", "mindset", "why you should", "course"]
+    },
+
+    { "name": "q: day in the life cleaning business owner", "type": "search", "tier": 3, "track": "B",
+      "query": "day in the life cleaning business owner", "max_results": 12, "min_duration": 480 },
+    { "name": "q: how to bid a commercial cleaning contract", "type": "search", "tier": 3, "track": "B",
+      "query": "how to bid a commercial cleaning contract", "max_results": 12, "min_duration": 480 },
+    { "name": "q: why I sold my cleaning business", "type": "search", "tier": 3, "track": "B",
+      "query": "why I sold my cleaning business", "max_results": 12, "min_duration": 480 },
+    { "name": "q: why I quit my cleaning business", "type": "search", "tier": 3, "track": "B",
+      "query": "why I quit my cleaning business", "max_results": 12, "min_duration": 480 },
+    { "name": "q: first year janitorial business mistakes", "type": "search", "tier": 3, "track": "B",
+      "query": "first year janitorial business mistakes", "max_results": 12, "min_duration": 480 },
+    { "name": "q: cleaning business employee problems no show", "type": "search", "tier": 3, "track": "B",
+      "query": "cleaning business employee problems no show", "max_results": 12, "min_duration": 480 },
+    { "name": "q: how much does a commercial cleaning business make", "type": "search", "tier": 3, "track": "B",
+      "query": "how much does a commercial cleaning business make", "max_results": 12, "min_duration": 480 },
+    { "name": "q: landscaping business owner mistakes", "type": "search", "tier": 3, "track": "B",
+      "query": "landscaping business owner mistakes", "max_results": 12, "min_duration": 480 },
+    { "name": "q: snow removal contract profit", "type": "search", "tier": 3, "track": "B",
+      "query": "snow removal contract profit", "max_results": 12, "min_duration": 480 },
+    { "name": "q: pest control route owner day in the life", "type": "search", "tier": 3, "track": "B",
+      "query": "pest control route owner day in the life", "max_results": 12, "min_duration": 480 },
+    { "name": "q: pricing commercial cleaning per square foot", "type": "search", "tier": 3, "track": "B",
+      "query": "pricing commercial cleaning per square foot", "max_results": 12, "min_duration": 480 },
+    { "name": "q: losing a cleaning contract", "type": "search", "tier": 3, "track": "B",
+      "query": "losing a cleaning contract", "max_results": 12, "min_duration": 480 },
+    { "name": "q: cleaning client complaints", "type": "search", "tier": 3, "track": "B",
+      "query": "cleaning client complaints", "max_results": 12, "min_duration": 480 },
+    { "name": "q: hiring cleaners turnover", "type": "search", "tier": 3, "track": "B",
+      "query": "hiring cleaners turnover", "max_results": 12, "min_duration": 480 },
+    { "name": "q: subcontractor vs employee cleaning", "type": "search", "tier": 3, "track": "B",
+      "query": "subcontractor vs employee cleaning business", "max_results": 12, "min_duration": 480 },
+    { "name": "q: commercial cleaning walkthrough estimate", "type": "search", "tier": 3, "track": "B",
+      "query": "commercial cleaning walkthrough estimate", "max_results": 12, "min_duration": 480 }
+  ]
+}

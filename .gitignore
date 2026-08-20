@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# fetched artifacts — regenerate with run.sh, don't commit raw captions
+raw/
