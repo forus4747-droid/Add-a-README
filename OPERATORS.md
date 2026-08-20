@@ -561,8 +561,8 @@ down — it all ties together."* [`Lawn-Care-Podcast-...`]
 
 # 3. Pest Control
 
-*Sources: 4 dedicated videos plus 2 crossover teardowns. The thinnest chapter — see the honesty note
-in the Step 6 report — but the numbers are unusually clean.*
+*Sources: 3 dedicated videos plus 2 crossover teardowns. The thinnest chapter — see the honesty note
+in [`QUESTIONS.md`](QUESTIONS.md) §4 — but the numbers are unusually clean.*
 
 ## 3.1 Unit economics
 

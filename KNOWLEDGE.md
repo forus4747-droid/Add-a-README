@@ -6,7 +6,7 @@ This is the Track A half of the knowledge base: how to find, value, structure, d
 the acquisition of a small Canadian business. `OPERATORS.md` covers what it's like to *run* one — read
 that before you believe any seller's numbers.
 
-**The standing caveat.** 59 of 61 sources are American. **SBA structures, IRS rules, state law and US
+**The standing caveat.** Roughly 80% of sources are American — 48 of 61. **SBA structures, IRS rules, state law and US
 lending norms do not apply in Canada**, and §4 exists specifically to translate them. Sections marked
 🇨🇦 are Canadian-sourced or Canada-specific. Everything marked ⚠️ is a place where following US advice
 in Canada will cost you money.

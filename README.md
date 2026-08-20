@@ -121,6 +121,12 @@ a re-run picks up where the last one stopped instead of re-fetching. Statuses ar
   operating detail worth reading.
 - **Cap of ~150 videos per run.**
 
+**One caveat about this corpus specifically:** the transcripts shipped here were *not* produced by
+that code path. YouTube was unreachable from the build environment, so they were fetched one at a
+time through a different route. The rules above still held in outcome — the shortest video in the
+corpus is 10:30, and no media file was ever written — but `pipeline.py` has not been exercised
+end to end against a live YouTube. See [QUESTIONS.md §4](QUESTIONS.md).
+
 ---
 
 ## Provenance and use

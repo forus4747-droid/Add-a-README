@@ -196,7 +196,7 @@ Stated plainly rather than buried.
 |--------|----------|-----|
 | ≥150 videos | **61** | YouTube is blocked at the network layer in this environment; every transcript was fetched one at a time through a single MCP tool rather than by `yt-dlp` in bulk. The long-form-only rule then removed 21 already-collected videos. |
 | ≥50 Track B rows | **30** | Same throughput ceiling. Track B was prioritised in the second half of the run, which is why the split is near-even (31/30) rather than Track-A-heavy. |
-| ≥8 distinct videos per industry chapter | **3 of 4** | Cleaning 15, landscaping/snow 9, home services 8 — **pest control 5.** Only four dedicated pest-control videos exist in the corpus. The chapter was left honest rather than padded with sources that do not actually discuss pest control. |
+| ≥8 distinct videos per industry chapter | **3 of 4** | Cleaning 15, landscaping/snow 9, home services 8 — **pest control 5.** Only three dedicated pest-control videos exist in the corpus, plus two crossover teardowns. The chapter was left honest rather than padded with sources that do not actually discuss pest control. |
 | ≥15 distinct videos in `KNOWLEDGE.md` | **40** ✅ | |
 | Every `done` row has transcript + extract | **61/61** ✅ | |
 
