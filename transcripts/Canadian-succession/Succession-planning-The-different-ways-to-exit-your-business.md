@@ -1,0 +1,22 @@
+# Succession planning: The different ways to exit your business
+
+- **Channel:** Canadian succession
+- **Duration:** unknown
+- **URL:** https://www.youtube.com/watch?v=7fU2gM2zFUs
+- **Track:** A · **Tier:** 1
+- **Words:** 760
+
+---
+When it comes to transitioning a business, you may think there are really only two choices — sell it or pass it down. But in reality there are a number of options you can use when it comes to exiting your business. Here to walk us through some of them is Jeff Halperin, business succession advisor with TD Wealth. Family members. That's a very complex area.
+
+Everybody has a family and everybody understands how complicated it is to deal with different family members over the years. If you imagine a business over many years and many family cycles, the business would be handed off from the founder to siblings being the children to cousins — you can imagine how many people that would add up to and how complicated it would be. You have to build the right governance structure so that the family will be able to deal with all of the things that they're going to encounter over the years, like disputes, divorce, death. There are business succession experts who work with families who understand what kind of governance systems need to be built. They need to assemble a team — it might involve some facilitators of family meetings, some lawyers who need to draft certain documents, and tax advisors.
+
+The owner stays but hires management to run the business. We've encountered certain clients over the years who have these wonderful cash cow businesses and they really don't want to sell them, because these are businesses that continue to produce a very nice income for the family. They also provide some continued growth, but the family might not be able to provide the people to manage the business. If you think about Hewlett-Packard, founded in 1939 — clearly over the years it grew beyond the capability of their family members, so they brought in professional management. It really works where you've got a solid business that provides a stable income for a family over the years, and where they can acquire some management, and where there's the ability to separate ownership and management.
+
+That's key as well: if the business relies so heavily on the manager to operate the business, he might want to be the owner. Employee Ownership Trust. That's very interesting, and in fact we're coming up to the deadline at the end of 2026. On January 1st of 2024 this new concept was introduced to provide an incentive for Canadians to sell their businesses to their employee groups. Unlike other business sales that might trigger a smaller lifetime capital gains exemption, this one's a whopper — it is $10 million of tax exemption on the sale of your business to an employee group.
+
+So it's a terrific incentive for clients that really like the idea of selling their businesses to their employee group to take steps to do so before the end of this calendar year. Why the deadline? The government really tested the waters at this level of exemption. A $10 million exemption on sale is very generous in a country like Canada, which is considered to be a fairly high-tax jurisdiction. In the past the exemption started out at a million dollars per individual.
+
+But the government really wanted to incentivize business owners to pass their businesses to employees, to allow employees to become entrepreneurs. And so they put this in as a temporary measure. That's not to say that it won't be renewed at some point in time, but at this point in time there has not been the proposition for the renewal. So all we can say is you've got a $10 million opportunity between now and the end of the year to take advantage of this. Selling to a third party.
+
+We work with a lot of our clients who really need help to put their businesses up for sale. The first step is to find out what their business is worth, and that does take a little bit of time to establish the valuation. But then they need to appoint a mergers and acquisitions firm to represent them, to find the buyer or potential buyers, and create an auction for their business so that they can get multiple offers and then decide which offer they want to work with towards the conclusion. All of these things take time. So we always recommend that business owners start early to understand who they need to work with, to understand the fees that they might have to incur, and the time frames for actually taking it from step one to step 10.
