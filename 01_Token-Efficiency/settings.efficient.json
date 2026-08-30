@@ -1,0 +1,28 @@
+{
+  "//": "Merge the relevant blocks into your own ~/.claude/settings.json or project .claude/settings.json. Do not overwrite your existing file wholesale.",
+
+  "permissions": {
+    "//allow": "Common safe, read-only commands — pre-approving these removes a permission round-trip per call. Trim to what you actually use.",
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(ls*)",
+      "Read(*)",
+      "Grep(*)",
+      "Glob(*)"
+    ]
+  },
+
+  "hooks": {
+    "//": "Example: run formatting/lint automatically instead of asking the agent to check it every time. Replace the command with your project's real formatter.",
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "true" }
+        ]
+      }
+    ]
+  }
+}
