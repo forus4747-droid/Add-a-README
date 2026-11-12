@@ -1,0 +1,21 @@
+{
+  "as_of": "2026-11-12",
+  "companies": [
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA CORP",
+      "cik": "0001045810",
+      "period_end": "2026-07-26",
+      "revenue_ttm": 302969000000,
+      "net_income_ttm": 192879000000,
+      "eps_ttm": 7.91,
+      "revenue_growth_yoy": 105.9,
+      "eps_growth_yoy": 127.8,
+      "net_income_growth_yoy": 125.9,
+      "gross_margin": 75.0,
+      "operating_margin": 66.2,
+      "net_margin": 62.0,
+      "source": "SEC XBRL company facts"
+    }
+  ]
+}
