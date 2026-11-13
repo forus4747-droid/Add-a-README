@@ -2,8 +2,8 @@
  "engine": "backtrader",
  "strategy": "S2",
  "ref_trades": 179,
- "engine_trades": 158,
- "missing_in_engine": 21,
+ "engine_trades": 179,
+ "missing_in_engine": 0,
  "extra_in_engine": 0,
  "exit_time_mismatch": 0,
  "entry_price_mismatch": 0,
@@ -12,6 +12,6 @@
  "pnl_mismatch_over_1c": 0,
  "max_abs_pnl_diff": 4.999999418942025e-07,
  "ref_total_pnl": 54050.15,
- "engine_total_pnl": 29228.48,
- "PASS": false
+ "engine_total_pnl": 54050.15,
+ "PASS": true
 }

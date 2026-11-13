@@ -25,8 +25,7 @@ class S1(Base):
         if hm == "15:55":
             if pos > 0: self.close()
             return
-        if phm > "15:40": return
-        if pos == 0 and not self.traded and pc > self.hi:
+        if pos == 0 and not self.traded and phm <= "15:40" and pc > self.hi:
             self.buy(size=math.floor(10000 / d.open[0])); self.traded = True
         elif pos > 0 and pc < self.lo:
             self.close()

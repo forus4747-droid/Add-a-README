@@ -15,13 +15,16 @@ class S2(Base):
         d = self.data
         if len(d) < 51: return
         f1, s1, f2, s2 = self.f[0], self.s[0], self.f[-1], self.s[-1]
+        last = len(d) == d.buflen()
         if self.position.size == 0:
-            if f1 > s1 and f2 <= s2: self.buy(size=math.floor(10000 / d.open[0]), coc=False)
+            if f1 > s1 and f2 <= s2:
+                n = math.floor(10000 / d.open[0])
+                self.buy(size=n, coc=False)                  # fills at this bar's open
+                if last: self.sell(size=n, coc=True)         # end of window: flatten at this bar's close
         elif f1 < s1:
-            self.close(coc=False)
-    def next(self):
-        if len(self.data) == self.data.buflen() and self.position.size > 0:
-            self.close()   # cheat-on-close: fills at the last bar's close
+            self.close(coc=False)                            # fills at this bar's open
+        elif last:
+            self.close(coc=True)                             # end of window: fills at this bar's close (cheat-on-close)
 
 if __name__ == "__main__":
     res = []
