@@ -18,5 +18,6 @@ def daily_from_5min(sym):
                          "close": g.close.last(), "volume": g.volume.sum()}).reset_index().rename(columns={"day": "date"})
 
 def load_daily(stocks_only=False):
-    d = pd.read_parquet(f"{DATA}/daily/daily.parquet")
+    f = f"{DATA}/daily/daily_v2.parquet"  # v2 = stray closing prints repaired (reports/03_17)
+    d = pd.read_parquet(f if os.path.exists(f) else f"{DATA}/daily/daily.parquet")
     return d[~d.symbol.isin(ETFS)] if stocks_only else d
