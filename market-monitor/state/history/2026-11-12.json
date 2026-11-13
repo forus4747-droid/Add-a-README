@@ -1,0 +1,24 @@
+{
+ "asof": "2026-11-12",
+ "p": {
+  "down_1m": 0.3794747334550729,
+  "dd5_1m": 0.13232820681631774,
+  "down_3m": 0.3405585088860053,
+  "dd10_3m": 0.14104034629937134,
+  "down_12m": 0.3040136635354398,
+  "dd10_12m": 0.3758207526169885,
+  "dd20_12m": 0.14775450074117732
+ },
+ "signals": {
+  "valuation": "ON",
+  "tightening": "ON",
+  "inflation_reaccelerating": "ON",
+  "oil_shock": "ON",
+  "leader_crack": "ON",
+  "narrow_market": "OFF",
+  "trend_break": "OFF",
+  "credit_stress": "OFF",
+  "volatility_regime": "OFF",
+  "curve_inverted": "OFF"
+ }
+}

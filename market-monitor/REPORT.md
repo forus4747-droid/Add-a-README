@@ -1,14 +1,10 @@
 # Market monitor report (as of 2026-11-12)
 
-Generated 2026-11-13T18:45:11+00:00 UTC. S&P 500 last close 7592.40. This is a statistical history check, not investment advice; every probability below is a historical frequency adjusted by simple models, and the models have only weak out-of-sample skill (see the skill columns).
+Generated 2026-11-13T18:53:09+00:00 UTC. S&P 500 last close 7592.40. This is a statistical history check, not investment advice; every probability below is a historical frequency adjusted by simple models, and the models have only weak out-of-sample skill (see the skill columns).
 
 ## Data status
 
-25 of 25 sources downloaded. FRED reachable: yes.
-
-CAUTION: the Shiller file's last valid CAPE input is 2023-09. Since then the earnings base is held constant (in real terms), so today's CAPE is an estimate and probably reads a little high if real earnings kept growing.
-
-Note: CPI for 2025-10 was not published and is log-interpolated.
+27 of 28 sources downloaded. FRED reachable: yes. Failed: extras.
 
 The latest feature row is a partial month (2026-11) using the last close.
 
@@ -16,13 +12,13 @@ The latest feature row is a partial month (2026-11) using the last close.
 
 | Measure | Value | Percentile of own history |
 |---|---|---|
-| cape | 47.2 | 100% |
-| cape_pct | 99.7% | 96% |
-| infl_yoy | 3.95% | 70% |
-| infl_chg_12m | 1.09 pt | 66% |
+| cape | 40.0 | 98% |
+| cape_pct | 98.1% | 92% |
+| infl_yoy | 4.03% | 71% |
+| infl_chg_12m | 1.01 pt | 65% |
 | rate10 | 5.10% | 77% |
 | rate10_chg_12m | 1.09 pt | 94% |
-| ecy | 0.4% | 8% |
+| ecy | 0.8% | 13% |
 | mom_12m | 10.8% | 57% |
 | trend_10m | 3.0% | 50% |
 | dd_now | -2.9% | 77% |
@@ -39,13 +35,13 @@ The latest feature row is a partial month (2026-11) using the last close.
 
 | Question | Base | Analog | Logit | Final | w live | Skill 1950-99 | Skill 2000-now (holdout) |
 |---|---|---|---|---|---|---|---|
-| S&P 500 closes lower 21 trading days (about 1 month) from now | 39.6% | 28.3% | 42.6% | 37.5% | 0.50 | 0.002 | 0.003 |
-| S&P 500 closes at least 5% below today's close at some point in the next 21 trading days | 18.2% | 6.7% | 20.0% | 13.3% | 1.00 | 0.095 | 0.053 |
-| S&P 500 closes lower 63 trading days (about 3 months) from now | 35.8% | 25.0% | 38.1% | 33.7% | 0.50 | 0.019 | 0.002 |
-| S&P 500 closes at least 10% below today's close at some point in the next 63 trading days | 14.9% | 8.3% | 18.7% | 13.5% | 1.00 | 0.171 | 0.031 |
-| S&P 500 closes lower 252 trading days (about 12 months) from now | 30.4% | 21.7% | 36.8% | 30.4% | 0.00 | 0.010 | -0.025 |
-| S&P 500 closes at least 10% below today's close at some point in the next 252 trading days | 36.7% | 31.7% | 45.7% | 37.7% | 0.50 | 0.059 | -0.056 |
-| S&P 500 closes at least 20% below today's close at some point in the next 252 trading days | 17.2% | 3.3% | 22.8% | 15.1% | 0.50 | 0.088 | -0.051 |
+| S&P 500 closes lower 21 trading days (about 1 month) from now | 39.6% | 30.0% | 42.6% | 37.9% | 0.50 | 0.003 | 0.003 |
+| S&P 500 closes at least 5% below today's close at some point in the next 21 trading days | 18.2% | 6.7% | 19.8% | 13.2% | 1.00 | 0.096 | 0.053 |
+| S&P 500 closes lower 63 trading days (about 3 months) from now | 35.8% | 26.7% | 38.0% | 34.1% | 0.50 | 0.019 | 0.002 |
+| S&P 500 closes at least 10% below today's close at some point in the next 63 trading days | 14.9% | 10.0% | 18.2% | 14.1% | 1.00 | 0.171 | 0.031 |
+| S&P 500 closes lower 252 trading days (about 12 months) from now | 30.4% | 20.0% | 36.4% | 30.4% | 0.00 | 0.010 | -0.025 |
+| S&P 500 closes at least 10% below today's close at some point in the next 252 trading days | 36.7% | 31.7% | 45.2% | 37.6% | 0.50 | 0.059 | -0.056 |
+| S&P 500 closes at least 20% below today's close at some point in the next 252 trading days | 17.2% | 3.3% | 21.4% | 14.8% | 0.50 | 0.088 | -0.051 |
 
 ## Closest historical analogs
 
@@ -53,26 +49,26 @@ Months whose valuation, inflation, rates, momentum, trend, volatility and drawdo
 
 | Period | Months | Avg distance | Avg next-12m return | Worst drawdown in next 12m |
 |---|---|---|---|---|
-| 1968-04 to 1968-06 | 3 | 0.61 | -1.9% | -10.1% |
+| 1968-04 to 1968-06 | 3 | 0.59 | -1.9% | -10.1% |
 | 2018-05 to 2018-07 | 3 | 0.74 | 5.2% | -16.5% |
-| 1999-11 to 2000-02 | 2 | 0.76 | -6.5% | -9.3% |
+| 2006-06 to 2006-08 | 2 | 0.76 | 17.1% | -2.8% |
 | 1996-08 to 1996-09 | 2 | 0.77 | 38.3% | -0.4% |
-| 2006-06 to 2006-08 | 2 | 0.77 | 17.1% | -2.8% |
+| 1999-11 to 2000-02 | 2 | 0.77 | -6.5% | -9.3% |
+| 2013-08 to 2013-08 | 1 | 0.77 | 22.6% | 0.0% |
 | 1997-03 to 1997-03 | 1 | 0.78 | 44.4% | -2.6% |
-| 2013-08 to 2013-08 | 1 | 0.78 | 22.6% | 0.0% |
 | 2018-11 to 2018-11 | 1 | 0.87 | 12.1% | -14.8% |
 
 ## Ten-year outlook from valuation
 
-CAPE 47.2 (estimate) implies an annualised real return of about -1.2% per year over ten years, with a one-standard-deviation band of -5.5% to 3.2% (regression R-squared 0.29, in-sample, 1587 overlapping months).
+CAPE 40.0 implies an annualised real return of about 0.6% per year over ten years, with a one-standard-deviation band of -3.8% to 5.0% (regression R-squared 0.26, in-sample, 1623 overlapping months).
 
 ## Signals board (5 vulnerability and 0 trigger rules ON)
 
 | Rule | Type | State | Current value | Months ON | P(20% drop within 12m) when ON | when OFF | History starts |
 |---|---|---|---|---|---|---|---|
-| valuation | vulnerability | ON | 0.997 | 494 | 21.5% | 14.8% | 1881-04 |
+| valuation | vulnerability | ON | 0.981 | 494 | 21.5% | 14.8% | 1881-04 |
 | tightening | vulnerability | ON | 0.431 | 494 | 11.2% | 21.3% | 1882-01 |
-| inflation_reaccelerating | vulnerability | ON | 3.950 | 448 | 26.5% | 14.1% | 1883-02 |
+| inflation_reaccelerating | vulnerability | ON | 4.035 | 448 | 26.5% | 14.1% | 1883-02 |
 | oil_shock | vulnerability | ON | 0.528 | 47 | 16.7% | 9.0% | 2008-07 |
 | leader_crack | vulnerability | ON | -0.305 | 0 | n/a | n/a | current only |
 | narrow_market | vulnerability | OFF | 0.059 | 47 | 7.1% | 13.4% | 2004-05 |
@@ -89,7 +85,7 @@ CAPE 47.2 (estimate) implies an annualised real return of about -1.2% per year o
 | 1956-08-03 | 1957-10-22 | -21.5% | 445 | 1958-09-24 | 19.5 | 1 / 0 |
 | 1961-12-12 | 1962-06-26 | -28.0% | 196 | 1963-09-03 | 22.4 | 0 / 0 |
 | 1966-02-09 | 1966-10-07 | -22.2% | 240 | 1967-05-04 | 24.3 | 0 / 0 |
-| 1968-11-29 | 1970-05-26 | -36.1% | 543 | 1972-03-06 | 23.2 | 0 / 0 |
+| 1968-11-29 | 1970-05-26 | -36.1% | 543 | 1972-03-06 | 23.1 | 0 / 0 |
 | 1973-01-11 | 1974-10-03 | -48.2% | 630 | 1980-07-17 | 19.1 | 2 / 0 |
 | 1980-11-28 | 1982-08-12 | -27.1% | 622 | 1982-11-03 | 10.1 | 2 / 0 |
 | 1987-08-25 | 1987-12-04 | -33.5% | 101 | 1989-07-26 | 18.7 | 2 / 0 |
