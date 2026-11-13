@@ -1,0 +1,17 @@
+{
+ "engine": "nautilus",
+ "strategy": "S2",
+ "ref_trades": 179,
+ "engine_trades": 179,
+ "missing_in_engine": 1,
+ "extra_in_engine": 1,
+ "exit_time_mismatch": 0,
+ "entry_price_mismatch": 9,
+ "exit_price_mismatch": 3,
+ "shares_mismatch": 0,
+ "pnl_mismatch_over_1c": 10,
+ "max_abs_pnl_diff": 1.4267629999994824,
+ "ref_total_pnl": 54050.15,
+ "engine_total_pnl": 54580.33,
+ "PASS": false
+}
