@@ -1,0 +1,13 @@
+{
+ "days": 1756,
+ "coverage": 1.0,
+ "years": 7,
+ "mean_yearly_ic": 0.00773,
+ "years_positive": 6,
+ "share_years_positive": 0.857,
+ "pooled_tstat": 1.11,
+ "hit_rate": 0.5026,
+ "top_minus_bottom": 0.00078,
+ "excess_net_ann": -0.0382,
+ "verdict": "no proven edge"
+}
