@@ -83,6 +83,8 @@ def run_symbol(strat_cls, sym, bars_list, quotes_list, meta, bt, final_ts=None):
         out.append(dict(entry_ts=pd.Timestamp(r["ts_opened"]).value,
                         exit_ts=pd.Timestamp(r["ts_closed"]).value,
                         entry_price=float(r["avg_px_open"]), exit_price=float(r["avg_px_close"]),
-                        shares=int(float(r["peak_qty"])), pnl_net=pnl))
+                        shares=int(float(r["peak_qty"])), pnl_engine=pnl,
+                        pnl_net=(float(r["avg_px_close"]) - float(r["avg_px_open"])) * int(float(r["peak_qty"]))
+                                - float(FEE) * int(float(r["peak_qty"])) * (float(r["avg_px_close"]) + float(r["avg_px_open"]))))
     eng.dispose()
     return out

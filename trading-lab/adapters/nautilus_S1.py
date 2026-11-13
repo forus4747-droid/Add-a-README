@@ -21,8 +21,9 @@ class S1(Base):
         c = float(b.close)
         if "09:30" <= hm <= "09:55":
             self.hi = max(self.hi, float(b.high)); self.lo = min(self.lo, float(b.low))
-        elif "10:00" <= hm <= "15:40":
-            if self.flat() and not self.traded and c > self.hi:
+        elif hm >= "10:00":
+            # protocol step 2: entries only from the 10:00 bar through the 15:40 bar; step 3 (stop) has no window
+            if self.flat() and not self.traded and c > self.hi and hm <= "15:40":
                 self.pending = "buy"
             elif (not self.flat()) and c < self.lo:
                 self.pending = "sell"
