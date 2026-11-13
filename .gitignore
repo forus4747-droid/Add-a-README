@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# market-monitor: downloaded data cache (re-fetched on every run)
+market-monitor/data/raw/
