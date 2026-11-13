@@ -1,0 +1,43 @@
+{
+ "versions": {
+  "talib_python": "0.8.3",
+  "talib_C": "b'0.8.3 (Oct 28 2026 21:44:57)'",
+  "pandas_ta": "0.4.71b0",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3"
+ },
+ "pandas_ta_effective_default_names": {
+  "sma": "SMA_10",
+  "ema": "EMA_10",
+  "wma": "WMA_10",
+  "rsi": "RSI_14",
+  "macd": [
+   "MACD_12_26_9",
+   "MACDh_12_26_9",
+   "MACDs_12_26_9"
+  ],
+  "bbands": [
+   "BBL_5_2.0_2.0",
+   "BBM_5_2.0_2.0",
+   "BBU_5_2.0_2.0",
+   "BBB_5_2.0_2.0",
+   "BBP_5_2.0_2.0"
+  ],
+  "atr": "ATRr_14",
+  "adx": [
+   "ADX_14",
+   "ADXR_14_2",
+   "DMP_14",
+   "DMN_14"
+  ],
+  "stoch": [
+   "STOCHk_14_3_3",
+   "STOCHd_14_3_3",
+   "STOCHh_14_3_3"
+  ],
+  "cci": "CCI_14_0.015",
+  "roc": "ROC_10",
+  "willr": "WILLR_14",
+  "mfi": "MFI_14"
+ }
+}

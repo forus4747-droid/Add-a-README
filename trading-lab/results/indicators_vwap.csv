@@ -1,0 +1,4 @@
+indicator,library,symbol,index_variant,bars,tol,first_valid,first_valid_ref,max_abs_diff_all,max_rel_diff_all,max_abs_diff_last1000,match,cause_if_not
+VWAP,pandas_ta,MSFT_5min,naive_NY_index,47368,0.00042492796966078365,0,0,4.547473508864641e-13,9.827813747777624e-16,2.8421709430404007e-13,True,
+VWAP,pandas_ta,MSFT_5min,UTC_tz_aware_index,47368,0.00042492796966078365,0,0,4.547473508864641e-13,9.827813747777624e-16,2.8421709430404007e-13,True,
+VWAP,pandas_ta,MSFT_5min,NY_tz_aware_index,47368,0.00042492796966078365,0,0,4.547473508864641e-13,9.827813747777624e-16,2.8421709430404007e-13,True,

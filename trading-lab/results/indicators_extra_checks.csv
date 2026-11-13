@@ -1,0 +1,66 @@
+check,symbol,max_abs_diff,max_abs_diff_last1000,expected_equal,note
+"STOCH smooth_k=5,d=3 slowK vs ref: talib.STOCH(14,5,3)",AAPL,1.4210854715202004e-13,1.4210854715202004e-13,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: talib.STOCH(14,5,3)",AAPL,4.121147867408581e-13,4.121147867408581e-13,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",AAPL,31.808536727312152,31.808536727312152,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",AAPL,24.079822595635363,23.88096201673121,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",AAPL,1.1368683772161603e-13,1.1368683772161603e-13,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",AAPL,2.984279490192421e-13,2.984279490192421e-13,True,
+ADX DMP_14 (talib=True) vs reference +DI,AAPL,52.95695760575942,24.322006379505062,True,"talib=True column is TA-Lib PLUS_DM (smoothed raw DM), not +DI"
+ADX DMP_14 (talib=False) vs reference +DI,AAPL,1.8529676725120225,3.907985046680551e-14,True,converges: DI from ewm-smoothed DM / ATR
+ADX DMN_14 (talib=True) vs reference -DI,AAPL,42.641383611129484,23.78846066612587,True,
+BBU pandas_ta talib=False ddof=0 vs ref ddof0,AAPL,2.9615421226480976e-11,1.9099388737231493e-11,True,workaround
+BBU pandas_ta talib=True ddof=1 (ignored?) vs ref ddof0,AAPL,3.097966327914037e-12,3.097966327914037e-12,True,ddof ignored when talib=True
+pandas_ta bbands() default call columns,AAPL,,,,"BBL_5_2.0_2.0,BBM_5_2.0_2.0,BBU_5_2.0_2.0,BBB_5_2.0_2.0,BBP_5_2.0_2.0"
+EMA pandas_ta presma=False vs ref (SMA-seed),AAPL,0.060822793825416,0.0,True,ewm seeded with first price; decays
+"STOCH smooth_k=5,d=3 slowK vs ref: talib.STOCH(14,5,3)",KO,2.1316282072803006e-13,2.1316282072803006e-13,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: talib.STOCH(14,5,3)",KO,5.542233338928781e-13,5.542233338928781e-13,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",KO,36.98625174652813,30.745358601385725,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",KO,26.316176262513707,23.07172879461406,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",KO,9.947598300641403e-14,8.526512829121202e-14,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",KO,4.547473508864641e-13,4.405364961712621e-13,True,
+ADX DMP_14 (talib=True) vs reference +DI,KO,40.11934844599489,40.11934844599489,True,"talib=True column is TA-Lib PLUS_DM (smoothed raw DM), not +DI"
+ADX DMP_14 (talib=False) vs reference +DI,KO,0.45063873356372497,3.197442310920451e-14,True,converges: DI from ewm-smoothed DM / ATR
+ADX DMN_14 (talib=True) vs reference -DI,KO,44.99868704282378,42.25419359817204,True,
+BBU pandas_ta talib=False ddof=0 vs ref ddof0,KO,3.424815986363683e-12,3.424815986363683e-12,True,workaround
+BBU pandas_ta talib=True ddof=1 (ignored?) vs ref ddof0,KO,1.2221335055073723e-12,1.2221335055073723e-12,True,ddof ignored when talib=True
+pandas_ta bbands() default call columns,KO,,,,"BBL_5_2.0_2.0,BBM_5_2.0_2.0,BBU_5_2.0_2.0,BBB_5_2.0_2.0,BBP_5_2.0_2.0"
+EMA pandas_ta presma=False vs ref (SMA-seed),KO,0.11635138883978868,0.0,True,ewm seeded with first price; decays
+"STOCH smooth_k=5,d=3 slowK vs ref: talib.STOCH(14,5,3)",AMC,1.9895196601282805e-13,1.9895196601282805e-13,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: talib.STOCH(14,5,3)",AMC,2.6290081223123707e-13,2.6290081223123707e-13,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",AMC,28.936625514403367,28.936625514403367,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",AMC,22.531634876261272,20.438270482198092,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",AMC,1.1368683772161603e-13,1.1368683772161603e-13,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",AMC,2.0961010704922955e-13,2.0961010704922955e-13,True,
+ADX DMP_14 (talib=True) vs reference +DI,AMC,140.1483685595017,62.260094424959824,True,"talib=True column is TA-Lib PLUS_DM (smoothed raw DM), not +DI"
+ADX DMP_14 (talib=False) vs reference +DI,AMC,1.7471858168900196,3.552713678800501e-14,True,converges: DI from ewm-smoothed DM / ATR
+ADX DMN_14 (talib=True) vs reference -DI,AMC,72.1754983478668,40.725365264721596,True,
+BBU pandas_ta talib=False ddof=0 vs ref ddof0,AMC,1.3288441458314537e-09,1.3288441458314537e-09,True,workaround
+BBU pandas_ta talib=True ddof=1 (ignored?) vs ref ddof0,AMC,3.396838366143129e-12,3.396838366143129e-12,True,ddof ignored when talib=True
+pandas_ta bbands() default call columns,AMC,,,,"BBL_5_2.0_2.0,BBM_5_2.0_2.0,BBU_5_2.0_2.0,BBB_5_2.0_2.0,BBP_5_2.0_2.0"
+EMA pandas_ta presma=False vs ref (SMA-seed),AMC,0.20144369517664984,0.0,True,ewm seeded with first price; decays
+"STOCH smooth_k=5,d=3 slowK vs ref: talib.STOCH(14,5,3)",INTC,2.1316282072803006e-13,1.7053025658242404e-13,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: talib.STOCH(14,5,3)",INTC,1.4210854715202004e-13,1.4210854715202004e-13,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",INTC,37.31216613841759,31.178146195927802,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",INTC,27.271881704709003,22.509806962983685,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",INTC,9.947598300641403e-14,8.526512829121202e-14,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",INTC,3.979039320256561e-13,3.979039320256561e-13,True,
+ADX DMP_14 (talib=True) vs reference +DI,INTC,50.59925200947098,45.224305900470554,True,"talib=True column is TA-Lib PLUS_DM (smoothed raw DM), not +DI"
+ADX DMP_14 (talib=False) vs reference +DI,INTC,2.406885542743428,3.552713678800501e-14,True,converges: DI from ewm-smoothed DM / ATR
+ADX DMN_14 (talib=True) vs reference -DI,INTC,44.92425556822003,44.92425556822003,True,
+BBU pandas_ta talib=False ddof=0 vs ref ddof0,INTC,2.7629454280031496e-11,2.7629454280031496e-11,True,workaround
+BBU pandas_ta talib=True ddof=1 (ignored?) vs ref ddof0,INTC,1.2185807918285718e-12,1.2185807918285718e-12,True,ddof ignored when talib=True
+pandas_ta bbands() default call columns,INTC,,,,"BBL_5_2.0_2.0,BBM_5_2.0_2.0,BBU_5_2.0_2.0,BBB_5_2.0_2.0,BBP_5_2.0_2.0"
+EMA pandas_ta presma=False vs ref (SMA-seed),INTC,0.05654106627537203,0.0,True,ewm seeded with first price; decays
+"STOCH smooth_k=5,d=3 slowK vs ref: talib.STOCH(14,5,3)",SPY,9.947598300641403e-14,9.947598300641403e-14,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: talib.STOCH(14,5,3)",SPY,1.8474111129762605e-13,1.2789769243681803e-13,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",SPY,32.47138019169707,32.47138019169707,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=True",SPY,24.03814492357235,23.750484728364576,True,
+"STOCH smooth_k=5,d=3 slowK vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",SPY,1.8474111129762605e-13,1.8474111129762605e-13,True,
+"STOCH smooth_k=5,d=3 slowD vs ref: pandas_ta stoch(k=14,d=3,smooth_k=5) talib=False",SPY,3.836930773104541e-13,3.126388037344441e-13,True,
+ADX DMP_14 (talib=True) vs reference +DI,SPY,40.59691640298818,29.558590639638147,True,"talib=True column is TA-Lib PLUS_DM (smoothed raw DM), not +DI"
+ADX DMP_14 (talib=False) vs reference +DI,SPY,4.062625161616012,2.842170943040401e-14,True,converges: DI from ewm-smoothed DM / ATR
+ADX DMN_14 (talib=True) vs reference -DI,SPY,52.030278427796006,52.030278427796006,True,
+BBU pandas_ta talib=False ddof=0 vs ref ddof0,SPY,2.879687599488534e-10,2.879687599488534e-10,True,workaround
+BBU pandas_ta talib=True ddof=1 (ignored?) vs ref ddof0,SPY,1.014655026665423e-11,8.071765478234738e-12,True,ddof ignored when talib=True
+pandas_ta bbands() default call columns,SPY,,,,"BBL_5_2.0_2.0,BBM_5_2.0_2.0,BBU_5_2.0_2.0,BBB_5_2.0_2.0,BBP_5_2.0_2.0"
+EMA pandas_ta presma=False vs ref (SMA-seed),SPY,0.33981693211583774,0.0,True,ewm seeded with first price; decays

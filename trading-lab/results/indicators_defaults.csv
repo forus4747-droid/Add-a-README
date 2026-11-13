@@ -1,0 +1,15 @@
+indicator,talib_defaults,pandas_ta_defaults_in_signature,pandas_ta_effective
+SMA,{'timeperiod': 30},"{'length': None, 'talib': None}",length 10
+EMA,{'timeperiod': 30},"{'length': None, 'talib': None, 'presma': None}",length 10
+WMA,{'timeperiod': 30},"{'length': None, 'asc': None, 'talib': None}",length 10
+RSI,{'timeperiod': 14},"{'length': None, 'scalar': None, 'mamode': None, 'talib': None, 'drift': None}",
+MACD,"{'fastperiod': 12, 'slowperiod': 26, 'signalperiod': 9}","{'fast': None, 'slow': None, 'signal': None, 'talib': None}",
+BBANDS,"{'timeperiod': 20, 'nbdevup': 2.0, 'nbdevdn': 2.0, 'matype': 0}","{'length': None, 'lower_std': None, 'upper_std': None, 'ddof': None, 'mamode': None, 'talib': None}",
+ATR,{'timeperiod': 14},"{'length': None, 'mamode': None, 'talib': None, 'prenan': None, 'drift': None}",
+ADX,{'timeperiod': 14},"{'length': None, 'signal_length': None, 'adxr_length': None, 'scalar': None, 'talib': None, 'tvmode': None, 'mamode': None, 'drift': None}",
+STOCH,"{'fastk_period': 5, 'slowk_period': 3, 'slowk_matype': 0, 'slowd_period': 3, 'slowd_matype': 0}","{'k': None, 'd': None, 'smooth_k': None, 'mamode': None, 'talib': None}",
+CCI,{'timeperiod': 14},"{'length': None, 'c': None, 'talib': None}",
+OBV,{},{'talib': None},
+ROC,{'timeperiod': 10},"{'length': None, 'scalar': None, 'talib': None}",
+WILLR,{'timeperiod': 14},"{'length': None, 'talib': None}",
+MFI,{'timeperiod': 14},"{'length': None, 'talib': None, 'drift': None}",

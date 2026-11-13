@@ -1,0 +1,286 @@
+status,n,n_nan,n_inf,first_valid,last_value,n_valid,n_zero_valid,case,indicator,library,detail,n_nan_after_gap,n_after_gap,recovers_by_end,nan_run_after_gap,max_abs_diff_vs_ffilled_run_after_gap,n_unique_values_last100
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,SMA,talib,,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,SMA,pandas_ta[talib=True],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,SMA,pandas_ta[talib=False],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,EMA,talib,,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,EMA,pandas_ta[talib=True],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,EMA,pandas_ta[talib=False],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,WMA,talib,,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,WMA,pandas_ta[talib=True],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.00000000000001,281.0,0.0,constant_price_300,WMA,pandas_ta[talib=False],,,,,,,
+ok,300.0,14.0,0.0,14.0,50.0,286.0,0.0,constant_price_300,RSI,talib,,,,,,,
+ok,300.0,14.0,0.0,14.0,50.0,286.0,0.0,constant_price_300,RSI,pandas_ta[talib=True],,,,,,,
+ok,300.0,300.0,0.0,-1.0,,0.0,0.0,constant_price_300,RSI,pandas_ta[talib=False],,,,,,,
+ok,300.0,33.0,0.0,33.0,0.0,267.0,267.0,constant_price_300,MACD_line,talib,,,,,,,
+ok,300.0,33.0,0.0,33.0,0.0,267.0,267.0,constant_price_300,MACD_line,pandas_ta[talib=True],,,,,,,
+ok,300.0,25.0,0.0,25.0,0.0,275.0,275.0,constant_price_300,MACD_line,pandas_ta[talib=False],,,,,,,
+ok,300.0,33.0,0.0,33.0,0.0,267.0,267.0,constant_price_300,MACD_signal,talib,,,,,,,
+ok,300.0,33.0,0.0,33.0,0.0,267.0,267.0,constant_price_300,MACD_signal,pandas_ta[talib=True],,,,,,,
+ok,300.0,33.0,0.0,33.0,0.0,267.0,267.0,constant_price_300,MACD_signal,pandas_ta[talib=False],,,,,,,
+ok,300.0,33.0,0.0,33.0,0.0,267.0,267.0,constant_price_300,MACD_hist,talib,,,,,,,
+ok,300.0,33.0,0.0,33.0,0.0,267.0,267.0,constant_price_300,MACD_hist,pandas_ta[talib=True],,,,,,,
+ok,300.0,33.0,0.0,33.0,0.0,267.0,267.0,constant_price_300,MACD_hist,pandas_ta[talib=False],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_upper,talib,,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_upper,pandas_ta[talib=True],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_upper,pandas_ta[talib=False],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_mid,talib,,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_mid,pandas_ta[talib=True],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_mid,pandas_ta[talib=False],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_lower,talib,,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_lower,pandas_ta[talib=True],,,,,,,
+ok,300.0,19.0,0.0,19.0,100.0,281.0,0.0,constant_price_300,BB_lower,pandas_ta[talib=False],,,,,,,
+ok,300.0,14.0,0.0,14.0,0.0,286.0,286.0,constant_price_300,ATR,talib,,,,,,,
+ok,300.0,14.0,0.0,14.0,0.0,286.0,286.0,constant_price_300,ATR,pandas_ta[talib=True],,,,,,,
+ok,300.0,13.0,0.0,13.0,2.220446049250313e-16,287.0,0.0,constant_price_300,ATR,pandas_ta[talib=False],,,,,,,
+ok,300.0,27.0,0.0,27.0,0.0,273.0,273.0,constant_price_300,ADX,talib,,,,,,,
+ok,300.0,27.0,0.0,27.0,0.0,273.0,273.0,constant_price_300,ADX,pandas_ta[talib=True],,,,,,,
+ok,300.0,300.0,0.0,-1.0,,0.0,0.0,constant_price_300,ADX,pandas_ta[talib=False],,,,,,,
+ok,300.0,17.0,0.0,17.0,0.0,283.0,283.0,constant_price_300,STOCH_k,talib,,,,,,,
+ok,300.0,17.0,0.0,17.0,0.0,283.0,283.0,constant_price_300,STOCH_k,pandas_ta[talib=True],,,,,,,
+ok,300.0,15.0,0.0,15.0,0.0,285.0,285.0,constant_price_300,STOCH_k,pandas_ta[talib=False],,,,,,,
+ok,300.0,17.0,0.0,17.0,0.0,283.0,283.0,constant_price_300,STOCH_d,talib,,,,,,,
+ok,300.0,17.0,0.0,17.0,0.0,283.0,283.0,constant_price_300,STOCH_d,pandas_ta[talib=True],,,,,,,
+ok,300.0,17.0,0.0,17.0,0.0,283.0,283.0,constant_price_300,STOCH_d,pandas_ta[talib=False],,,,,,,
+ok,300.0,19.0,0.0,19.0,0.0,281.0,281.0,constant_price_300,CCI,talib,,,,,,,
+ok,300.0,19.0,0.0,19.0,0.0,281.0,281.0,constant_price_300,CCI,pandas_ta[talib=True],,,,,,,
+ok,300.0,19.0,281.0,19.0,-inf,0.0,0.0,constant_price_300,CCI,pandas_ta[talib=False],,,,,,,
+ok,300.0,0.0,0.0,0.0,1000.0,300.0,0.0,constant_price_300,OBV,talib,,,,,,,
+ok,300.0,0.0,0.0,0.0,1000.0,300.0,0.0,constant_price_300,OBV,pandas_ta[talib=True],,,,,,,
+ok,300.0,1.0,0.0,1.0,0.0,299.0,299.0,constant_price_300,OBV,pandas_ta[talib=False],,,,,,,
+ok,300.0,10.0,0.0,10.0,0.0,290.0,290.0,constant_price_300,ROC,talib,,,,,,,
+ok,300.0,10.0,0.0,10.0,0.0,290.0,290.0,constant_price_300,ROC,pandas_ta[talib=True],,,,,,,
+ok,300.0,10.0,0.0,10.0,0.0,290.0,290.0,constant_price_300,ROC,pandas_ta[talib=False],,,,,,,
+ok,300.0,13.0,0.0,13.0,0.0,287.0,287.0,constant_price_300,WILLR,talib,,,,,,,
+ok,300.0,13.0,0.0,13.0,0.0,287.0,287.0,constant_price_300,WILLR,pandas_ta[talib=True],,,,,,,
+ok,300.0,300.0,0.0,-1.0,,0.0,0.0,constant_price_300,WILLR,pandas_ta[talib=False],,,,,,,
+ok,300.0,14.0,0.0,14.0,0.0,286.0,286.0,constant_price_300,MFI,talib,,,,,,,
+ok,300.0,14.0,0.0,14.0,0.0,286.0,286.0,constant_price_300,MFI,pandas_ta[talib=True],,,,,,,
+ok,300.0,14.0,0.0,14.0,0.0,286.0,286.0,constant_price_300,MFI,pandas_ta[talib=False],,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,SMA,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,SMA,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,SMA,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,EMA,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,EMA,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,EMA,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,WMA,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,WMA,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,WMA,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,RSI,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,RSI,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,RSI,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,MACD_line,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,MACD_line,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,MACD_line,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,MACD_signal,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,MACD_signal,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,MACD_signal,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,MACD_hist,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,MACD_hist,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,MACD_hist,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,BB_upper,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,BB_upper,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,BB_upper,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,BB_mid,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,BB_mid,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,BB_mid,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,BB_lower,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,BB_lower,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,BB_lower,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,ATR,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,ATR,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,ATR,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,ADX,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,ADX,pandas_ta[talib=True],TypeError: 'NoneType' object is not subscriptable,,,,,,
+EXCEPTION,,,,,,,,short_len5,ADX,pandas_ta[talib=False],TypeError: 'NoneType' object is not subscriptable,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,STOCH_k,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,STOCH_k,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,STOCH_k,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,STOCH_d,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,STOCH_d,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,STOCH_d,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,CCI,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,CCI,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,CCI,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,0.0,0.0,0.0,7411.0,5.0,0.0,short_len5,OBV,talib,,,,,,,
+ok,5.0,0.0,0.0,0.0,7411.0,5.0,0.0,short_len5,OBV,pandas_ta[talib=True],,,,,,,
+ok,5.0,1.0,0.0,1.0,5235.0,4.0,0.0,short_len5,OBV,pandas_ta[talib=False],,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,ROC,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,ROC,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,ROC,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,WILLR,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,WILLR,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,WILLR,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,5.0,5.0,0.0,-1.0,,0.0,0.0,short_len5,MFI,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len5,MFI,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len5,MFI,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,SMA,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,SMA,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,SMA,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,EMA,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,EMA,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,EMA,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,WMA,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,WMA,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,WMA,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,14.0,0.0,14.0,39.265740672710905,5.0,0.0,short_len19,RSI,talib,,,,,,,
+ok,19.0,14.0,0.0,14.0,39.265740672710905,5.0,0.0,short_len19,RSI,pandas_ta[talib=True],,,,,,,
+ok,19.0,1.0,0.0,1.0,50.398639504870786,18.0,0.0,short_len19,RSI,pandas_ta[talib=False],,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,MACD_line,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,MACD_line,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,MACD_line,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,MACD_signal,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,MACD_signal,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,MACD_signal,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,MACD_hist,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,MACD_hist,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,MACD_hist,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,BB_upper,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,BB_upper,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,BB_upper,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,BB_mid,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,BB_mid,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,BB_mid,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,BB_lower,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,BB_lower,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,BB_lower,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,14.0,0.0,14.0,1.4691935643243672,5.0,0.0,short_len19,ATR,talib,,,,,,,
+ok,19.0,14.0,0.0,14.0,1.4691935643243672,5.0,0.0,short_len19,ATR,pandas_ta[talib=True],,,,,,,
+ok,19.0,13.0,0.0,13.0,1.4523810258021792,6.0,0.0,short_len19,ATR,pandas_ta[talib=False],,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,ADX,talib,,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,ADX,pandas_ta[talib=True],,,,,,,
+ok,19.0,14.0,0.0,14.0,3.2293831481775452,5.0,0.0,short_len19,ADX,pandas_ta[talib=False],,,,,,,
+ok,19.0,17.0,0.0,17.0,19.548875371565476,2.0,0.0,short_len19,STOCH_k,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,STOCH_k,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,STOCH_k,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,17.0,0.0,17.0,16.083885472347156,2.0,0.0,short_len19,STOCH_d,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,STOCH_d,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,STOCH_d,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,19.0,0.0,-1.0,,0.0,0.0,short_len19,CCI,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len19,CCI,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len19,CCI,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,19.0,0.0,0.0,0.0,-13629.0,19.0,0.0,short_len19,OBV,talib,,,,,,,
+ok,19.0,0.0,0.0,0.0,-13629.0,19.0,0.0,short_len19,OBV,pandas_ta[talib=True],,,,,,,
+ok,19.0,1.0,0.0,1.0,-16485.0,18.0,0.0,short_len19,OBV,pandas_ta[talib=False],,,,,,,
+ok,19.0,10.0,0.0,10.0,-1.0489052054097003,9.0,0.0,short_len19,ROC,talib,,,,,,,
+ok,19.0,10.0,0.0,10.0,-1.0489052054097003,9.0,0.0,short_len19,ROC,pandas_ta[talib=True],,,,,,,
+ok,19.0,10.0,0.0,10.0,-1.0489052054097008,9.0,0.0,short_len19,ROC,pandas_ta[talib=False],,,,,,,
+ok,19.0,13.0,0.0,13.0,-80.32994656218634,6.0,0.0,short_len19,WILLR,talib,,,,,,,
+ok,19.0,13.0,0.0,13.0,-80.32994656218634,6.0,0.0,short_len19,WILLR,pandas_ta[talib=True],,,,,,,
+ok,19.0,13.0,0.0,13.0,-80.32994656218634,6.0,0.0,short_len19,WILLR,pandas_ta[talib=False],,,,,,,
+ok,19.0,14.0,0.0,14.0,29.037606820837375,5.0,0.0,short_len19,MFI,talib,,,,,,,
+ok,19.0,14.0,0.0,14.0,29.037606820837375,5.0,0.0,short_len19,MFI,pandas_ta[talib=True],,,,,,,
+ok,19.0,14.0,0.0,14.0,29.037606820837368,5.0,0.0,short_len19,MFI,pandas_ta[talib=False],,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017546,1.0,0.0,short_len20,SMA,talib,,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017546,1.0,0.0,short_len20,SMA,pandas_ta[talib=True],,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017545,1.0,0.0,short_len20,SMA,pandas_ta[talib=False],,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017546,1.0,0.0,short_len20,EMA,talib,,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017546,1.0,0.0,short_len20,EMA,pandas_ta[talib=True],,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017545,1.0,0.0,short_len20,EMA,pandas_ta[talib=False],,,,,,,
+ok,20.0,19.0,0.0,19.0,101.69984582460172,1.0,0.0,short_len20,WMA,talib,,,,,,,
+ok,20.0,19.0,0.0,19.0,101.69984582460172,1.0,0.0,short_len20,WMA,pandas_ta[talib=True],,,,,,,
+ok,20.0,19.0,0.0,19.0,101.69984582460174,1.0,0.0,short_len20,WMA,pandas_ta[talib=False],,,,,,,
+ok,20.0,14.0,0.0,14.0,69.88755824212619,6.0,0.0,short_len20,RSI,talib,,,,,,,
+ok,20.0,14.0,0.0,14.0,69.88755824212619,6.0,0.0,short_len20,RSI,pandas_ta[talib=True],,,,,,,
+ok,20.0,1.0,0.0,1.0,43.289006026105234,19.0,1.0,short_len20,RSI,pandas_ta[talib=False],,,,,,,
+ok,20.0,20.0,0.0,-1.0,,0.0,0.0,short_len20,MACD_line,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len20,MACD_line,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len20,MACD_line,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,20.0,20.0,0.0,-1.0,,0.0,0.0,short_len20,MACD_signal,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len20,MACD_signal,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len20,MACD_signal,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,20.0,20.0,0.0,-1.0,,0.0,0.0,short_len20,MACD_hist,talib,,,,,,,
+EXCEPTION,,,,,,,,short_len20,MACD_hist,pandas_ta[talib=True],RuntimeError: pandas_ta returned None,,,,,,
+EXCEPTION,,,,,,,,short_len20,MACD_hist,pandas_ta[talib=False],RuntimeError: pandas_ta returned None,,,,,,
+ok,20.0,19.0,0.0,19.0,104.80651369196956,1.0,0.0,short_len20,BB_upper,talib,,,,,,,
+ok,20.0,19.0,0.0,19.0,104.80651369196956,1.0,0.0,short_len20,BB_upper,pandas_ta[talib=True],,,,,,,
+ok,20.0,19.0,0.0,19.0,104.91201093216034,1.0,0.0,short_len20,BB_upper,pandas_ta[talib=False],,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017546,1.0,0.0,short_len20,BB_mid,talib,,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017546,1.0,0.0,short_len20,BB_mid,pandas_ta[talib=True],,,,,,,
+ok,20.0,19.0,0.0,19.0,100.74554632017545,1.0,0.0,short_len20,BB_mid,pandas_ta[talib=False],,,,,,,
+ok,20.0,19.0,0.0,19.0,96.68457894838137,1.0,0.0,short_len20,BB_lower,talib,,,,,,,
+ok,20.0,19.0,0.0,19.0,96.68457894838137,1.0,0.0,short_len20,BB_lower,pandas_ta[talib=True],,,,,,,
+ok,20.0,19.0,0.0,19.0,96.57908170819056,1.0,0.0,short_len20,BB_lower,pandas_ta[talib=False],,,,,,,
+ok,20.0,14.0,0.0,14.0,1.3363661790881267,6.0,0.0,short_len20,ATR,talib,,,,,,,
+ok,20.0,14.0,0.0,14.0,1.3363661790881267,6.0,0.0,short_len20,ATR,pandas_ta[talib=True],,,,,,,
+ok,20.0,13.0,0.0,13.0,1.3337966857927883,7.0,0.0,short_len20,ATR,pandas_ta[talib=False],,,,,,,
+ok,20.0,20.0,0.0,-1.0,,0.0,0.0,short_len20,ADX,talib,,,,,,,
+ok,20.0,20.0,0.0,-1.0,,0.0,0.0,short_len20,ADX,pandas_ta[talib=True],,,,,,,
+ok,20.0,14.0,0.0,14.0,34.711676884049574,6.0,0.0,short_len20,ADX,pandas_ta[talib=False],,,,,,,
+ok,20.0,17.0,0.0,17.0,84.45505378301436,3.0,0.0,short_len20,STOCH_k,talib,,,,,,,
+ok,20.0,17.0,0.0,17.0,84.45505378301436,3.0,0.0,short_len20,STOCH_k,pandas_ta[talib=True],,,,,,,
+ok,20.0,15.0,0.0,15.0,84.45505378301438,5.0,0.0,short_len20,STOCH_k,pandas_ta[talib=False],,,,,,,
+ok,20.0,17.0,0.0,17.0,77.7775413717291,3.0,0.0,short_len20,STOCH_d,talib,,,,,,,
+ok,20.0,17.0,0.0,17.0,77.7775413717291,3.0,0.0,short_len20,STOCH_d,pandas_ta[talib=True],,,,,,,
+ok,20.0,17.0,0.0,17.0,77.7775413717291,3.0,0.0,short_len20,STOCH_d,pandas_ta[talib=False],,,,,,,
+ok,20.0,19.0,0.0,19.0,151.34486405167343,1.0,0.0,short_len20,CCI,talib,,,,,,,
+ok,20.0,19.0,0.0,19.0,151.34486405167343,1.0,0.0,short_len20,CCI,pandas_ta[talib=True],,,,,,,
+ok,20.0,19.0,0.0,19.0,-3568.3173673893025,1.0,0.0,short_len20,CCI,pandas_ta[talib=False],,,,,,,
+ok,20.0,0.0,0.0,0.0,3314.0,20.0,0.0,short_len20,OBV,talib,,,,,,,
+ok,20.0,0.0,0.0,0.0,3314.0,20.0,0.0,short_len20,OBV,pandas_ta[talib=True],,,,,,,
+ok,20.0,1.0,0.0,1.0,863.0,19.0,0.0,short_len20,OBV,pandas_ta[talib=False],,,,,,,
+ok,20.0,10.0,0.0,10.0,5.777507720383435,10.0,0.0,short_len20,ROC,talib,,,,,,,
+ok,20.0,10.0,0.0,10.0,5.777507720383435,10.0,0.0,short_len20,ROC,pandas_ta[talib=True],,,,,,,
+ok,20.0,10.0,0.0,10.0,5.777507720383437,10.0,0.0,short_len20,ROC,pandas_ta[talib=False],,,,,,,
+ok,20.0,13.0,0.0,13.0,-2.7186342624013484,7.0,0.0,short_len20,WILLR,talib,,,,,,,
+ok,20.0,13.0,0.0,13.0,-2.7186342624013484,7.0,0.0,short_len20,WILLR,pandas_ta[talib=True],,,,,,,
+ok,20.0,13.0,0.0,13.0,-2.7186342624013538,7.0,0.0,short_len20,WILLR,pandas_ta[talib=False],,,,,,,
+ok,20.0,14.0,0.0,14.0,63.17002653410828,6.0,0.0,short_len20,MFI,talib,,,,,,,
+ok,20.0,14.0,0.0,14.0,63.17002653410828,6.0,0.0,short_len20,MFI,pandas_ta[talib=True],,,,,,,
+ok,20.0,14.0,0.0,14.0,63.17002653410828,6.0,0.0,short_len20,MFI,pandas_ta[talib=False],,,,,,,
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,SMA,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,SMA,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,39.0,0.0,19.0,73.85033568137528,261.0,0.0,nan_at_bar150_of_300,SMA,pandas_ta[talib=False],,19.0,149.0,True,19.0,0.0,100.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,EMA,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,EMA,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,19.0,0.0,19.0,72.86473509909517,281.0,0.0,nan_at_bar150_of_300,EMA,pandas_ta[talib=False],,0.0,149.0,True,0.0,0.20345771325744977,100.0
+ok,300.0,47.0,0.0,19.0,72.62838822571842,253.0,0.0,nan_at_bar150_of_300,WMA,talib,,27.0,149.0,True,27.0,0.0,100.0
+ok,300.0,47.0,0.0,19.0,72.62838822571842,253.0,0.0,nan_at_bar150_of_300,WMA,pandas_ta[talib=True],,27.0,149.0,True,27.0,0.0,100.0
+ok,300.0,39.0,0.0,19.0,72.62838822571838,261.0,0.0,nan_at_bar150_of_300,WMA,pandas_ta[talib=False],,19.0,149.0,True,19.0,0.0,100.0
+ok,300.0,14.0,0.0,14.0,50.0,286.0,0.0,nan_at_bar150_of_300,RSI,talib,,0.0,149.0,True,0.0,22.706556225505658,1.0
+ok,300.0,14.0,0.0,14.0,50.0,286.0,0.0,nan_at_bar150_of_300,RSI,pandas_ta[talib=True],,0.0,149.0,True,0.0,22.706556225505658,1.0
+ok,300.0,1.0,0.0,1.0,27.98430882150222,299.0,0.0,nan_at_bar150_of_300,RSI,pandas_ta[talib=False],,0.0,149.0,True,0.0,7.268640864794406,100.0
+ok,300.0,183.0,0.0,33.0,,117.0,0.0,nan_at_bar150_of_300,MACD_line,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,183.0,0.0,33.0,,117.0,0.0,nan_at_bar150_of_300,MACD_line,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,25.0,0.0,25.0,-1.6420812277435175,275.0,0.0,nan_at_bar150_of_300,MACD_line,pandas_ta[talib=False],,0.0,149.0,True,0.0,0.043479472213363124,100.0
+ok,300.0,183.0,0.0,33.0,,117.0,0.0,nan_at_bar150_of_300,MACD_signal,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,183.0,0.0,33.0,,117.0,0.0,nan_at_bar150_of_300,MACD_signal,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,33.0,0.0,33.0,-0.9855810559826207,267.0,0.0,nan_at_bar150_of_300,MACD_signal,pandas_ta[talib=False],,0.0,149.0,True,0.0,0.036536191601646006,100.0
+ok,300.0,183.0,0.0,33.0,,117.0,0.0,nan_at_bar150_of_300,MACD_hist,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,183.0,0.0,33.0,,117.0,0.0,nan_at_bar150_of_300,MACD_hist,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,33.0,0.0,33.0,-0.6565001717608968,267.0,0.0,nan_at_bar150_of_300,MACD_hist,pandas_ta[talib=False],,0.0,149.0,True,0.0,0.02676041509020355,100.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,BB_upper,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,BB_upper,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,39.0,0.0,19.0,79.25827760765752,261.0,0.0,nan_at_bar150_of_300,BB_upper,pandas_ta[talib=False],,19.0,149.0,True,19.0,1.3642420526593924e-12,100.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,BB_mid,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,BB_mid,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,39.0,0.0,19.0,73.85033568137528,261.0,0.0,nan_at_bar150_of_300,BB_mid,pandas_ta[talib=False],,19.0,149.0,True,19.0,0.0,100.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,BB_lower,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,169.0,0.0,19.0,,131.0,0.0,nan_at_bar150_of_300,BB_lower,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,39.0,0.0,19.0,68.44239375509305,261.0,0.0,nan_at_bar150_of_300,BB_lower,pandas_ta[talib=False],,19.0,149.0,True,19.0,1.3642420526593924e-12,100.0
+ok,300.0,164.0,0.0,14.0,,136.0,0.0,nan_at_bar150_of_300,ATR,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,164.0,0.0,14.0,,136.0,0.0,nan_at_bar150_of_300,ATR,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,13.0,0.0,13.0,1.399359801380727,287.0,0.0,nan_at_bar150_of_300,ATR,pandas_ta[talib=False],,0.0,149.0,True,0.0,0.06426282260957539,100.0
+ok,300.0,27.0,0.0,27.0,10.60616008373526,273.0,0.0,nan_at_bar150_of_300,ADX,talib,,0.0,149.0,True,0.0,18.377943961987818,1.0
+ok,300.0,27.0,0.0,27.0,10.60616008373526,273.0,0.0,nan_at_bar150_of_300,ADX,pandas_ta[talib=True],,0.0,149.0,True,0.0,18.377943961987818,1.0
+ok,300.0,14.0,0.0,14.0,10.606470310783088,286.0,0.0,nan_at_bar150_of_300,ADX,pandas_ta[talib=False],,0.0,149.0,True,0.0,18.37763348787551,1.0
+ok,300.0,167.0,0.0,17.0,,133.0,0.0,nan_at_bar150_of_300,STOCH_k,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,167.0,0.0,17.0,,133.0,0.0,nan_at_bar150_of_300,STOCH_k,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,165.0,0.0,15.0,,135.0,0.0,nan_at_bar150_of_300,STOCH_k,pandas_ta[talib=False],,149.0,149.0,False,149.0,,0.0
+ok,300.0,167.0,0.0,17.0,,133.0,0.0,nan_at_bar150_of_300,STOCH_d,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,167.0,0.0,17.0,,133.0,0.0,nan_at_bar150_of_300,STOCH_d,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,167.0,0.0,17.0,,133.0,0.0,nan_at_bar150_of_300,STOCH_d,pandas_ta[talib=False],,149.0,149.0,False,149.0,,0.0
+ok,300.0,39.0,0.0,19.0,-145.82646451468705,261.0,0.0,nan_at_bar150_of_300,CCI,talib,,19.0,149.0,True,19.0,0.0,100.0
+ok,300.0,39.0,0.0,19.0,-145.82646451468705,261.0,0.0,nan_at_bar150_of_300,CCI,pandas_ta[talib=True],,19.0,149.0,True,19.0,0.0,100.0
+ok,300.0,39.0,0.0,19.0,-2117.871514717251,261.0,0.0,nan_at_bar150_of_300,CCI,pandas_ta[talib=False],,19.0,149.0,True,19.0,0.0,100.0
+ok,300.0,0.0,0.0,0.0,-92996.0,300.0,0.0,nan_at_bar150_of_300,OBV,talib,,0.0,149.0,True,0.0,4238.0,100.0
+ok,300.0,0.0,0.0,0.0,-92996.0,300.0,0.0,nan_at_bar150_of_300,OBV,pandas_ta[talib=True],,0.0,149.0,True,0.0,4238.0,100.0
+ok,300.0,3.0,0.0,1.0,-97202.0,297.0,0.0,nan_at_bar150_of_300,OBV,pandas_ta[talib=False],,1.0,149.0,True,1.0,4238.0,100.0
+ok,300.0,12.0,0.0,10.0,-9.51472429395408,288.0,0.0,nan_at_bar150_of_300,ROC,talib,,1.0,149.0,True,0.0,0.0,100.0
+ok,300.0,12.0,0.0,10.0,-9.51472429395408,288.0,0.0,nan_at_bar150_of_300,ROC,pandas_ta[talib=True],,1.0,149.0,True,0.0,0.0,100.0
+ok,300.0,12.0,0.0,10.0,-9.514724293954078,288.0,0.0,nan_at_bar150_of_300,ROC,pandas_ta[talib=False],,1.0,149.0,True,0.0,0.0,100.0
+ok,300.0,14.0,0.0,13.0,-98.47666888520635,286.0,0.0,nan_at_bar150_of_300,WILLR,talib,,0.0,149.0,True,0.0,0.27216717736894225,100.0
+ok,300.0,14.0,0.0,13.0,-98.47666888520635,286.0,0.0,nan_at_bar150_of_300,WILLR,pandas_ta[talib=True],,0.0,149.0,True,0.0,0.27216717736894225,100.0
+ok,300.0,27.0,0.0,13.0,-98.47666888520635,273.0,0.0,nan_at_bar150_of_300,WILLR,pandas_ta[talib=False],,13.0,149.0,True,13.0,0.0,100.0
+ok,300.0,164.0,0.0,14.0,,136.0,0.0,nan_at_bar150_of_300,MFI,talib,,149.0,149.0,False,149.0,,0.0
+ok,300.0,164.0,0.0,14.0,,136.0,0.0,nan_at_bar150_of_300,MFI,pandas_ta[talib=True],,149.0,149.0,False,149.0,,0.0
+ok,300.0,28.0,0.0,14.0,18.536456055371946,272.0,0.0,nan_at_bar150_of_300,MFI,pandas_ta[talib=False],,13.0,149.0,True,13.0,0.0,100.0
