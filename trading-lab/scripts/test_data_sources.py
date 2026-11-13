@@ -15,6 +15,7 @@ OBB_PY = "/home/user/trading-stack/envs/openbb/bin/python"
 THR = 0.005
 
 def clean(df):
+    if len(df) == 0: return df
     df = df.copy(); df.index = pd.to_datetime(df.index).tz_localize(None) if df.index.tz is None else df.index.tz_localize(None)
     df.index = df.index.strftime("%Y-%m-%d"); return df[df.index <= LAST]   # drop 2026 immediately
 
@@ -58,6 +59,11 @@ attempt("obb.equity.price.historical(AAPL, 2016-01-04, 2025-12-31, provider=yfin
         lambda: obb.equity.price.historical("AAPL", start_date="2016-01-04", end_date="2025-12-31", provider="yfinance"))
 attempt("obb.cboe.equity.historical(AAPL, 2025-12-01..2025-12-31)",
         lambda: obb.cboe.equity.historical("AAPL", start_date="2025-12-01", end_date="2025-12-31"))
+attempt("obb.tmx.equity.historical(AAPL, 2025-12-01..2025-12-31)",
+        lambda: obb.tmx.equity.historical("AAPL", start_date="2025-12-01", end_date="2025-12-31"))
+attempt("obb.nasdaq.equity.historical(AAPL, 2025-12-01..2025-12-31)",
+        lambda: obb.nasdaq.equity.historical("AAPL", start_date="2025-12-01", end_date="2025-12-31"))
+out["equity_historical_commands"] = [c for c in obb.coverage.commands if c.endswith("historical") and "equity" in c]
 print("JSON" + json.dumps(out))
 '''
 def obb_probe():
@@ -156,7 +162,7 @@ def analyze():
     agg = []
     for src, g in S[S.days_compared > 0].groupby("source"):
         agg.append(dict(source=src, symbol="ALL(%d)" % len(g), days_compared=g.days_compared.sum(), missing_days=g.missing_days.sum(),
-                        median_abs_ret_diff=g.median_abs_ret_diff.median(), p99=g.p99.median(), max=g.max.max(), days_over_0_5pct=g.days_over_0_5pct.sum(),
+                        median_abs_ret_diff=g.median_abs_ret_diff.median(), p99=g.p99.median(), max=g["max"].max(), days_over_0_5pct=g.days_over_0_5pct.sum(),
                         level_ratio_start=g.level_ratio_start.median(), level_ratio_end=g.level_ratio_end.median(),
                         verdict=f"{(g.verdict=='accurate').sum()}/{len(g)} symbols accurate; pooled ok {1-g.days_over_0_5pct.sum()/g.days_compared.sum():.4%}"))
     ob = dict(source="openbb(yfinance provider)", symbol="ALL", days_compared=0, missing_days=np.nan,

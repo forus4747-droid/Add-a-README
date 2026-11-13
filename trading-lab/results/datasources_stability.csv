@@ -1,0 +1,4 @@
+symbol,rows_a,rows_b,max_abs_close_diff,max_abs_vol_diff,note
+AAPL,2514.0,2514.0,7.62939453125e-05,0.0,
+WBA,,,,,no data
+SPY,2514.0,2514.0,0.000244140625,0.0,
