@@ -3,3 +3,5 @@ __pycache__/
 
 # market-monitor: downloaded data cache (re-fetched on every run)
 market-monitor/data/raw/
+market-monitor/state/cache/
+market-monitor/out/
