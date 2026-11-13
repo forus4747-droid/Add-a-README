@@ -1,0 +1,13 @@
+{
+ "days": 5538,
+ "coverage": 1.0,
+ "years": 22,
+ "mean_yearly_ic": 0.34922,
+ "years_positive": 22,
+ "share_years_positive": 1.0,
+ "pooled_tstat": 149.77,
+ "hit_rate": 0.6243,
+ "top_minus_bottom": 0.04469,
+ "excess_net_ann": 1.2881,
+ "verdict": "PREDICTS"
+}
