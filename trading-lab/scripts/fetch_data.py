@@ -2,12 +2,13 @@
 columns: symbol,time_utc,time_new_york,open,high,low,close,volume."""
 import sys, time, requests, pandas as pd
 from concurrent.futures import ThreadPoolExecutor
-OUT = "/home/user/trading-stack/data/5min"
+import os
+OUT = os.environ.get("FETCH_OUT", "/home/user/trading-stack/data/5min")
 SYMS = sys.argv[1].split(",")
 START, END = sys.argv[2], sys.argv[3]
 FEED, ADJ = (sys.argv[4] if len(sys.argv) > 4 else "sip"), (sys.argv[5] if len(sys.argv) > 5 else "raw")
 H = {"APCA-API-KEY-ID": "proxy", "APCA-API-SECRET-KEY": "proxy"}  # real keys injected by the network proxy
-import os; os.makedirs(OUT, exist_ok=True)
+os.makedirs(OUT, exist_ok=True)
 
 def fetch(sym):
     try: return _fetch(sym)
