@@ -15,6 +15,7 @@ def build(daily):
     def roll(s, n, f): return getattr(s.groupby(d.symbol, sort=False).rolling(n, min_periods=max(5, n // 2)), f)().reset_index(level=0, drop=True)
     for n in (1, 2, 5, 10, 21, 63, 126, 252): F[f"ret{n}"] = c / g.close.shift(n) - 1
     F["mom_12_1"] = g.close.shift(21) / g.close.shift(252) - 1
+    F["ret5_vs"] = F["ret5"] / g.close.pct_change().groupby(d.symbol, sort=False).rolling(63, min_periods=30).std().reset_index(level=0, drop=True)
     F["mom_6_1"] = g.close.shift(21) / g.close.shift(126) - 1
     F["gap"] = o / pc - 1; F["intraday"] = c / o - 1
     on = o / pc - 1; d["on"] = on; d["intra"] = c / o - 1

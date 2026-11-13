@@ -11,11 +11,11 @@ def swing_targets():
     d["target_end"] = d.groupby("symbol").date.shift(-6)
     return d[["symbol", "date", "target", "target_end"]].dropna()
 
-def day_targets():
+def day_targets(loader=load_5min):
     """Dow 30. target for (symbol, day) = open of 15:55 bar / open of 10:00 bar - 1. Full 78-bar days only."""
     out = []
     for s in DOW:
-        m = load_5min(s); n = m.groupby("day").size(); m = m[m.day.isin(n[n == 78].index)]
+        m = loader(s); n = m.groupby("day").size(); m = m[m.day.isin(n[n == 78].index)]
         a = m[m.hm == "10:00"].set_index("day").open; b = m[m.hm == "15:55"].set_index("day").open
         out.append(pd.DataFrame({"symbol": s, "date": a.index, "target": (b / a - 1).values, "target_end": a.index}))
     return pd.concat(out, ignore_index=True)

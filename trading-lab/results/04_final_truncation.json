@@ -1,0 +1,56 @@
+{
+ "swing": [
+  {
+   "date": "2024-04-04",
+   "stocks": 501,
+   "max_abs_diff": 0.0
+  },
+  {
+   "date": "2025-03-10",
+   "stocks": 501,
+   "max_abs_diff": 0.0
+  },
+  {
+   "date": "2024-04-08",
+   "stocks": 501,
+   "max_abs_diff": 0.0
+  },
+  {
+   "date": "2025-08-05",
+   "stocks": 501,
+   "max_abs_diff": 0.0
+  },
+  {
+   "date": "2024-12-30",
+   "stocks": 501,
+   "max_abs_diff": 0.0
+  }
+ ],
+ "day": [
+  {
+   "date": "2025-02-05",
+   "stocks": 30,
+   "max_abs_diff": 0.0
+  },
+  {
+   "date": "2024-10-17",
+   "stocks": 30,
+   "max_abs_diff": 0.0
+  },
+  {
+   "date": "2024-02-22",
+   "stocks": 30,
+   "max_abs_diff": 0.0
+  },
+  {
+   "date": "2024-04-17",
+   "stocks": 30,
+   "max_abs_diff": 0.0
+  },
+  {
+   "date": "2025-11-06",
+   "stocks": 29,
+   "max_abs_diff": 0.0
+  }
+ ]
+}

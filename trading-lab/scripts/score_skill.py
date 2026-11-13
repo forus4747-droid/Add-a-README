@@ -12,7 +12,7 @@ for task, (tf, h, splits) in W.items():
     p = pd.read_parquet(f)[["symbol", "date", "score"]]; p["date"] = p.date.astype(str).str[:10]
     assert not p.duplicated(["symbol", "date"]).any(), "duplicate (symbol,date) rows"
     assert p.date.max() <= "2025-12-31"
-    T = tf()
+    T = tf() if task == "swing" else tf(__import__("lab.data", fromlist=["x"]).load_5min_long)
     for sp, r in splits.items():
         m = score(p, T, r, horizon=h); rows.append(dict(task=task, skill=k, split=sp, **m, verdict=verdict(m)))
 r = pd.DataFrame(rows); r.to_csv(f"results/score_{k}.csv", index=False); print(r.to_string(index=False))

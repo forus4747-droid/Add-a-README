@@ -1,0 +1,5 @@
+task,skill,split,days,coverage,rank_ic,ic_tstat,hit_rate,top_minus_bottom,top_q_net_ann,equal_weight_ann,excess_net_ann,verdict
+swing,final,DEV,246,1.0,0.018,0.92,0.5083,0.00088,0.139,0.1764,-0.0373,no proven edge
+swing,final,VAL,244,1.0,0.0062,0.25,0.4984,0.00349,0.2666,0.1874,0.0792,no proven edge
+day,final,DEV,125,1.0,-0.0017,-0.09,0.4922,7e-05,-0.2098,-0.0133,-0.1964,no proven edge
+day,final,VAL,247,1.0,0.0248,1.64,0.5143,-5e-05,-0.1439,0.0816,-0.2254,no proven edge

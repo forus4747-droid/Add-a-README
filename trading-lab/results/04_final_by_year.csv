@@ -1,0 +1,11 @@
+year,role,swing_ic,swing_t,swing_hit,swing_excess_net,day_ic,day_t,day_hit,day_spread_pct,day_excess_net
+2016,TRAIN (used to choose the formula),0.003,0.13,0.4989,-0.0141,0.079,5.37,0.5384,0.088,-0.1198
+2017,TRAIN (used to choose the formula),0.0031,0.17,0.5003,-0.0322,0.0453,3.19,0.5112,0.039,-0.1774
+2018,TRAIN (used to choose the formula),0.0062,0.3,0.5023,-0.0241,0.0108,0.7,0.5044,-0.002,-0.2418
+2019,TRAIN (used to choose the formula),0.0096,0.41,0.5043,-0.0552,0.0438,2.79,0.5164,0.089,-0.1105
+2020,TRAIN (used to choose the formula),0.0435,1.26,0.5159,0.2799,0.0126,0.77,0.5024,0.131,-0.1658
+2021,TRAIN (used to choose the formula),0.0116,0.4,0.5021,0.0121,0.027,1.75,0.5133,0.016,-0.2393
+2022,TRAIN (used to choose the formula),0.0252,0.88,0.5087,0.0566,0.0263,1.54,0.5072,0.026,-0.266
+2023,TRAIN (used to choose the formula),0.0162,0.68,0.504,0.0448,0.0121,0.87,0.509,0.007,-0.2474
+2024,DEV,0.018,0.92,0.5083,-0.0373,0.0101,0.74,0.5058,-0.006,-0.2611
+2025,VAL,0.0062,0.25,0.4984,0.0792,0.0248,1.64,0.5143,-0.005,-0.2254

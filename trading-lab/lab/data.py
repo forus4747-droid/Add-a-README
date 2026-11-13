@@ -21,3 +21,11 @@ def load_daily(stocks_only=False):
     f = f"{DATA}/daily/daily_v2.parquet"  # v2 = stray closing prints repaired (reports/03_17)
     d = pd.read_parquet(f if os.path.exists(f) else f"{DATA}/daily/daily.parquet")
     return d[~d.symbol.isin(ETFS)] if stocks_only else d
+
+def load_5min_long(sym):
+    """5-min bars including the 2016-01 → 2023-07 history fetched in Step 4 (data/5min_hist). Used only by the
+    final day skill; load_5min() is unchanged so the engine tests stay reproducible."""
+    fs = sorted(glob.glob(f"{DATA}/5min_hist/{sym}_5min_*.csv")) + sorted(glob.glob(f"{DATA}/5min/{sym}_5min_*.csv"))
+    df = pd.concat([pd.read_csv(f) for f in fs], ignore_index=True).drop_duplicates("time_utc").sort_values("time_utc").reset_index(drop=True)
+    df["day"] = df.time_new_york.str[:10]; df["hm"] = df.time_new_york.str[11:]
+    return df
