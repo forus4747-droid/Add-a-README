@@ -1,0 +1,53 @@
+{
+ "5min": {
+  "files": 90,
+  "bars": 1411148,
+  "dup": 0,
+  "bad_ohlc": 0,
+  "nan": 0,
+  "zero_vol": 0,
+  "short_days": 211,
+  "last": "2025-12-31",
+  "max_abs_bar_ret": 0.06699029126213585,
+  "worst_file": "WBA_5min_2024.csv"
+ },
+ "daily": {
+  "rows": 1259107,
+  "symbols": 521,
+  "first": "2016-01-04",
+  "last": "2025-12-31",
+  "spy_days": 2514,
+  "symbols_with_full_history": 462,
+  "dup": 0,
+  "nan": 0,
+  "bad_ohlc": 0,
+  "moves_over_50pct": 67,
+  "symbols_missing_days_vs_SPY": 0,
+  "fivemin_vs_daily_return_check": [
+   {
+    "symbol": "MSFT",
+    "days": 607,
+    "median_abs_diff": 0.00021731421911175275,
+    "p99_abs_diff": 0.0030871109678308464
+   },
+   {
+    "symbol": "HON",
+    "days": 607,
+    "median_abs_diff": 0.00018228496532390892,
+    "p99_abs_diff": 0.0056511451850372795
+   },
+   {
+    "symbol": "KO",
+    "days": 607,
+    "median_abs_diff": 0.00025803407524271904,
+    "p99_abs_diff": 0.007458915451913308
+   },
+   {
+    "symbol": "WBA",
+    "days": 520,
+    "median_abs_diff": 0.0007264339771007045,
+    "p99_abs_diff": 0.010338955486255741
+   }
+  ]
+ }
+}
