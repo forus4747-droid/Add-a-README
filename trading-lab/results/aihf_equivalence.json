@@ -1,0 +1,37 @@
+{
+ "hurst_const": 4.686994974318529e-16,
+ "pairs_checked": 300,
+ "seed": 7,
+ "result": {
+  "aihf_trend": {
+   "n": 300,
+   "max_abs_diff": 0.0,
+   "n_diff_gt_1e-9": 0
+  },
+  "aihf_meanrev": {
+   "n": 300,
+   "max_abs_diff": 0.0,
+   "n_diff_gt_1e-9": 0
+  },
+  "aihf_momentum": {
+   "n": 300,
+   "max_abs_diff": 0.0,
+   "n_diff_gt_1e-9": 0
+  },
+  "aihf_volatility": {
+   "n": 300,
+   "max_abs_diff": 0.0,
+   "n_diff_gt_1e-9": 0
+  },
+  "aihf_statarb": {
+   "n": 300,
+   "max_abs_diff": 0.0,
+   "n_diff_gt_1e-9": 0
+  },
+  "aihf_combined": {
+   "n": 300,
+   "max_abs_diff": 0.0,
+   "n_diff_gt_1e-9": 0
+  }
+ }
+}

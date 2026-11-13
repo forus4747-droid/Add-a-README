@@ -1,0 +1,3 @@
+task,skill,split,days,coverage,rank_ic,ic_tstat,hit_rate,top_minus_bottom,top_q_net_ann,equal_weight_ann,excess_net_ann,verdict
+swing,aihf_combined,DEV,246,1.0,0.0082,0.49,0.5054,0.00128,0.1603,0.1764,-0.016,no proven edge
+swing,aihf_combined,VAL,244,1.0,0.0038,0.23,0.5045,0.00223,0.2372,0.1874,0.0498,no proven edge
