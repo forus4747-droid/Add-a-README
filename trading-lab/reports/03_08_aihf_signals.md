@@ -38,3 +38,6 @@ returns come with t-stats of 0.2–0.4: luck-sized, not evidence.
 **No predictive skill found. Do not carry forward as-is.** Reusable pieces: the indicator helpers (EMA, RSI,
 Bollinger, ADX, ATR) are standard and can be checked against TA-Lib in the indicator test. The Hurst function
 must be rewritten before any use.
+
+## Addendum — stat-arb signal scored with the discrete-signal scorer
+`scripts/score_signals.py aihf_statarb swing` → `results/signals_aihf_statarb_swing.csv` (table in that file).

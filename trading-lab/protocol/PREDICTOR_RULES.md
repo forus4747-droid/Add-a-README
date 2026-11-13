@@ -40,3 +40,10 @@ Then run: `PY_CORE scripts/score_skill.py SKILL` — it prints and saves the met
 ## Final message
 Reply with: the metrics table printed by score_skill.py (DEV and VAL), the truncation-test result, the list
 of problems found, and anything a reviewer should double-check.
+
+## Extension (2026-11-13): skills that give discrete buy/sell signals
+If the repo's method outputs buy/sell signals rather than a graded score, write score = +1 (buy), −1 (sell),
+0 (nothing) and score it with `PY_CORE scripts/score_signals.py SKILL swing` (daily signals, file
+`SKILL_swing.parquet`) or `... SKILL bar` (5-min signals, file `results/preds/SKILL_bar.parquet`, columns
+`symbol,time,score`, time = `YYYY-MM-DD HH:MM` New York time of the bar whose close produced the signal).
+All other rules are unchanged.
