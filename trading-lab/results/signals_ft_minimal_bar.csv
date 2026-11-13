@@ -1,0 +1,5 @@
+skill,mode,split,side,signals,signal_days,mean_outcome,mean_excess,tstat,beat_rate,verdict
+ft_minimal,bar,DEV,buy,3710,126,3e-05,9e-05,0.51,0.5054,no proven edge
+ft_minimal,bar,DEV,sell,4085,126,-0.00031,-9e-05,-0.27,0.5155,no proven edge
+ft_minimal,bar,VAL,buy,7770,249,-0.00012,-0.00017,0.15,0.5012,no proven edge
+ft_minimal,bar,VAL,sell,8372,250,0.00023,7e-05,0.61,0.5035,no proven edge

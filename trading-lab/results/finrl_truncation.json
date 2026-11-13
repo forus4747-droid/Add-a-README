@@ -1,0 +1,32 @@
+{
+ "ppo_2025-02-28": {
+  "max_abs_action_diff": 0.0,
+  "max_abs_feature_diff": 0.0,
+  "days_replayed": 291
+ },
+ "ppo_2025-05-02": {
+  "max_abs_action_diff": 0.0,
+  "max_abs_feature_diff": 0.0,
+  "days_replayed": 335
+ },
+ "ppo_2025-12-19": {
+  "max_abs_action_diff": 0.0,
+  "max_abs_feature_diff": 0.0,
+  "days_replayed": 495
+ },
+ "a2c_2025-02-28": {
+  "max_abs_action_diff": 0.0,
+  "max_abs_feature_diff": 0.0,
+  "days_replayed": 291
+ },
+ "a2c_2025-05-02": {
+  "max_abs_action_diff": 0.0,
+  "max_abs_feature_diff": 0.0,
+  "days_replayed": 335
+ },
+ "a2c_2025-12-19": {
+  "max_abs_action_diff": 0.0,
+  "max_abs_feature_diff": 0.0,
+  "days_replayed": 495
+ }
+}

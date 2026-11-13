@@ -1,0 +1,32 @@
+[
+ {
+  "symbol": "USB",
+  "date": "2025-08-04",
+  "full_score": 0.007403424304496762,
+  "trunc_score": 0.007403424304496762,
+  "score_diff": 0.0,
+  "max_feat_absdiff": 0.0,
+  "n_feat": 158,
+  "features_equal": true
+ },
+ {
+  "symbol": "MTCH",
+  "date": "2025-02-04",
+  "full_score": -0.011555418505038854,
+  "trunc_score": -0.011555418505038854,
+  "score_diff": 0.0,
+  "max_feat_absdiff": 0.0,
+  "n_feat": 158,
+  "features_equal": true
+ },
+ {
+  "symbol": "XEL",
+  "date": "2025-09-05",
+  "full_score": -0.008756555539389716,
+  "trunc_score": -0.008756555539389716,
+  "score_diff": 0.0,
+  "max_feat_absdiff": 0.0,
+  "n_feat": 158,
+  "features_equal": true
+ }
+]

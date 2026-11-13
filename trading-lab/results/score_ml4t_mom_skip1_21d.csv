@@ -1,0 +1,3 @@
+task,skill,split,days,coverage,rank_ic,ic_tstat,hit_rate,top_minus_bottom,top_q_net_ann,equal_weight_ann,excess_net_ann,verdict
+swing,ml4t_mom_skip1_21d,DEV,246,1.0,-0.0015,-0.07,0.502,0.00139,0.1893,0.1764,0.013,no proven edge
+swing,ml4t_mom_skip1_21d,VAL,244,1.0,-0.0154,-0.59,0.4972,-0.00023,0.1855,0.1874,-0.0019,no proven edge

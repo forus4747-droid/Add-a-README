@@ -1,0 +1,19 @@
+{
+ "best_iteration": 1,
+ "train_rows": 702384,
+ "valid_rows": 122201,
+ "gain_importance": {
+  "mom_skip1_21d": 1.0,
+  "mom_12_1": 3.0,
+  "volscaled_mom21": 1.0,
+  "reversal_1d": 0.0,
+  "reversal_5d": 0.0,
+  "ma_dist_atr21": 1.0,
+  "slope21": 1.0,
+  "vwap_dist5": 0.0,
+  "vol_parkinson21": 4.0,
+  "vol_ratio_10_63": 2.0,
+  "rel_volume21": 0.0,
+  "amihud21": 3.0
+ }
+}

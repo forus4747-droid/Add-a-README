@@ -1,0 +1,28 @@
+{
+ "2024_DEV": {
+  "ppo_account": 0.0019,
+  "a2c_account": -0.0011,
+  "equal_weight_buy_hold": 0.1418,
+  "first": "2024-01-02",
+  "last": "2024-12-31"
+ },
+ "2025_VAL": {
+  "ppo_account": 0.0539,
+  "a2c_account": -0.0012,
+  "equal_weight_buy_hold": 0.1656,
+  "first": "2025-01-02",
+  "last": "2025-12-31"
+ },
+ "meta": {
+  "dropped": [
+   "WBA"
+  ],
+  "n_tics": 29,
+  "steps": 50000,
+  "seed": 42,
+  "cost": 0.001,
+  "hmax": 100,
+  "turb_threshold": 70,
+  "turbulence_days_ge_thr_trade": 62
+ }
+}
