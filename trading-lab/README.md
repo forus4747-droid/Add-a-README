@@ -19,6 +19,6 @@ Data is not stored here (too large); `scripts/fetch_data.py`, `scripts/fetch_dai
 `scripts/repair_daily.py` rebuild it from Alpaca, and `reports/01_data_manifest.csv` holds file hashes.
 Environment: `scripts/setup-trading-stack.sh`.
 
-**Honest headline:** the engines can be made exact; none of the public prediction recipes showed an edge
+**Honest headline:** the engines can be made exact; none of the public prediction recipes showed an edge on unseen data; the final skill ranked in the right direction in 11 of 11 years but is far too small to trade, and did not pass the sealed 2026 test (`reports/05_sealed_test.md`).
 on unseen data; the final skill is consistent in direction but too small to be called a proven edge.
 Nothing here is financial advice.

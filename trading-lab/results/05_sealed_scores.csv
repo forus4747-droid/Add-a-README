@@ -1,0 +1,7 @@
+task,skill,days,coverage,rank_ic,ic_tstat,hit_rate,top_minus_bottom,top_q_net_ann,equal_weight_ann,excess_net_ann,verdict
+swing,FINAL SKILL,212,1.0,0.0057,0.2,0.5029,0.00019,0.1126,0.1545,-0.0419,no proven edge
+swing,random,212,1.0,-0.0018,-0.25,0.4993,-0.00025,0.1029,0.1545,-0.0516,no proven edge
+swing,momentum 12-1,212,1.0,0.018,0.58,0.5069,0.00239,0.1674,0.1545,0.0129,no proven edge
+day,FINAL SKILL,218,1.0,0.0116,0.66,0.5049,0.00021,-0.078,0.0406,-0.1185,no proven edge
+day,random,218,1.0,-0.0015,-0.12,0.4998,-2e-05,-0.2444,0.0406,-0.2849,no proven edge
+day,follow first 30 min,218,1.0,-0.0116,-0.66,0.4983,-0.00021,-0.131,0.0406,-0.1716,no proven edge
