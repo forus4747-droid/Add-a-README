@@ -5,3 +5,6 @@ __pycache__/
 market-monitor/data/raw/
 market-monitor/state/cache/
 market-monitor/out/
+
+# personal reports: never commit (repo is public)
+market-monitor/private/
