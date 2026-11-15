@@ -1,6 +1,6 @@
-# Market monitor report (as of 2026-11-12)
+# Market monitor report (as of 2026-11-13)
 
-Generated 2026-11-13T18:53:09+00:00 UTC. S&P 500 last close 7592.40. This is a statistical history check, not investment advice; every probability below is a historical frequency adjusted by simple models, and the models have only weak out-of-sample skill (see the skill columns).
+Generated 2026-11-15T01:51:55+00:00 UTC. S&P 500 last close 7561.67. This is a statistical history check, not investment advice; every probability below is a historical frequency adjusted by simple models, and the models have only weak out-of-sample skill (see the skill columns).
 
 ## Data status
 
@@ -12,18 +12,18 @@ The latest feature row is a partial month (2026-11) using the last close.
 
 | Measure | Value | Percentile of own history |
 |---|---|---|
-| cape | 40.0 | 98% |
-| cape_pct | 98.1% | 92% |
+| cape | 39.8 | 98% |
+| cape_pct | 97.9% | 92% |
 | infl_yoy | 4.03% | 71% |
 | infl_chg_12m | 1.01 pt | 65% |
-| rate10 | 5.10% | 77% |
-| rate10_chg_12m | 1.09 pt | 94% |
+| rate10 | 5.15% | 77% |
+| rate10_chg_12m | 1.14 pt | 95% |
 | ecy | 0.8% | 13% |
-| mom_12m | 10.8% | 57% |
-| trend_10m | 3.0% | 50% |
-| dd_now | -2.9% | 77% |
+| mom_12m | 12.2% | 61% |
+| trend_10m | 2.6% | 48% |
+| dd_now | -3.3% | 76% |
 | rv_3m | 14.6% | 61% |
-| curve | 0.98 pt | 32% |
+| curve | 1.03 pt | 33% |
 | bill_chg_12m | 0.43 pt | 70% |
 | credit_spread | 0.47 pt | 4% |
 | credit_spread_chg_12m | -0.13 pt | 36% |
@@ -35,13 +35,13 @@ The latest feature row is a partial month (2026-11) using the last close.
 
 | Question | Base | Analog | Logit | Final | w live | Skill 1950-99 | Skill 2000-now (holdout) |
 |---|---|---|---|---|---|---|---|
-| S&P 500 closes lower 21 trading days (about 1 month) from now | 39.6% | 30.0% | 42.6% | 37.9% | 0.50 | 0.003 | 0.003 |
-| S&P 500 closes at least 5% below today's close at some point in the next 21 trading days | 18.2% | 6.7% | 19.8% | 13.2% | 1.00 | 0.096 | 0.053 |
-| S&P 500 closes lower 63 trading days (about 3 months) from now | 35.8% | 26.7% | 38.0% | 34.1% | 0.50 | 0.019 | 0.002 |
-| S&P 500 closes at least 10% below today's close at some point in the next 63 trading days | 14.9% | 10.0% | 18.2% | 14.1% | 1.00 | 0.171 | 0.031 |
-| S&P 500 closes lower 252 trading days (about 12 months) from now | 30.4% | 20.0% | 36.4% | 30.4% | 0.00 | 0.010 | -0.025 |
-| S&P 500 closes at least 10% below today's close at some point in the next 252 trading days | 36.7% | 31.7% | 45.2% | 37.6% | 0.50 | 0.059 | -0.056 |
-| S&P 500 closes at least 20% below today's close at some point in the next 252 trading days | 17.2% | 3.3% | 21.4% | 14.8% | 0.50 | 0.088 | -0.051 |
+| S&P 500 closes lower 21 trading days (about 1 month) from now | 39.6% | 31.7% | 42.8% | 38.4% | 0.50 | 0.003 | 0.003 |
+| S&P 500 closes at least 5% below today's close at some point in the next 21 trading days | 18.2% | 6.7% | 20.0% | 13.3% | 1.00 | 0.096 | 0.053 |
+| S&P 500 closes lower 63 trading days (about 3 months) from now | 35.8% | 26.7% | 38.5% | 34.2% | 0.50 | 0.019 | 0.002 |
+| S&P 500 closes at least 10% below today's close at some point in the next 63 trading days | 14.9% | 10.0% | 18.4% | 14.2% | 1.00 | 0.171 | 0.031 |
+| S&P 500 closes lower 252 trading days (about 12 months) from now | 30.4% | 16.7% | 37.6% | 30.4% | 0.00 | 0.010 | -0.025 |
+| S&P 500 closes at least 10% below today's close at some point in the next 252 trading days | 36.7% | 30.0% | 45.9% | 37.3% | 0.50 | 0.059 | -0.056 |
+| S&P 500 closes at least 20% below today's close at some point in the next 252 trading days | 17.2% | 3.3% | 21.5% | 14.8% | 0.50 | 0.088 | -0.051 |
 
 ## Closest historical analogs
 
@@ -49,33 +49,32 @@ Months whose valuation, inflation, rates, momentum, trend, volatility and drawdo
 
 | Period | Months | Avg distance | Avg next-12m return | Worst drawdown in next 12m |
 |---|---|---|---|---|
-| 1968-04 to 1968-06 | 3 | 0.59 | -1.9% | -10.1% |
-| 2018-05 to 2018-07 | 3 | 0.74 | 5.2% | -16.5% |
-| 2006-06 to 2006-08 | 2 | 0.76 | 17.1% | -2.8% |
-| 1996-08 to 1996-09 | 2 | 0.77 | 38.3% | -0.4% |
-| 1999-11 to 2000-02 | 2 | 0.77 | -6.5% | -9.3% |
-| 2013-08 to 2013-08 | 1 | 0.77 | 22.6% | 0.0% |
-| 1997-03 to 1997-03 | 1 | 0.78 | 44.4% | -2.6% |
-| 2018-11 to 2018-11 | 1 | 0.87 | 12.1% | -14.8% |
+| 1968-04 to 1968-05 | 2 | 0.52 | 0.2% | -3.3% |
+| 1999-11 to 2000-02 | 2 | 0.74 | -6.5% | -9.3% |
+| 2013-08 to 2013-08 | 1 | 0.75 | 22.6% | 0.0% |
+| 1996-08 to 1996-09 | 2 | 0.78 | 38.3% | -0.4% |
+| 1997-03 to 1997-03 | 1 | 0.80 | 44.4% | -2.6% |
+| 2018-05 to 2018-10 | 4 | 0.81 | 7.2% | -16.5% |
+| 2006-04 to 2006-08 | 3 | 0.81 | 15.9% | -6.6% |
 
 ## Ten-year outlook from valuation
 
-CAPE 40.0 implies an annualised real return of about 0.6% per year over ten years, with a one-standard-deviation band of -3.8% to 5.0% (regression R-squared 0.26, in-sample, 1623 overlapping months).
+CAPE 39.8 implies an annualised real return of about 0.6% per year over ten years, with a one-standard-deviation band of -3.8% to 5.0% (regression R-squared 0.26, in-sample, 1623 overlapping months).
 
 ## Signals board (5 vulnerability and 0 trigger rules ON)
 
 | Rule | Type | State | Current value | Months ON | P(20% drop within 12m) when ON | when OFF | History starts |
 |---|---|---|---|---|---|---|---|
-| valuation | vulnerability | ON | 0.981 | 494 | 21.5% | 14.8% | 1881-04 |
-| tightening | vulnerability | ON | 0.431 | 494 | 11.2% | 21.3% | 1882-01 |
+| valuation | vulnerability | ON | 0.979 | 494 | 21.5% | 14.8% | 1881-04 |
+| tightening | vulnerability | ON | 0.425 | 494 | 11.2% | 21.3% | 1882-01 |
 | inflation_reaccelerating | vulnerability | ON | 4.035 | 448 | 26.5% | 14.1% | 1883-02 |
-| oil_shock | vulnerability | ON | 0.528 | 47 | 16.7% | 9.0% | 2008-07 |
-| leader_crack | vulnerability | ON | -0.305 | 0 | n/a | n/a | current only |
-| narrow_market | vulnerability | OFF | 0.059 | 47 | 7.1% | 13.4% | 2004-05 |
-| trend_break | trigger | OFF | 0.030 | 627 | 28.0% | 12.0% | 1881-10 |
-| credit_stress | trigger | OFF | -0.022 | 24 | 16.7% | 11.7% | 2008-03 |
-| volatility_regime | trigger | OFF | 18.700 | 33 | 21.2% | 13.1% | 1990-01 |
-| curve_inverted | trigger | OFF | 0.975 | 100 | 26.0% | 12.6% | 1934-01 |
+| oil_shock | vulnerability | ON | 0.521 | 47 | 16.7% | 9.0% | 2008-07 |
+| leader_crack | vulnerability | ON | -0.319 | 0 | n/a | n/a | current only |
+| narrow_market | vulnerability | OFF | 0.060 | 47 | 7.1% | 13.4% | 2004-05 |
+| trend_break | trigger | OFF | 0.026 | 627 | 28.0% | 12.0% | 1881-10 |
+| credit_stress | trigger | OFF | -0.023 | 24 | 16.7% | 11.7% | 2008-03 |
+| volatility_regime | trigger | OFF | 19.300 | 33 | 21.2% | 13.1% | 1990-01 |
+| curve_inverted | trigger | OFF | 1.032 | 100 | 26.0% | 12.6% | 1934-01 |
 
 ## Past drawdowns of 19.9% or more (daily closes)
 
@@ -125,29 +124,29 @@ CAPE 40.0 implies an annualised real return of about 0.6% per year over ten year
 
 ## Live scorecard
 
-7 predictions issued, 0 resolved, 7 pending. Nothing has resolved yet, so there is no live skill estimate.
+14 predictions issued, 0 resolved, 14 pending. Nothing has resolved yet, so there is no live skill estimate.
 
-Ledger check: ok: 7 predictions, 0 resolutions.
+Ledger check: ok: 14 predictions, 0 resolutions.
 
 ## Market snapshot
 
 | Symbol | Last close | Date | Year to date | From 52-week high (closes) |
 |---|---|---|---|---|
-| ^GSPC | 7592.40 | 2026-11-12 | 10.9% | -2.9% |
-| ^IXIC | 25366.09 | 2026-11-12 | 9.1% | -8.1% |
-| NVDA | 166.19 | 2026-11-12 | -10.9% | -30.5% |
-| GOOG | 295.35 | 2026-11-12 | -5.9% | -26.0% |
-| XEQT.TO | 45.58 | 2026-11-12 | 14.3% | -1.7% |
-| ^GSPTSE | 36137.20 | 2026-11-12 | 14.0% | -2.2% |
-| CAD=X | 1.42 | 2026-11-12 | 4.0% | -0.2% |
-| ^TNX | 5.10 | 2026-11-12 | 22.6% | -3.9% |
-| ^IRX | 4.13 | 2026-11-12 | 16.4% | 0.0% |
-| ^VIX | 18.70 | 2026-11-12 | 25.1% | -39.8% |
-| HYG | 76.98 | 2026-11-12 | -4.5% | -5.2% |
-| BZ=F | 95.82 | 2026-11-12 | 57.5% | -19.0% |
-| GC=F | 3885.30 | 2026-11-12 | -10.5% | -26.9% |
-| DX-Y.NYB | 103.17 | 2026-11-12 | 5.0% | 0.0% |
-| BTC-USD | 71342.97 | 2026-11-12 | -18.5% | -28.4% |
+| ^GSPC | 7561.67 | 2026-11-13 | 10.5% | -3.3% |
+| ^IXIC | 25136.27 | 2026-11-13 | 8.2% | -8.9% |
+| NVDA | 162.85 | 2026-11-13 | -12.7% | -31.9% |
+| GOOG | 292.52 | 2026-11-13 | -6.8% | -26.7% |
+| XEQT.TO | 45.52 | 2026-11-13 | 14.1% | -1.8% |
+| ^GSPTSE | 36105.90 | 2026-11-13 | 13.9% | -2.3% |
+| CAD=X | 1.43 | 2026-11-14 | 4.2% | -0.1% |
+| ^TNX | 5.15 | 2026-11-13 | 23.8% | -3.0% |
+| ^IRX | 4.12 | 2026-11-13 | 16.2% | -0.1% |
+| ^VIX | 19.30 | 2026-11-13 | 29.1% | -37.8% |
+| HYG | 76.94 | 2026-11-13 | -4.6% | -5.2% |
+| BZ=F | 95.84 | 2026-11-13 | 57.5% | -19.0% |
+| GC=F | 3886.30 | 2026-11-13 | -10.5% | -26.9% |
+| DX-Y.NYB | 103.41 | 2026-11-13 | 5.2% | 0.0% |
+| BTC-USD | 68249.27 | 2026-11-13 | -22.0% | -29.6% |
 
 ## Accepted news (last 10 days)
 

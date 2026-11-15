@@ -1,234 +1,171 @@
 {
- "asof": "2026-11-12",
- "generated_at_utc": "2026-11-13T18:53:09+00:00",
+ "asof": "2026-11-13",
+ "generated_at_utc": "2026-11-15T01:51:55+00:00",
  "model_version": "mm-1.0",
- "sp500_last_close": 7592.39990234375,
- "sp500_data_age_days": 1,
+ "sp500_last_close": 7561.669921875,
+ "sp500_data_age_days": 2,
  "manifest": {
   "sources": {
-   "fred:AAA": {
-    "status": "ok",
-    "last_date": "2026-10-01",
-    "rows": 1294,
-    "first_date": "1919-01-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "345794b3ff28cb2d1f2bfa2e47fd9885878deba803354863cc237a5073d3b795",
-    "error": null
-   },
-   "fred:BAA": {
-    "status": "ok",
-    "last_date": "2026-10-01",
-    "rows": 1294,
-    "first_date": "1919-01-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "ac60e01f0138b6cbe180aa338e706111d3322e15e7dfdc491e323935eefb900f",
-    "error": null
-   },
-   "fred:BAMLH0A0HYM2": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 785,
-    "first_date": "2023-11-14",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "a06321ff956b78daa10d33b6775ef3d3c5dfd5ab7617c60327b0ead8a7363ec3",
-    "error": null
-   },
-   "fred:CPIAUCSL": {
-    "status": "ok",
-    "last_date": "2026-10-01",
-    "rows": 957,
-    "first_date": "1947-01-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "6f68121fc37f7a6fbadd711529f36e629d67350bfeb133c682ce825623be8715",
-    "error": null
-   },
-   "fred:GS10": {
-    "status": "ok",
-    "last_date": "2026-10-01",
-    "rows": 883,
-    "first_date": "1953-04-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "c2511a82eb648a0f973e1815993e6f691a61fe6e356ec51fcad62fd435718319",
-    "error": null
-   },
-   "fred:TB3MS": {
-    "status": "ok",
-    "last_date": "2026-10-01",
-    "rows": 1114,
-    "first_date": "1934-01-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "f23844bda0a2df7cff6aeea935390702c785ad39a7df6b230c908ba8cf4efcc4",
-    "error": null
-   },
-   "fred:UNRATE": {
-    "status": "ok",
-    "last_date": "2026-10-01",
-    "rows": 945,
-    "first_date": "1948-01-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "c84ca5be1434a7c3f0be80cc2335be8baaeda010d4647650ba72a05cdb1d5c2d",
-    "error": null
-   },
    "shiller": {
     "status": "ok",
     "last_date": "2026-09-01",
     "rows": 1869,
     "first_date": "1871-01-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
     "sha256": "66215c2017b7ac0cdd62e89211a93494ae43d47c4595d8b9de957a17b71d14b9",
-    "error": null
-   },
-   "yahoo:BTC-USD": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 4440,
-    "first_date": "2014-09-17",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "b7cae554cb6c6e338a550486fe32630fe2f3470ec99084b877eb8583b05e3b72",
-    "error": null
-   },
-   "yahoo:BZ=F": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 4802,
-    "first_date": "2007-07-29",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "d782f33359b2630d0c7521d7f1698c51f4e47907653ff80eacab6c468472c85f",
-    "error": null
-   },
-   "yahoo:CAD=X": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 6023,
-    "first_date": "2003-09-16",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "e96f017e4cd330478d53c531e7c9a23041811d35fd6526b7371280d55865464d",
-    "error": null
-   },
-   "yahoo:DX-Y.NYB": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 14185,
-    "first_date": "1971-01-04",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "71a90a18bc533a669067ebd41a12fca1c26802c0555c8a4a69e3c83327f48788",
-    "error": null
-   },
-   "yahoo:GC=F": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 6576,
-    "first_date": "2000-08-29",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "d43155f359551b79096107b9498208873ad0e799678990bd70e592f5c856881f",
-    "error": null
-   },
-   "yahoo:GOOG": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 5595,
-    "first_date": "2004-08-19",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "6d426a994c08c7d268595a5c46acdf9e0e88d928eb20522ff03fd5b644d7ab7b",
-    "error": null
-   },
-   "yahoo:HYG": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 4931,
-    "first_date": "2007-04-11",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "d985af53f05abe9b05b53d545e1a13304210219a86769a9d7eca7bdff5a7c9d3",
-    "error": null
-   },
-   "yahoo:NVDA": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 6996,
-    "first_date": "1999-01-22",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "119e1c34e32e306e7ccad4bc9262b58832b9373c390906fbcbae400ab297e30d",
-    "error": null
-   },
-   "yahoo:RSP": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 5923,
-    "first_date": "2003-05-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "8718a9c721c7294d43a24b712aa60ab156153914f7c90b4842763fd4e56cdd2c",
-    "error": null
-   },
-   "yahoo:SPY": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 8506,
-    "first_date": "1993-01-29",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "1431ecfd6311c3a4961cc0724cf84854031b8c9a3bae0b6b69acdb781794257d",
-    "error": null
-   },
-   "yahoo:XEQT.TO": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 1820,
-    "first_date": "2019-08-14",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "90ed320b79f0a5d1a512e3cb97f17d878d3e3cb48ece99875be216250a6524d8",
     "error": null
    },
    "yahoo:^GSPC": {
     "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 24835,
+    "last_date": "2026-11-13",
+    "rows": 24836,
     "first_date": "1927-12-30",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "c32842021248b38f2b73918f55bd1ce681dba18e25b95d0db2229b71e4c4b9ab",
-    "error": null
-   },
-   "yahoo:^GSPTSE": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 11895,
-    "first_date": "1979-06-29",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "13d37e02cb43d938eda5f949be97d265fcc2dec4c948f55c5587d51e9e5d32d2",
-    "error": null
-   },
-   "yahoo:^IRX": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 16702,
-    "first_date": "1960-01-04",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "1765905b27b1e12425271e9881f697074232c24494b49d45e8f65ddea9b5b3c9",
-    "error": null
-   },
-   "yahoo:^IXIC": {
-    "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 14061,
-    "first_date": "1971-02-05",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "11eba46c2fb9005bde4c98c4e6d11e31308856d77e8cf331a421d34ffa3d19e9",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "ce7ea0f1e7ec38e63ddd8e58396a5e37b1b165586cff382108e2a3940d53344e",
     "error": null
    },
    "yahoo:^TNX": {
     "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 16205,
+    "last_date": "2026-11-13",
+    "rows": 16206,
     "first_date": "1962-01-02",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "482f722dfcb19481b9089faca12c93bd30491299b0f7be8126798dd592aa6c5b",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "16237d1b6eb47ed62c19d18a4e2bf2f4547d4de4f56e95c668b412543307f5a5",
+    "error": null
+   },
+   "yahoo:^IRX": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 16703,
+    "first_date": "1960-01-04",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "4c7a96b071eddba500ed7f6339e05e5d7007c53dd41e45d0cecf8c6c305429ff",
     "error": null
    },
    "yahoo:^VIX": {
     "status": "ok",
-    "last_date": "2026-11-12",
-    "rows": 9287,
+    "last_date": "2026-11-13",
+    "rows": 9288,
     "first_date": "1990-01-02",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
-    "sha256": "28c4311df8da94c2926f9ece721d0056ee805c836e80f196658d95e4c5fb4925",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "73aa0f0df4ef8a136a2e8a0d8c92d2143eb692edc85515697b600194f0eddf60",
+    "error": null
+   },
+   "yahoo:^GSPTSE": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 11896,
+    "first_date": "1979-06-29",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "98246eaa815705bb3242d1cb9880887a91959553c25ba7151a1d854c85c78406",
+    "error": null
+   },
+   "yahoo:XEQT.TO": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 1821,
+    "first_date": "2019-08-14",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "8217931e6042f9e92c3037d1b70f99e99c68b7ae470de6a4232f92a3936824df",
+    "error": null
+   },
+   "yahoo:CAD=X": {
+    "status": "ok",
+    "last_date": "2026-11-14",
+    "rows": 6025,
+    "first_date": "2003-09-16",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "deb515a41099e5a22f95b8c142933d2867ef5e06389d5a85c6c351d99694f0a2",
+    "error": null
+   },
+   "yahoo:NVDA": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 6997,
+    "first_date": "1999-01-22",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "dea12c93eef269d70ae75f64d641897096a82e22ae11d476e909899a4d0ed216",
+    "error": null
+   },
+   "yahoo:GOOG": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 5596,
+    "first_date": "2004-08-19",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "4a689179ba08c4bc36d924cca4caf24e826032d0abb7164d6706552f83d4e476",
+    "error": null
+   },
+   "yahoo:HYG": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 4932,
+    "first_date": "2007-04-11",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "9fa03ee2c5ccc77cb06073c20bcbc5b0bfa9710572ecaa36025ae3e12fd838bd",
+    "error": null
+   },
+   "yahoo:RSP": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 5924,
+    "first_date": "2003-05-01",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "76099d723dcaf503d302d03ed1b261b8d47780e4502cc4f95dbc85b934e717fa",
+    "error": null
+   },
+   "yahoo:SPY": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 8507,
+    "first_date": "1993-01-29",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "be482573d67e576b83e77b62134829dc19c8549443fc793ca25e40aea08fa3ae",
+    "error": null
+   },
+   "yahoo:BZ=F": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 4803,
+    "first_date": "2007-07-29",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "92678291c001ffc8634a18e00961fe1ae5d1070a8646f5c7d69f647d03e02d34",
+    "error": null
+   },
+   "yahoo:GC=F": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 6577,
+    "first_date": "2000-08-29",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "39ddff465a885d607b54ce6fbcb82e4f8e0f1c8267361218eb3fd7370fe30b9d",
+    "error": null
+   },
+   "yahoo:DX-Y.NYB": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 14186,
+    "first_date": "1971-01-04",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "bf79b81869b0ccd4c08b0b59b17d6e546cf059af820eeca278face4aed36db76",
+    "error": null
+   },
+   "yahoo:^IXIC": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 14062,
+    "first_date": "1971-02-05",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "f24e3bb6f759538d2ad75c667a8712901db3d132067113421f33ac50672a3cb5",
+    "error": null
+   },
+   "yahoo:BTC-USD": {
+    "status": "ok",
+    "last_date": "2026-11-13",
+    "rows": 4441,
+    "first_date": "2014-09-17",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "c399ecad2196db597bfeaadfdb3a5672836dddad1d53f16dd82b1fa83c7bf933",
     "error": null
    },
    "shiller_official": {
@@ -236,8 +173,71 @@
     "last_date": "2026-10-01",
     "rows": 1870,
     "first_date": "1871-01-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
     "sha256": "f455403d1ac5fe1792e8cd3251ad80003f9ea926b966c5aae7158e4115c36f80",
+    "error": null
+   },
+   "fred:CPIAUCSL": {
+    "status": "ok",
+    "last_date": "2026-10-01",
+    "rows": 957,
+    "first_date": "1947-01-01",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "6f68121fc37f7a6fbadd711529f36e629d67350bfeb133c682ce825623be8715",
+    "error": null
+   },
+   "fred:UNRATE": {
+    "status": "ok",
+    "last_date": "2026-10-01",
+    "rows": 945,
+    "first_date": "1948-01-01",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "c84ca5be1434a7c3f0be80cc2335be8baaeda010d4647650ba72a05cdb1d5c2d",
+    "error": null
+   },
+   "fred:TB3MS": {
+    "status": "ok",
+    "last_date": "2026-10-01",
+    "rows": 1114,
+    "first_date": "1934-01-01",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "f23844bda0a2df7cff6aeea935390702c785ad39a7df6b230c908ba8cf4efcc4",
+    "error": null
+   },
+   "fred:GS10": {
+    "status": "ok",
+    "last_date": "2026-10-01",
+    "rows": 883,
+    "first_date": "1953-04-01",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "c2511a82eb648a0f973e1815993e6f691a61fe6e356ec51fcad62fd435718319",
+    "error": null
+   },
+   "fred:BAA": {
+    "status": "ok",
+    "last_date": "2026-10-01",
+    "rows": 1294,
+    "first_date": "1919-01-01",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "ac60e01f0138b6cbe180aa338e706111d3322e15e7dfdc491e323935eefb900f",
+    "error": null
+   },
+   "fred:AAA": {
+    "status": "ok",
+    "last_date": "2026-10-01",
+    "rows": 1294,
+    "first_date": "1919-01-01",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "345794b3ff28cb2d1f2bfa2e47fd9885878deba803354863cc237a5073d3b795",
+    "error": null
+   },
+   "fred:BAMLH0A0HYM2": {
+    "status": "ok",
+    "last_date": "2026-11-12",
+    "rows": 785,
+    "first_date": "2023-11-14",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
+    "sha256": "a06321ff956b78daa10d33b6775ef3d3c5dfd5ab7617c60327b0ead8a7363ec3",
     "error": null
    },
    "fred:WTISPLC": {
@@ -245,7 +245,7 @@
     "last_date": "2026-10-01",
     "rows": 970,
     "first_date": "1946-01-01",
-    "retrieved_at": "2026-11-13T18:52:32+00:00",
+    "retrieved_at": "2026-11-15T01:51:41+00:00",
     "sha256": "fcb78d6cae218867c82024db7ea446ea1fa7acacbe87213b4082055e103ab05f",
     "error": null
    },
@@ -281,37 +281,37 @@
   "feature_row_month": "2026-11"
  },
  "features_today": {
-  "cape": 39.95529494331414,
-  "cape_pct": 0.9805491990846682,
+  "cape": 39.793577245481586,
+  "cape_pct": 0.9788329519450801,
   "infl_yoy": 4.034752523275009,
   "infl_chg_12m": 1.0100173618374564,
-  "rate10": 5.103000164031982,
-  "rate10_chg_12m": 1.0859999656677246,
-  "ecy": 0.008191043214397602,
-  "mom_12m": 0.10823071776115833,
-  "trend_10m": 0.030236490395838533,
-  "dd_now": -0.02897202920920905,
-  "rv_3m": 0.1460040350401091,
-  "curve": 0.9750003814697266,
-  "bill_chg_12m": 0.430999755859375,
+  "rate10": 5.15399980545044,
+  "rate10_chg_12m": 1.1369996070861825,
+  "ecy": 0.007782758339634838,
+  "mom_12m": 0.122327403651733,
+  "trend_10m": 0.026494675819892954,
+  "dd_now": -0.032902231906751234,
+  "rv_3m": 0.14586305445264108,
+  "curve": 1.0319995880126962,
+  "bill_chg_12m": 0.4250001907348633,
   "credit_spread": 0.46999999999999975,
   "credit_spread_chg_12m": -0.13000000000000078,
   "unemp_gap": 0.0
  },
  "feature_percentile_ranks": {
-  "cape": 0.9805491990846682,
-  "cape_pct": 0.9227688787185355,
+  "cape": 0.9788329519450801,
+  "cape_pct": 0.9176201372997712,
   "infl_yoy": 0.7088607594936709,
   "infl_chg_12m": 0.6460023174971031,
-  "rate10": 0.7675613934894346,
-  "rate10_chg_12m": 0.9401955146635997,
-  "ecy": 0.13312883435582823,
-  "mom_12m": 0.5704427832087406,
-  "trend_10m": 0.5045924225028703,
-  "dd_now": 0.7744146202170189,
-  "rv_3m": 0.6106418918918919,
-  "curve": 0.3183856502242152,
-  "bill_chg_12m": 0.6962828649138713,
+  "rate10": 0.7698458023986293,
+  "rate10_chg_12m": 0.9453709028177113,
+  "ecy": 0.13006134969325153,
+  "mom_12m": 0.6095457159286947,
+  "trend_10m": 0.48163030998851897,
+  "dd_now": 0.7561393489434609,
+  "rv_3m": 0.6097972972972973,
+  "curve": 0.3291479820627803,
+  "bill_chg_12m": 0.6953762466001813,
   "credit_spread": 0.03783783783783784,
   "credit_spread_chg_12m": 0.35853468433359315,
   "unemp_gap": 0.38247863247863245
@@ -322,10 +322,10 @@
    "horizon_trading_days": 21,
    "probabilities": {
     "base": 0.39593908629441626,
-    "analog": 0.3,
-    "logit": 0.4260207612314591,
-    "model": 0.36301038061572954,
-    "final": 0.3794747334550729,
+    "analog": 0.31666666666666665,
+    "logit": 0.42832665342126625,
+    "model": 0.3724966600439664,
+    "final": 0.3842178731691913,
     "w": 0.5
    },
    "skipped_reason": null,
@@ -507,9 +507,9 @@
    "probabilities": {
     "base": 0.18189509306260576,
     "analog": 0.06666666666666667,
-    "logit": 0.19798974696596883,
-    "model": 0.13232820681631774,
-    "final": 0.13232820681631774,
+    "logit": 0.2002981739861069,
+    "model": 0.13348242032638677,
+    "final": 0.13348242032638677,
     "w": 1.0
    },
    "skipped_reason": null,
@@ -691,9 +691,9 @@
    "probabilities": {
     "base": 0.3576271186440678,
     "analog": 0.26666666666666666,
-    "logit": 0.38031313158921887,
-    "model": 0.3234898991279428,
-    "final": 0.3405585088860053,
+    "logit": 0.3851549919752663,
+    "model": 0.3259108293209665,
+    "final": 0.34176897398251715,
     "w": 0.5
    },
    "skipped_reason": null,
@@ -875,9 +875,9 @@
    "probabilities": {
     "base": 0.14915254237288136,
     "analog": 0.1,
-    "logit": 0.1820806925987427,
-    "model": 0.14104034629937134,
-    "final": 0.14104034629937134,
+    "logit": 0.18414115448439547,
+    "model": 0.14207057724219774,
+    "final": 0.14207057724219774,
     "w": 1.0
    },
    "skipped_reason": null,
@@ -1058,9 +1058,9 @@
    "horizon_trading_days": 252,
    "probabilities": {
     "base": 0.3040136635354398,
-    "analog": 0.2,
-    "logit": 0.3641470006409212,
-    "model": 0.28207350032046064,
+    "analog": 0.16666666666666666,
+    "logit": 0.3756906461922709,
+    "model": 0.27117865642946876,
     "final": 0.3040136635354398,
     "w": 0.0
    },
@@ -1242,10 +1242,10 @@
    "horizon_trading_days": 252,
    "probabilities": {
     "base": 0.3672075149444919,
-    "analog": 0.31666666666666665,
-    "logit": 0.4522013139123035,
-    "model": 0.3844339902894851,
-    "final": 0.3758207526169885,
+    "analog": 0.3,
+    "logit": 0.4592221014093941,
+    "model": 0.37961105070469703,
+    "final": 0.37340928282459446,
     "w": 0.5
    },
    "skipped_reason": null,
@@ -1427,9 +1427,9 @@
    "probabilities": {
     "base": 0.17164816396242527,
     "analog": 0.03333333333333333,
-    "logit": 0.21438834170652546,
-    "model": 0.12386083751992939,
-    "final": 0.14775450074117732,
+    "logit": 0.2150382660291042,
+    "model": 0.12418579968121876,
+    "final": 0.147916981821822,
     "w": 0.5
    },
    "skipped_reason": null,
@@ -1609,111 +1609,25 @@
  "analogs": [
   {
    "first": "1968-04",
-   "last": "1968-06",
-   "n_months": 3,
-   "mean_distance": 0.5900778032073927,
-   "mean_next_12m_return": -0.01900899161120584,
-   "worst_drawdown_12m": -0.10142597196630432,
+   "last": "1968-05",
+   "n_months": 2,
+   "mean_distance": 0.5152762610025812,
+   "mean_next_12m_return": 0.0024666193089030175,
+   "worst_drawdown_12m": -0.03344145765659001,
    "months": [
     {
      "month": "1968-04",
      "date": "1968-04-30",
-     "distance": 0.4889945025448512,
+     "distance": 0.5683892051675304,
      "next_12m_return": 0.03837469627439605,
      "worst_drawdown_12m": -0.010363247955246124
     },
     {
      "month": "1968-05",
      "date": "1968-05-31",
-     "distance": 0.42678071465564094,
+     "distance": 0.4621633168376319,
      "next_12m_return": -0.03344145765659001,
      "worst_drawdown_12m": -0.03344145765659001
-    },
-    {
-     "month": "1968-06",
-     "date": "1968-06-28",
-     "distance": 0.8544581924216857,
-     "next_12m_return": -0.06196021345142355,
-     "worst_drawdown_12m": -0.10142597196630432
-    }
-   ]
-  },
-  {
-   "first": "2018-05",
-   "last": "2018-07",
-   "n_months": 3,
-   "mean_distance": 0.7426232535158851,
-   "mean_next_12m_return": 0.05229933061856573,
-   "worst_drawdown_12m": -0.16517827885408587,
-   "months": [
-    {
-     "month": "2018-05",
-     "date": "2018-05-31",
-     "distance": 0.7046844880087083,
-     "next_12m_return": 0.014482817374146473,
-     "worst_drawdown_12m": -0.13091851065438864
-    },
-    {
-     "month": "2018-06",
-     "date": "2018-06-29",
-     "distance": 0.738246830342802,
-     "next_12m_return": 0.09367373889526953,
-     "worst_drawdown_12m": -0.13510670133147196
-    },
-    {
-     "month": "2018-07",
-     "date": "2018-07-31",
-     "distance": 0.784938442196145,
-     "next_12m_return": 0.04874143558628119,
-     "worst_drawdown_12m": -0.16517827885408587
-    }
-   ]
-  },
-  {
-   "first": "2006-06",
-   "last": "2006-08",
-   "n_months": 2,
-   "mean_distance": 0.7567740247442182,
-   "mean_next_12m_return": 0.17142352298296548,
-   "worst_drawdown_12m": -0.0281136532122791,
-   "months": [
-    {
-     "month": "2006-06",
-     "date": "2006-06-30",
-     "distance": 0.7688652977905139,
-     "next_12m_return": 0.2004960271887557,
-     "worst_drawdown_12m": -0.0281136532122791
-    },
-    {
-     "month": "2006-08",
-     "date": "2006-08-31",
-     "distance": 0.7446827516979224,
-     "next_12m_return": 0.14235101877717526,
-     "worst_drawdown_12m": -0.007516319094292956
-    }
-   ]
-  },
-  {
-   "first": "1996-08",
-   "last": "1996-09",
-   "n_months": 2,
-   "mean_distance": 0.767443564364925,
-   "mean_next_12m_return": 0.383297844937607,
-   "worst_drawdown_12m": -0.003911084266879805,
-   "months": [
-    {
-     "month": "1996-08",
-     "date": "1996-08-30",
-     "distance": 0.6928716672831718,
-     "next_12m_return": 0.37957634959976416,
-     "worst_drawdown_12m": -0.003911084266879805
-    },
-    {
-     "month": "1996-09",
-     "date": "1996-09-30",
-     "distance": 0.8420154614466782,
-     "next_12m_return": 0.3870193402754498,
-     "worst_drawdown_12m": 0.0
     }
    ]
   },
@@ -1721,21 +1635,21 @@
    "first": "1999-11",
    "last": "2000-02",
    "n_months": 2,
-   "mean_distance": 0.7678578702155956,
+   "mean_distance": 0.7396047276989123,
    "mean_next_12m_return": -0.065296495129399,
    "worst_drawdown_12m": -0.0925631200299668,
    "months": [
     {
      "month": "1999-11",
      "date": "1999-11-30",
-     "distance": 0.8441002609702336,
+     "distance": 0.8016829913941581,
      "next_12m_return": -0.0380298702288312,
      "worst_drawdown_12m": -0.047915305664438135
     },
     {
      "month": "2000-02",
      "date": "2000-02-29",
-     "distance": 0.6916154794609576,
+     "distance": 0.6775264640036665,
      "next_12m_return": -0.0925631200299668,
      "worst_drawdown_12m": -0.0925631200299668
     }
@@ -1745,15 +1659,39 @@
    "first": "2013-08",
    "last": "2013-08",
    "n_months": 1,
-   "mean_distance": 0.7680647464758845,
+   "mean_distance": 0.7488256620379541,
    "mean_next_12m_return": 0.2261585119258085,
    "worst_drawdown_12m": 0.0,
    "months": [
     {
      "month": "2013-08",
      "date": "2013-08-30",
-     "distance": 0.7680647464758845,
+     "distance": 0.7488256620379541,
      "next_12m_return": 0.2261585119258085,
+     "worst_drawdown_12m": 0.0
+    }
+   ]
+  },
+  {
+   "first": "1996-08",
+   "last": "1996-09",
+   "n_months": 2,
+   "mean_distance": 0.7844052845751167,
+   "mean_next_12m_return": 0.383297844937607,
+   "worst_drawdown_12m": -0.003911084266879805,
+   "months": [
+    {
+     "month": "1996-08",
+     "date": "1996-08-30",
+     "distance": 0.696513785832956,
+     "next_12m_return": 0.37957634959976416,
+     "worst_drawdown_12m": -0.003911084266879805
+    },
+    {
+     "month": "1996-09",
+     "date": "1996-09-30",
+     "distance": 0.8722967833172774,
+     "next_12m_return": 0.3870193402754498,
      "worst_drawdown_12m": 0.0
     }
    ]
@@ -1762,49 +1700,101 @@
    "first": "1997-03",
    "last": "1997-03",
    "n_months": 1,
-   "mean_distance": 0.7774201985871817,
+   "mean_distance": 0.801530807638554,
    "mean_next_12m_return": 0.4444209407211197,
    "worst_drawdown_12m": -0.02571583213848605,
    "months": [
     {
      "month": "1997-03",
      "date": "1997-03-31",
-     "distance": 0.7774201985871817,
+     "distance": 0.801530807638554,
      "next_12m_return": 0.4444209407211197,
      "worst_drawdown_12m": -0.02571583213848605
     }
    ]
   },
   {
-   "first": "2018-11",
-   "last": "2018-11",
-   "n_months": 1,
-   "mean_distance": 0.8684897831843501,
-   "mean_next_12m_return": 0.12065562582127032,
-   "worst_drawdown_12m": -0.1482045800792099,
+   "first": "2018-05",
+   "last": "2018-10",
+   "n_months": 4,
+   "mean_distance": 0.805126137036524,
+   "mean_next_12m_return": 0.07196822737327513,
+   "worst_drawdown_12m": -0.16517827885408587,
    "months": [
     {
-     "month": "2018-11",
-     "date": "2018-11-30",
-     "distance": 0.8684897831843501,
-     "next_12m_return": 0.12065562582127032,
-     "worst_drawdown_12m": -0.1482045800792099
+     "month": "2018-05",
+     "date": "2018-05-31",
+     "distance": 0.7346326213249921,
+     "next_12m_return": 0.014482817374146473,
+     "worst_drawdown_12m": -0.13091851065438864
+    },
+    {
+     "month": "2018-06",
+     "date": "2018-06-29",
+     "distance": 0.7697192180118624,
+     "next_12m_return": 0.09367373889526953,
+     "worst_drawdown_12m": -0.13510670133147196
+    },
+    {
+     "month": "2018-07",
+     "date": "2018-07-31",
+     "distance": 0.8147428819293066,
+     "next_12m_return": 0.04874143558628119,
+     "worst_drawdown_12m": -0.16517827885408587
+    },
+    {
+     "month": "2018-10",
+     "date": "2018-10-31",
+     "distance": 0.9014098268799348,
+     "next_12m_return": 0.13097491763740332,
+     "worst_drawdown_12m": -0.13299206187793655
+    }
+   ]
+  },
+  {
+   "first": "2006-04",
+   "last": "2006-08",
+   "n_months": 3,
+   "mean_distance": 0.8116993557029875,
+   "mean_next_12m_return": 0.158966392838354,
+   "worst_drawdown_12m": -0.06632029735527822,
+   "months": [
+    {
+     "month": "2006-04",
+     "date": "2006-04-28",
+     "distance": 0.9005657580888901,
+     "next_12m_return": 0.13405213254913106,
+     "worst_drawdown_12m": -0.06632029735527822
+    },
+    {
+     "month": "2006-06",
+     "date": "2006-06-30",
+     "distance": 0.7561498900792124,
+     "next_12m_return": 0.2004960271887557,
+     "worst_drawdown_12m": -0.0281136532122791
+    },
+    {
+     "month": "2006-08",
+     "date": "2006-08-31",
+     "distance": 0.7783824189408598,
+     "next_12m_return": 0.14235101877717526,
+     "worst_drawdown_12m": -0.007516319094292956
     }
    ]
   }
  ],
  "cape_10y_real_return": {
-  "cape_now": 39.95529494331414,
+  "cape_now": 39.793577245481586,
   "cape_is_estimate": false,
-  "estimate_real_ann_10y": 0.005935870221473821,
+  "estimate_real_ann_10y": 0.006199523059553819,
   "band_1sd": [
-   -0.038359575785516284,
-   0.050231316228463926
+   -0.038095922947436286,
+   0.050494969066543924
   ],
   "resid_sd": 0.044295446006990105,
   "band_empirical_16_84": [
-   -0.040780235618593855,
-   0.05442289850876961
+   -0.04051658278051386,
+   0.054686551346849605
   ],
   "intercept": 0.24567098456267272,
   "slope_ln_cape": -0.0650083075245067,
@@ -1815,13 +1805,13 @@
   "note": "in-sample OLS on overlapping windows; effective independent samples ~ n/120"
  },
  "signals": {
-  "asof": "2026-11-12",
+  "asof": "2026-11-13",
   "rules": [
    {
     "rule": "valuation",
     "type": "vulnerability",
     "definition": "CAPE percentile >= 0.90",
-    "current_value": 0.9805491990846682,
+    "current_value": 0.9788329519450801,
     "state": "ON",
     "history_first_month": "1881-04",
     "months_with_input": 1748,
@@ -1837,7 +1827,7 @@
     "rule": "tightening",
     "type": "vulnerability",
     "definition": "3m bill 12m change > +0.25 pt, or 10y yield 12m change > +0.5 pt",
-    "current_value": 0.430999755859375,
+    "current_value": 0.4250001907348633,
     "state": "ON",
     "history_first_month": "1882-01",
     "months_with_input": 1739,
@@ -1848,8 +1838,8 @@
     "p_dd20_12m_given_on": 0.11224489795918367,
     "p_dd20_12m_given_off": 0.2134502923976608,
     "p_dd20_12m_all_in_window": 0.17120954003407154,
-    "bill_chg_12m": 0.430999755859375,
-    "rate10_chg_12m": 1.0859999656677246
+    "bill_chg_12m": 0.4250001907348633,
+    "rate10_chg_12m": 1.1369996070861825
    },
    {
     "rule": "inflation_reaccelerating",
@@ -1871,7 +1861,7 @@
     "rule": "oil_shock",
     "type": "vulnerability",
     "definition": "Brent 12m change >= +40%",
-    "current_value": 0.5279859845915671,
+    "current_value": 0.5210283905869906,
     "state": "ON",
     "history_first_month": "2008-07",
     "months_with_input": 221,
@@ -1887,7 +1877,7 @@
     "rule": "leader_crack",
     "type": "vulnerability",
     "definition": "NVDA >= 20% below 52w high while S&P within 10% of its 52w high (current only)",
-    "current_value": -0.30534192181267583,
+    "current_value": -0.31930278229253417,
     "state": "ON",
     "history_first_month": null,
     "months_with_input": 0,
@@ -1899,14 +1889,14 @@
     "p_dd20_12m_given_off": null,
     "p_dd20_12m_all_in_window": null,
     "history_note": "current only; no history computed",
-    "nvda_vs_52w_high": -0.30534192181267583,
-    "sp500_vs_52w_high": -0.02897202920920905
+    "nvda_vs_52w_high": -0.31930278229253417,
+    "sp500_vs_52w_high": -0.032902231906751234
    },
    {
     "rule": "narrow_market",
     "type": "vulnerability",
     "definition": "RSP 12m return minus SPY 12m return <= -5 pt",
-    "current_value": 0.059278639709885006,
+    "current_value": 0.06037854299706691,
     "state": "OFF",
     "history_first_month": "2004-05",
     "months_with_input": 271,
@@ -1922,7 +1912,7 @@
     "rule": "trend_break",
     "type": "trigger",
     "definition": "S&P close below its 10-month average",
-    "current_value": 0.030236490395838533,
+    "current_value": 0.026494675819892954,
     "state": "OFF",
     "history_first_month": "1881-10",
     "months_with_input": 1742,
@@ -1938,7 +1928,7 @@
     "rule": "credit_stress",
     "type": "trigger",
     "definition": "HYG >= 7% below 52w high, or HY OAS > 5% (FRED)",
-    "current_value": -0.02213481132630446,
+    "current_value": -0.02264293682777918,
     "state": "OFF",
     "history_first_month": "2008-03",
     "months_with_input": 225,
@@ -1954,7 +1944,7 @@
     "rule": "volatility_regime",
     "type": "trigger",
     "definition": "VIX > 30 at month end",
-    "current_value": 18.700000762939453,
+    "current_value": 19.299999237060547,
     "state": "OFF",
     "history_first_month": "1990-01",
     "months_with_input": 443,
@@ -1970,7 +1960,7 @@
     "rule": "curve_inverted",
     "type": "trigger",
     "definition": "10y yield minus 3m bill < 0",
-    "current_value": 0.9750003814697266,
+    "current_value": 1.0319995880126962,
     "state": "OFF",
     "history_first_month": "1934-01",
     "months_with_input": 1115,
@@ -2522,66 +2512,66 @@
  ],
  "scorecard": {
   "overall": {
-   "n_issued": 7,
+   "n_issued": 14,
    "n_resolved": 0,
-   "n_pending": 7,
+   "n_pending": 14,
    "brier_final": null,
    "brier_base": null,
    "skill": null
   },
   "by_question": {
    "down_1m": {
-    "n_issued": 1,
+    "n_issued": 2,
     "n_resolved": 0,
-    "n_pending": 1,
+    "n_pending": 2,
     "brier_final": null,
     "brier_base": null,
     "skill": null
    },
    "dd5_1m": {
-    "n_issued": 1,
+    "n_issued": 2,
     "n_resolved": 0,
-    "n_pending": 1,
+    "n_pending": 2,
     "brier_final": null,
     "brier_base": null,
     "skill": null
    },
    "down_3m": {
-    "n_issued": 1,
+    "n_issued": 2,
     "n_resolved": 0,
-    "n_pending": 1,
+    "n_pending": 2,
     "brier_final": null,
     "brier_base": null,
     "skill": null
    },
    "dd10_3m": {
-    "n_issued": 1,
+    "n_issued": 2,
     "n_resolved": 0,
-    "n_pending": 1,
+    "n_pending": 2,
     "brier_final": null,
     "brier_base": null,
     "skill": null
    },
    "down_12m": {
-    "n_issued": 1,
+    "n_issued": 2,
     "n_resolved": 0,
-    "n_pending": 1,
+    "n_pending": 2,
     "brier_final": null,
     "brier_base": null,
     "skill": null
    },
    "dd10_12m": {
-    "n_issued": 1,
+    "n_issued": 2,
     "n_resolved": 0,
-    "n_pending": 1,
+    "n_pending": 2,
     "brier_final": null,
     "brier_base": null,
     "skill": null
    },
    "dd20_12m": {
-    "n_issued": 1,
+    "n_issued": 2,
     "n_resolved": 0,
-    "n_pending": 1,
+    "n_pending": 2,
     "brier_final": null,
     "brier_base": null,
     "skill": null
@@ -2590,118 +2580,118 @@
  },
  "ledger": {
   "verify_ok": true,
-  "verify_message": "ok: 7 predictions, 0 resolutions",
-  "predictions_issued_this_run": 0,
+  "verify_message": "ok: 14 predictions, 0 resolutions",
+  "predictions_issued_this_run": 7,
   "resolved_this_run": 0,
   "weight_changes_this_run": []
  },
  "news": [],
  "market_snapshot": {
   "^GSPC": {
-   "last_close": 7592.39990234375,
-   "date": "2026-11-12",
-   "ytd_pct": 10.910815898674308,
-   "pct_from_52w_high": -2.897202920920905,
+   "last_close": 7561.669921875,
+   "date": "2026-11-13",
+   "ytd_pct": 10.46190814221022,
+   "pct_from_52w_high": -3.2902231906751234,
    "high_52w_close": 7818.93017578125
   },
   "^IXIC": {
-   "last_close": 25366.08984375,
-   "date": "2026-11-12",
-   "ytd_pct": 9.139060760095518,
-   "pct_from_52w_high": -8.093174964822246,
+   "last_close": 25136.26953125,
+   "date": "2026-11-13",
+   "ytd_pct": 8.150245644942022,
+   "pct_from_52w_high": -8.925863620447739,
    "high_52w_close": 27599.7890625
   },
   "NVDA": {
-   "last_close": 166.19000244140625,
-   "date": "2026-11-12",
-   "ytd_pct": -10.890079119889407,
-   "pct_from_52w_high": -30.534192181267585,
+   "last_close": 162.85000610351562,
+   "date": "2026-11-13",
+   "ytd_pct": -12.680961874790553,
+   "pct_from_52w_high": -31.930278229253418,
    "high_52w_close": 239.2400054931641
   },
   "GOOG": {
-   "last_close": 295.3500061035156,
-   "date": "2026-11-12",
-   "ytd_pct": -5.879535502603527,
-   "pct_from_52w_high": -25.98486372820267,
+   "last_close": 292.5199890136719,
+   "date": "2026-11-13",
+   "ytd_pct": -6.781389294806628,
+   "pct_from_52w_high": -26.69407008075947,
    "high_52w_close": 399.0400085449219
   },
   "XEQT.TO": {
-   "last_close": 45.58000183105469,
-   "date": "2026-11-12",
-   "ytd_pct": 14.264232961815537,
-   "pct_from_52w_high": -1.7036815161254215,
+   "last_close": 45.52000045776367,
+   "date": "2026-11-13",
+   "ytd_pct": 14.11381587931595,
+   "pct_from_52w_high": -1.8330784854442173,
    "high_52w_close": 46.369998931884766
   },
   "^GSPTSE": {
-   "last_close": 36137.19921875,
-   "date": "2026-11-12",
-   "ytd_pct": 13.951459122197418,
-   "pct_from_52w_high": -2.2198473630995696,
+   "last_close": 36105.8984375,
+   "date": "2026-11-13",
+   "ytd_pct": 13.852758343713978,
+   "pct_from_52w_high": -2.3045411200715016,
    "high_52w_close": 36957.6015625
   },
   "CAD=X": {
-   "last_close": 1.4247900247573853,
-   "date": "2026-11-12",
-   "ytd_pct": 4.0395207255047305,
-   "pct_from_52w_high": -0.2268852369243235,
+   "last_close": 1.426900029182434,
+   "date": "2026-11-14",
+   "ytd_pct": 4.193595252485061,
+   "pct_from_52w_high": -0.07912892898214174,
    "high_52w_close": 1.428030014038086
   },
   "^TNX": {
-   "last_close": 5.103000164031982,
-   "date": "2026-11-12",
-   "ytd_pct": 22.579871081012605,
-   "pct_from_52w_high": -3.9163944896980385,
+   "last_close": 5.15399980545044,
+   "date": "2026-11-13",
+   "ytd_pct": 23.80494050474411,
+   "pct_from_52w_high": -2.956130082544617,
    "high_52w_close": 5.310999870300293
   },
   "^IRX": {
-   "last_close": 4.127999782562256,
-   "date": "2026-11-12",
-   "ytd_pct": 16.380035592728625,
-   "pct_from_52w_high": 0.0,
+   "last_close": 4.122000217437744,
+   "date": "2026-11-13",
+   "ytd_pct": 16.21089081571554,
+   "pct_from_52w_high": -0.14533831009040377,
    "high_52w_close": 4.127999782562256
   },
   "^VIX": {
-   "last_close": 18.700000762939453,
-   "date": "2026-11-12",
-   "ytd_pct": 25.083618739247648,
-   "pct_from_52w_high": -39.77455322891096,
+   "last_close": 19.299999237060547,
+   "date": "2026-11-13",
+   "ytd_pct": 29.096986510324463,
+   "pct_from_52w_high": -37.842190945935606,
    "high_52w_close": 31.049999237060547
   },
   "HYG": {
-   "last_close": 76.9800033569336,
-   "date": "2026-11-12",
-   "ytd_pct": -4.526843632417021,
-   "pct_from_52w_high": -5.173684321819849,
+   "last_close": 76.94000244140625,
+   "date": "2026-11-13",
+   "ytd_pct": -4.5764540961277245,
+   "pct_from_52w_high": -5.222958669414046,
    "high_52w_close": 81.18000030517578
   },
   "BZ=F": {
-   "last_close": 95.81999969482422,
-   "date": "2026-11-12",
-   "ytd_pct": 57.46918997142709,
-   "pct_from_52w_high": -19.036754600570085,
+   "last_close": 95.83999633789062,
+   "date": "2026-11-13",
+   "ytd_pct": 57.50205216299298,
+   "pct_from_52w_high": -19.019858408492162,
    "high_52w_close": 118.3499984741211
   },
   "GC=F": {
-   "last_close": 3885.300048828125,
-   "date": "2026-11-12",
-   "ytd_pct": -10.499643836229676,
-   "pct_from_52w_high": -26.946071747708867,
+   "last_close": 3886.300048828125,
+   "date": "2026-11-13",
+   "ytd_pct": -10.476608200618786,
+   "pct_from_52w_high": -26.927269099950855,
    "high_52w_close": 5318.39990234375
   },
   "DX-Y.NYB": {
-   "last_close": 103.16999816894533,
-   "date": "2026-11-12",
-   "ytd_pct": 4.975579416346676,
+   "last_close": 103.41000366210938,
+   "date": "2026-11-13",
+   "ytd_pct": 5.219785252880116,
    "pct_from_52w_high": 0.0,
-   "high_52w_close": 103.16999816894533
+   "high_52w_close": 103.41000366210938
   },
   "BTC-USD": {
-   "last_close": 71342.96875,
-   "date": "2026-11-12",
-   "ytd_pct": -18.473404022629857,
-   "pct_from_52w_high": -28.440558348422595,
-   "high_52w_close": 99697.4921875
+   "last_close": 68249.2734375,
+   "date": "2026-11-13",
+   "ytd_pct": -22.008699122320696,
+   "pct_from_52w_high": -29.588624250561423,
+   "high_52w_close": 96929.328125
   }
  },
- "runtime_seconds": 36.6
+ "runtime_seconds": 15.1
 }
