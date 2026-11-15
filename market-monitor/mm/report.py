@@ -28,6 +28,38 @@ def render(L):
         a(f"\nNote: CPI for {', '.join(fi['cpi_interpolated_months'])} was not published and is log-interpolated.")
     if fi["partial_month"]:
         a(f"\nThe latest feature row is a partial month ({fi['feature_row_month']}) using the last close.")
+    al = L.get("alerts")
+    if al:
+        a("\n## What changed since last run\n")
+        for x in al["lines"]:
+            a(f"- {x}")
+    if L.get("assets"):
+        a("\n## Buy zones (distance below each asset's all-time closing high)\n")
+        a("| Asset | Last close | % below record | Deepest zone | Flag | % vs 200-day | Distance to next zone |\n|---|---|---|---|---|---|---|")
+        for x in sorted(L["assets"], key=lambda x: (-x["deepest_zone"], -x["pct_below_record"])):
+            nxt = [(int(z), d) for z, d in x["zone_distance_pct"].items() if int(z) > x["deepest_zone"]]
+            nz = min(nxt)[0] if nxt else None
+            a(f"| {x['ticker']} {x['name']} | {num(x['last_close'])} | {num(x['pct_below_record'], 1)}% | "
+              f"{x['deepest_zone'] or '-'} | {x.get('flag') or ''} | {num(x['pct_vs_ma200'], 1)}% | "
+              + (f"{num(x['zone_distance_pct'][str(nz)], 1)}% to {nz}% zone" if nz else "-") + " |")
+    sb = L.get("signal_board")
+    if sb:
+        a(f"\n## Tested signal board ({sb['base_on']} of {sb['n_base']} base signals ON; alarm line "
+          f"'S&P below 10-month average while CAPE in top 10%': {sb['alarm_trend_and_cape90']})\n")
+        a("Hit rate = share of ON months followed by a 20% S&P fall within 12 (24) months; base rate = same share over all months.\n")
+        a("| Signal | State | Reading | Months ON | Hit 12m | Base 12m | Hit 24m | False alarm 24m | Bears caught |\n|---|---|---|---|---|---|---|---|---|")
+        for x in sb["signals"]:
+            a(f"| {x['signal']} | {x['state']} | {num(x['value'], 3)} | {x['months_on']} | {pct(x['hit_rate_12m'], 0)} | "
+              f"{pct(x['base_rate_12m'], 0)} | {pct(x['hit_rate_24m'], 0)} | {pct(x['false_alarm_24m'], 0)} | "
+              f"{x['bears_caught']} of {x['bears_eligible']} |")
+    if L.get("accuracy"):
+        a("\n## Prediction accuracy (live, resolved predictions only)\n")
+        a("| Question | Class | Issued | Resolved n | Model Brier | Base-rate Brier | Skill |\n|---|---|---|---|---|---|---|")
+        for x in L["accuracy"]:
+            if x["asset_class"] == "ALL" or x["question"].startswith("sp500_"):
+                a(f"| {x['question']} | {x['asset_class']} | {x['n_issued']} | {x['n_resolved']} | {num(x['brier_model'], 4)} | "
+                  f"{num(x['brier_base'], 4)} | {num(x['skill'], 3)} |")
+        a("\nPer asset class tables are in the workbook (Accuracy tab).")
     a("\n## Where the market stands\n")
     f, r = L["features_today"], L["feature_percentile_ranks"]
     a("| Measure | Value | Percentile of own history |\n|---|---|---|")

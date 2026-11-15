@@ -1,6 +1,6 @@
 # Market monitor report (as of 2026-11-13)
 
-Generated 2026-11-15T02:00:15+00:00 UTC. S&P 500 last close 7561.67. This is a statistical history check, not investment advice; every probability below is a historical frequency adjusted by simple models, and the models have only weak out-of-sample skill (see the skill columns).
+Generated 2026-11-15T02:03:32+00:00 UTC. S&P 500 last close 7561.67. This is a statistical history check, not investment advice; every probability below is a historical frequency adjusted by simple models, and the models have only weak out-of-sample skill (see the skill columns).
 
 ## Data status
 
@@ -9,6 +9,107 @@ Generated 2026-11-15T02:00:15+00:00 UTC. S&P 500 last close 7561.67. This is a s
 CAUTION: the Shiller file's last valid CAPE input is 2026-10. Since then the earnings base is held constant (in real terms), so today's CAPE is an estimate and probably reads a little high if real earnings kept growing.
 
 The latest feature row is a partial month (2026-11) using the last close.
+
+## What changed since last run
+
+- First run with change tracking: nothing to compare with yet. Today's zones and signals are the baseline.
+
+## Buy zones (distance below each asset's all-time closing high)
+
+| Asset | Last close | % below record | Deepest zone | Flag | % vs 200-day | Distance to next zone |
+|---|---|---|---|---|---|---|
+| SI=F Silver futures | 49.03 | 57.4% | 40 |  | -28.3% | - |
+| BTC-USD Bitcoin | 68249.27 | 45.3% | 40 |  | -6.6% | - |
+| BTCC-B.TO Purpose Bitcoin ETF (BTCC.B class) | 13.57 | 44.7% | 40 |  | -3.1% | - |
+| TLT iShares 20+ Year Treasury Bond ETF | 79.38 | 43.5% | 40 |  | -4.0% | - |
+| CL=F WTI crude oil futures | 88.56 | 39.0% | 30 |  | 0.9% | 1.6% to 40% zone |
+| DX-Y.NYB US dollar index | 103.41 | 37.2% | 30 |  | 3.6% | 4.6% to 40% zone |
+| BZ=F Brent crude oil futures | 95.84 | 34.4% | 30 |  | 2.0% | 9.3% to 40% zone |
+| NVDA Nvidia | 162.85 | 31.9% | 30 |  | -20.2% | 13.4% to 40% zone |
+| GDX VanEck Gold Miners ETF | 81.64 | 29.5% | 20 |  | -8.9% | 0.7% to 30% zone |
+| ^HSI Hang Seng | 23637.60 | 28.7% | 20 |  | -6.3% | 1.9% to 30% zone |
+| GC=F Gold futures | 3886.30 | 26.9% | 20 |  | -13.1% | 4.4% to 30% zone |
+| GOOG Alphabet | 292.52 | 26.7% | 20 |  | -13.0% | 4.7% to 30% zone |
+| CGL-C.TO iShares Gold Bullion ETF (CAD-hedged) | 46.12 | 24.4% | 20 |  | -10.8% | 8.0% to 30% zone |
+| XGD.TO iShares S&P/TSX Global Gold | 52.40 | 23.7% | 20 |  | -5.1% | 9.0% to 30% zone |
+| TSLA Tesla | 390.22 | 20.3% | 20 |  | 2.0% | 13.8% to 30% zone |
+| META Meta Platforms | 641.69 | 18.8% | 10 |  | 1.7% | 1.5% to 20% zone |
+| XLK Technology Select Sector SPDR | 170.28 | 15.7% | 10 |  | -0.2% | 5.4% to 20% zone |
+| ^N225 Nikkei 225 | 61142.35 | 15.5% | 10 |  | -1.6% | 5.6% to 20% zone |
+| KMLM KFA Mount Lucas Managed Futures Index Strategy ETF | 29.92 | 14.5% | 10 |  | 3.5% | 6.9% to 20% zone |
+| EEM iShares MSCI Emerging Markets ETF | 60.92 | 14.5% | 10 |  | -4.5% | 6.9% to 20% zone |
+| IEF iShares 7-10 Year Treasury Bond ETF | 90.04 | 13.6% | 10 |  | -2.3% | 8.0% to 20% zone |
+| XEC.TO iShares Core MSCI Emerging Markets IMI | 41.25 | 13.2% | 10 |  | -2.2% | 8.5% to 20% zone |
+| ZQQ.TO BMO Nasdaq 100 Equity Hedged to CAD | 188.02 | 10.7% | 10 |  | -0.9% | 11.6% to 20% zone |
+| HG=F Copper futures | 6.08 | 10.6% | 10 |  | -2.4% | 11.7% to 20% zone |
+| XRE.TO iShares S&P/TSX Capped REIT | 15.68 | 9.1% | - |  | -2.1% | 1.0% to 10% zone |
+| XEG.TO iShares S&P/TSX Capped Energy | 28.69 | 9.1% | - |  | 8.5% | 1.0% to 10% zone |
+| ^RUT Russell 2000 | 2790.49 | 9.1% | - |  | -0.8% | 1.0% to 10% zone |
+| ^IXIC Nasdaq Composite | 25136.27 | 8.9% | - |  | -0.0% | 1.2% to 10% zone |
+| IWM iShares Russell 2000 ETF | 277.54 | 8.8% | - |  | -0.3% | 1.3% to 10% zone |
+| XLE Energy Select Sector SPDR | 64.96 | 7.2% | - |  | 10.2% | 3.1% to 10% zone |
+| AMZN Amazon | 266.66 | 6.1% | - |  | 9.0% | 4.3% to 10% zone |
+| XLU Utilities Select Sector SPDR | 44.04 | 5.8% | - |  | 0.4% | 4.7% to 10% zone |
+| MSFT Microsoft | 523.88 | 5.7% | - |  | 18.7% | 4.7% to 10% zone |
+| EFA iShares MSCI EAFE ETF | 104.17 | 4.3% | - |  | 1.4% | 6.4% to 10% zone |
+| VNQ Vanguard Real Estate ETF | 96.47 | 3.6% | - |  | 3.0% | 7.1% to 10% zone |
+| ^GSPC S&P 500 | 7561.67 | 3.3% | - |  | 3.0% | 7.5% to 10% zone |
+| VFV.TO Vanguard S&P 500 Index ETF | 191.40 | 3.1% | - |  | 6.1% | 7.6% to 10% zone |
+| CAD=X US dollar in Canadian dollars (USD/CAD) | 1.43 | 3.1% | - |  | 2.5% | 7.7% to 10% zone |
+| ZAG.TO BMO Aggregate Bond Index ETF | 13.43 | 2.8% | - |  | -0.4% | 8.0% to 10% zone |
+| DBMF iMGP DBi Managed Futures Strategy ETF | 32.42 | 2.7% | - |  | 4.8% | 8.1% to 10% zone |
+| ^GSPTSE S&P/TSX Composite | 36105.90 | 2.3% | - |  | 4.0% | 8.6% to 10% zone |
+| HYG iShares iBoxx High Yield Corporate Bond ETF | 76.94 | 2.3% | - |  | -0.7% | 8.6% to 10% zone |
+| XEF.TO iShares Core MSCI EAFE IMI | 52.06 | 2.1% | - |  | 3.7% | 8.8% to 10% zone |
+| ZEB.TO BMO Equal Weight Banks | 76.73 | 1.8% | - |  | 11.1% | 9.1% to 10% zone |
+| XIC.TO iShares Core S&P/TSX Capped Composite | 57.77 | 1.8% | - |  | 4.9% | 9.2% to 10% zone |
+| XEQT.TO iShares Core Equity ETF Portfolio | 45.52 | 1.6% | - |  | 4.6% | 9.3% to 10% zone |
+| XLF Financial Select Sector SPDR | 58.68 | 0.9% | - |  | 9.3% | 10.1% to 10% zone |
+| IWD iShares Russell 1000 Value ETF | 263.31 | 0.8% | - |  | 10.1% | 10.3% to 10% zone |
+| XLV Health Care Select Sector SPDR | 188.85 | 0.4% | - |  | 18.5% | 10.6% to 10% zone |
+| ^FTSE FTSE 100 | 10902.60 | 0.1% | - |  | 3.3% | 11.0% to 10% zone |
+| XLP Consumer Staples Select Sector SPDR | 92.35 | 0.0% | - |  | 9.8% | 11.1% to 10% zone |
+| AAPL Apple | 356.27 | 0.0% | - |  | 18.3% | 11.1% to 10% zone |
+| CASH.TO High interest savings ETF | 50.06 | 0.0% | - |  | 0.8% | 11.1% to 10% zone |
+| DLR.TO US dollar currency ETF (CAD-listed) | 14.46 | 0.0% | - |  | 3.8% | 11.1% to 10% zone |
+
+## Tested signal board (5 of 13 base signals ON; alarm line 'S&P below 10-month average while CAPE in top 10%': OFF)
+
+Hit rate = share of ON months followed by a 20% S&P fall within 12 (24) months; base rate = same share over all months.
+
+| Signal | State | Reading | Months ON | Hit 12m | Base 12m | Hit 24m | False alarm 24m | Bears caught |
+|---|---|---|---|---|---|---|---|---|
+| cape30 | ON | 39.794 | 150 | 28% | 17% | 39% | 61% | 4 of 13 |
+| cape90 | ON | 11.162 | 483 | 21% | 17% | 31% | 69% | 9 of 13 |
+| curve_inv | OFF | 1.032 | 100 | 26% | 14% | 45% | 55% | 3 of 12 |
+| fed_tight | OFF | 0.425 | 123 | 14% | 14% | 25% | 75% | 2 of 12 |
+| infl | ON | 4.035 | 363 | 23% | 17% | 29% | 71% | 4 of 13 |
+| credit_baa_aaa | OFF | -0.070 | 133 | 33% | 17% | 35% | 65% | 1 of 13 |
+| hy_oas | OFF | 3.200 | 0 | n/a | 0% | n/a | n/a | 0 of 0 |
+| trend_break | OFF | 0.026 | 627 | 28% | 17% | 33% | 67% | 7 of 13 |
+| sahm | OFF | 0.000 | 250 | 16% | 12% | 18% | 82% | 3 of 12 |
+| oil_up50 | ON | 0.676 | 85 | 31% | 11% | 41% | 59% | 4 of 12 |
+| narrow | OFF | 0.057 | 49 | 7% | 12% | 9% | 91% | 1 of 3 |
+| margin_yoy30 | ON | 0.314 | 65 | 25% | 18% | 45% | 55% | 3 of 4 |
+| vix30 | OFF | 19.300 | 33 | 21% | 14% | 21% | 79% | 1 of 5 |
+| combo_cape90_trend | OFF | 0.000 | 70 | 51% | 17% | 55% | 45% | 3 of 13 |
+| count_ge4 | ON | 5.000 | 165 | 37% | 17% | 46% | 54% | 3 of 13 |
+
+## Prediction accuracy (live, resolved predictions only)
+
+| Question | Class | Issued | Resolved n | Model Brier | Base-rate Brier | Skill |
+|---|---|---|---|---|---|---|
+| dd10_3m | ALL | 49 | 0 | n/a | n/a | n/a |
+| down_12m | ALL | 49 | 0 | n/a | n/a | n/a |
+| sp500_dd10_12m | S&P model | 2 | 0 | n/a | n/a | n/a |
+| sp500_dd10_3m | S&P model | 2 | 0 | n/a | n/a | n/a |
+| sp500_dd20_12m | S&P model | 2 | 0 | n/a | n/a | n/a |
+| sp500_dd5_1m | S&P model | 2 | 0 | n/a | n/a | n/a |
+| sp500_down_12m | S&P model | 2 | 0 | n/a | n/a | n/a |
+| sp500_down_1m | S&P model | 2 | 0 | n/a | n/a | n/a |
+| sp500_down_3m | S&P model | 2 | 0 | n/a | n/a | n/a |
+
+Per asset class tables are in the workbook (Accuracy tab).
 
 ## Where the market stands
 

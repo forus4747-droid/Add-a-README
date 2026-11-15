@@ -341,6 +341,23 @@ def test_news_cannot_change_numbers():
     print("  news item changes nothing in latest.json, ledger probabilities or alerts")
 
 
+def test_stale_data_stops_weekly():
+    d = tempfile.mkdtemp()
+    try:
+        os.makedirs(os.path.join(d, "data"))
+        os.symlink(os.path.join(ROOT, "data", "raw"), os.path.join(d, "data", "raw"))
+        shutil.copytree(os.path.join(ROOT, "config"), os.path.join(d, "config"))
+        try:
+            runmod.weekly(d, refresh=False, quiet=True, today=date(2030, 1, 1))
+            raise AssertionError("stale data must stop the run")
+        except RuntimeError as e:
+            assert "days old" in str(e), str(e)
+        assert not os.path.exists(os.path.join(d, "state", "latest.json"))
+    finally:
+        shutil.rmtree(d)
+    print("  stale key data raises before anything is written")
+
+
 def main():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     fails = 0
