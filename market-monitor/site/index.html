@@ -1,0 +1,340 @@
+<title>Crash Playbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a sticky section bar; every table scrolls inside its own frame; drawdowns drawn to one scale. */
+:root{
+  --bg:#f3f6f9; --panel:#ffffff; --ink:#12233a; --muted:#56667c; --line:#d5dde7;
+  --accent:#0b62a8; --accent-soft:#e2eefa;
+  --down:#b3261e; --down-soft:#f8e3e1; --up:#1b6e45; --up-soft:#dff1e7; --warn:#8a5a00; --warn-soft:#fbefd2;
+  --display:"Space Grotesk","Segoe UI",system-ui,sans-serif;
+  --body:"Inter","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0d1622; --panel:#142132; --ink:#e4ecf5; --muted:#9aabc0; --line:#27384d;
+  --accent:#6db4f2; --accent-soft:#17324d;
+  --down:#ff8a80; --down-soft:#3d1f1f; --up:#6fd3a0; --up-soft:#16352a; --warn:#f2c14e; --warn-soft:#3a2f12;
+  color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0d1622; --panel:#142132; --ink:#e4ecf5; --muted:#9aabc0; --line:#27384d;
+  --accent:#6db4f2; --accent-soft:#17324d;
+  --down:#ff8a80; --down-soft:#3d1f1f; --up:#6fd3a0; --up-soft:#16352a; --warn:#f2c14e; --warn-soft:#3a2f12;
+  color-scheme:dark }
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1040px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:2rem;font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.35rem;font-weight:600}
+h3{font-size:1rem;font-weight:600}
+p{margin:0;max-width:68ch}
+.muted{color:var(--muted)} .small{font-size:.85rem}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+header.top{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto}
+nav .in{display:flex;gap:4px;max-width:1040px;margin:0 auto;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+nav a{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:500;padding:5px 10px;border-radius:6px;white-space:nowrap}
+nav a:hover,nav a:focus-visible{background:var(--accent-soft);color:var(--accent);outline:none}
+section{display:flex;flex-direction:column;gap:14px;scroll-margin-top:60px}
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.stat b{font-family:var(--display);font-size:1.45rem;font-weight:600}
+.chip{display:inline-block;font-size:.74rem;font-weight:600;padding:2px 8px;border-radius:999px;letter-spacing:.03em;white-space:nowrap}
+.on{background:var(--down-soft);color:var(--down)} .off{background:var(--up-soft);color:var(--up)}
+.zone{background:var(--warn-soft);color:var(--warn)} .info{background:var(--accent-soft);color:var(--accent)}
+.frame{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+.neg{color:var(--down)} .pos{color:var(--up)}
+ul.plain{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;max-width:72ch}
+.dd{display:grid;grid-template-columns:86px 1fr 52px;gap:4px 10px;align-items:center;padding:14px 16px;min-width:520px}
+.dd .bar{height:14px;background:var(--down);border-radius:2px;min-width:2px}
+.dd .lab{font-size:.84rem} .dd .ax{grid-column:2;display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);font-family:var(--mono)}
+.ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.lad{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.lad .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.track{position:relative;height:34px}
+.track .rail{position:absolute;left:0;right:0;top:8px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--up-soft),var(--warn-soft) 40%,var(--down-soft))}
+.track .tick{position:absolute;top:4px;width:1px;height:14px;background:var(--muted)}
+.track .tl{position:absolute;top:20px;font-size:.68rem;color:var(--muted);font-family:var(--mono);transform:translateX(-50%)}
+.track .now{position:absolute;top:2px;width:10px;height:18px;border-radius:3px;background:var(--accent);transform:translateX(-50%)}
+.lad dl{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:0}
+.lad dt{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.lad dd{margin:0;font-family:var(--mono);font-size:.84rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.note{border-left:3px solid var(--accent);padding:2px 0 2px 12px;color:var(--muted);font-size:.88rem;max-width:72ch}
+footer{color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);padding-top:14px}
+a{color:var(--accent)}
+</style>
+
+<nav aria-label="Sections"><div class="in">
+<a href="#today">Today</a><a href="#signals">Signals</a><a href="#zones">Buy zones</a><a href="#history">100 years</a><a href="#assets">What worked</a><a href="#horizons">Time horizons</a><a href="#people">People</a><a href="#log">Research log</a>
+</div></nav>
+
+<div class="wrap">
+<header class="top">
+  <span class="eyebrow">Ongoing research · prices as of the 13 Nov 2026 close · page updated 15 Nov 2026</span>
+  <h1>Crash Playbook</h1>
+  <p class="muted">What made money in every major market fall since 1926, which warning signals held up when tested, and where each asset stands against its buy zones today. Every figure is computed from downloaded price data or tied to a named source.</p>
+</header>
+
+<div class="status" id="status"></div>
+
+<section id="today">
+  <h2>Where markets stand</h2>
+  <p class="muted">The S&amp;P 500 is 3.3% below its 6 October record. Under the surface, technology, gold, silver and bitcoin are already in deep falls while energy, value shares and staples sit near highs.</p>
+  <div class="frame"><table id="tToday"></table></div>
+  <div class="two">
+    <div class="frame"><table id="tMacro"></table></div>
+    <div class="frame"><table id="tTimeline"></table></div>
+  </div>
+</section>
+
+<section id="signals">
+  <h2>Warning signals, tested on history</h2>
+  <p class="muted">Hit rate is the share of months with the signal on that were followed by a 20% fall in the S&amp;P 500 within a year. Plain odds are what you get with no signal at all. No single signal beat a coin flip.</p>
+  <div class="frame"><table id="tSig"></table></div>
+  <p class="note">The line to watch: the S&amp;P 500 ending a month below its 10-month average (7,302) while valuation stays in its top 10%. That pairing was followed by a 20% fall within a year half the time. It is off today.</p>
+</section>
+
+<section id="zones">
+  <h2>Buy zones</h2>
+  <p class="muted">Each fund's distance from its record close, with the price at 20%, 30% and 40% below. The marker shows today's position.</p>
+  <div class="ladder" id="ladder"></div>
+  <h3>Already in a zone today</h3>
+  <div class="frame"><table id="tIn"></table></div>
+</section>
+
+<section id="history">
+  <h2>100 years of falls</h2>
+  <p class="muted">S&amp;P 500 peak-to-low falls on daily closes, drawn to one scale.</p>
+  <div class="frame"><div class="dd" id="dd"></div></div>
+  <div class="frame"><table id="tHist"></table></div>
+  <h3>Outside the United States</h3>
+  <div class="frame"><table id="tWorld"></table></div>
+</section>
+
+<section id="assets">
+  <h2>What worked during a fall, and after the low</h2>
+  <p class="muted">The hedges that paid during a fall usually lost afterwards. What fell most rebounded most, if it survived.</p>
+  <div class="frame"><table id="tDuring"></table></div>
+  <div class="frame"><table id="tAfter"></table></div>
+  <ul class="plain">
+    <li>Government bonds paid when inflation was low (2000, 2008, 2011, 2020) and failed when inflation was the cause (1973-74, 2022, March 2026).</li>
+    <li>The US dollar rose against the Canadian dollar in 9 of 12 falls since 1980 and was flat in the other three.</li>
+    <li>Company rows cover survivors only. Lehman, Enron and Nortel are not in the data.</li>
+  </ul>
+</section>
+
+<section id="horizons">
+  <h2>Time horizons</h2>
+  <p class="muted">What followed buying at the first close a given distance below the peak. Further fall runs from that close to the final low.</p>
+  <div class="two">
+    <div class="frame"><table id="tSP"></table></div>
+    <div class="frame"><table id="tTSX"></table></div>
+  </div>
+  <div class="frame"><table id="tOther"></table></div>
+</section>
+
+<section id="people">
+  <h2>Who called it, who won</h2>
+  <div class="frame"><table id="tPred"></table></div>
+  <div class="frame"><table id="tWin"></table></div>
+</section>
+
+<section id="log">
+  <h2>Research log</h2>
+  <div class="two">
+    <div class="frame"><table id="tLog"></table></div>
+    <div class="frame"><table id="tNext"></table></div>
+  </div>
+  <h3>Still unverified</h3>
+  <ul class="plain" id="unv"></ul>
+</section>
+
+<footer>
+  Sources: Yahoo Finance price data; Federal Reserve Bank of St. Louis (FRED); Robert Shiller's data file; Bank of Canada; FINRA margin statistics; Federal Reserve History; IMF; BIS; NBER; Bank of England; Bank of Japan; CNBC; Bloomberg; Fortune; Forbes; Pershing Square letter of 26 Mar 2020. Statistical history, not a forecast.
+</footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const pct=v=>v===null?"":`<span class="num ${v<0?"neg":v>0?"pos":""}">${v>0?"+":""}${v}%</span>`;
+function table(id,head,rows,right=[]){
+  $(id).innerHTML="<thead><tr>"+head.map((h,i)=>`<th${right.includes(i)?' class="r"':""}>${h}</th>`).join("")+"</tr></thead><tbody>"+
+    rows.map(r=>"<tr>"+r.map((c,i)=>`<td${right.includes(i)?' class="r"':""}>${c}</td>`).join("")+"</tr>").join("")+"</tbody>";
+}
+const chip=(t,c)=>`<span class="chip ${c}">${t}</span>`;
+
+$("status").innerHTML=[
+ ["Signals on","3 of 13","Valuation above 30, valuation in top 10%, oil up 50%"],
+ ["Main alarm","Off","S&P 500 at 7,562, above its 10-month average of 7,302"],
+ ["S&P 500 from record","-3.3%","Record close 7,819 on 6 Oct 2026"],
+ ["Closest past matches","1968-70 · 1973-74 · 2000-02","Expensive, concentrated market plus oil shock and rate rises"]
+].map(s=>`<div class="stat"><span class="eyebrow">${s[0]}</span><b>${s[1]}</b><span class="small muted">${s[2]}</span></div>`).join("");
+
+// asset, ytd, below 12m high, zone note
+const today=[
+ ["S&P 500","7,562",10.5,-3.3,""],["Nasdaq","25,136",8.2,-8.9,""],["TSX","36,106",13.9,-2.3,""],["XEQT","$45.52",15.5,-1.8,""],
+ ["US value shares","",26.5,-0.8,""],["Energy shares","",48.2,-7.2,""],["Staples","",21.2,0,""],["Health care","",23.5,-0.4,""],
+ ["Technology shares","",18.7,-15.7,"10%"],["Emerging markets","",11.9,-14.5,"10%"],["Japan (Nikkei)","61,142",21.5,-15.5,"10%"],
+ ["Nvidia","$162.85",-12.5,-31.9,"30%"],["Alphabet","$292.52",-6.6,-26.7,"20%"],
+ ["Oil (WTI)","$88.56",54.2,-21.6,"20%"],["Gold","$3,886",-10.5,-26.9,"20%"],["Silver","$49.03",-30.1,-57.4,"40%"],["Gold miners","",-4.8,-29.5,"20%"],
+ ["Bitcoin","$65,254",-25.4,-32.7,"40% from 2025 record"],["Long US Treasuries","",-5.4,-12.6,"10%"],["US dollar vs Canadian","1.43",4.2,-0.1,""],["Trend funds","",16,-4,""]
+];
+table("tToday",["Asset","Last","2026 so far","Below 12-month high","Zone entered"],
+ today.map(r=>[esc(r[0]),`<span class="num">${r[1]}</span>`,pct(r[2]),pct(r[3]),r[4]?chip(r[4],"zone"):'<span class="muted small">none</span>']),[1,2,3]);
+
+table("tMacro",["Rates and economy","Latest"],[
+ ["US 10-year yield","5.10%"],["US inflation (Sep; Oct estimate 3.95%)","3.7%"],["US unemployment","4.1%"],
+ ["Bank of Canada rate (raised 28 Oct)","2.50%"],["Canada inflation / unemployment","3.1% / 6.7%"],["Canada 5-year yield","3.53%"],["High-yield bond spread","3.20%"],["Shiller valuation (partly estimated)","39.9"]
+].map(r=>[r[0],`<span class="num">${r[1]}</span>`]),[1]);
+
+table("tTimeline",["2026","Event"],[
+ ["29 Jan","Gold record close $5,318"],["28 Feb","US-Israeli strikes on Iran begin"],["4 Mar","Strait of Hormuz declared closed"],
+ ["30 Mar","S&P 500 low, 9.1% below 27 Jan"],["Apr","Brent oil averages $117"],["6 Oct","S&P 500 and Nvidia records"],
+ ["28 Oct","Bank of Canada raises to 2.50%"],["2 Nov","Nasdaq 100 down 10.4% from record"],["12 Nov","Nvidia chief executive to step down"]
+].map(r=>[`<span class="num">${r[0]}</span>`,r[1]]));
+
+const sig=[
+ ["Expensive and below 10-month average","1928","50%","17%","45%","3 of 12",0],
+ ["Four or more signals on","1927","37%","17%","54%","3 of 12",0],
+ ["Corporate bond spreads widening","1928","33%","17%","65%","1 of 12",0],
+ ["Oil up 50% in a year","1947","31%","11%","59%","4 of 11",1],
+ ["Yield curve inverted","1953","28%","12%","54%","3 of 11",0],
+ ["Price below 10-month average","1928","28%","17%","67%","6 of 12",0],
+ ["Shiller valuation above 30","1927","25%","17%","63%","4 of 12",1],
+ ["Margin debt up 30% in a year","1998","25%","18%","55%","3 of 4",0],
+ ["Valuation in its top 10%","1927","21%","17%","70%","9 of 12",1],
+ ["Inflation above 4% and rising","1949","21%","12%","71%","3 of 11",0],
+ ["Fear index above 30","1990","21%","14%","79%","1 of 4",0],
+ ["Unemployment up 0.5 points","1949","16%","12%","82%","3 of 11",0],
+ ["Central bank tightening fast","1935","14%","14%","75%","2 of 11",0],
+ ["Narrow market","2004","7%","12%","91%","1 of 3",0]
+];
+table("tSig",["Signal","Since","Hit rate","Plain odds","False alarms, 2 yrs","Bears caught","Today"],
+ sig.map(s=>[s[0],`<span class="num">${s[1]}</span>`,`<span class="num">${s[2]}</span>`,`<span class="num">${s[3]}</span>`,`<span class="num">${s[4]}</span>`,`<span class="num">${s[5]}</span>`,s[6]?chip("ON","on"):chip("OFF","off")]),[2,3,4]);
+
+const funds=[["XEQT.TO","Global shares",46.37,45.52],["VFV.TO","S&P 500",197.56,191.40],["XIC.TO","Canada",59.10,57.77],
+ ["ZQQ.TO","Nasdaq 100",210.58,188.02],["XEC.TO","Emerging markets",47.88,41.25],["ZEB.TO","Canadian banks",78.75,76.73]];
+$("ladder").innerHTML=funds.map(f=>{
+  const below=(1-f[3]/f[2])*100, pos=Math.min(below/45*100,100), z=p=>(f[2]*(1-p/100)).toFixed(2);
+  const ticks=[0,10,20,30,40].map(t=>`<span class="tick" style="left:${t/45*100}%"></span><span class="tl" style="left:${t/45*100}%">-${t}%</span>`).join("");
+  return `<div class="lad"><div class="hd"><h3>${f[0]} <span class="muted small">${f[1]}</span></h3><span class="num">$${f[3].toFixed(2)} · -${below.toFixed(1)}%</span></div>
+  <div class="track"><span class="rail"></span>${ticks}<span class="now" style="left:${pos}%" title="Today"></span></div>
+  <dl><div><dt>Record</dt><dd>$${f[2].toFixed(2)}</dd></div><div><dt>-20%</dt><dd>$${z(20)}</dd></div><div><dt>-30%</dt><dd>$${z(30)}</dd></div><div><dt>-40%</dt><dd>$${z(40)}</dd></div></dl></div>`;
+}).join("");
+
+table("tIn",["Asset","Below peak","What history says after a fall this size","Reading"],[
+ ["Gold","-27%","3 years after a first 20% fall: median +95%, positive 3 of 4 times; worst further fall 30%",chip("Favourable","off")],
+ ["Bitcoin","-48%","1 year after a first 40% fall: median -28%. 3 years after: positive 4 of 4 times",chip("Mixed","zone")],
+ ["Nvidia","-32%","Fell 52%, 62% and 77% in earlier busts before recovering",chip("Mixed","zone")],
+ ["Alphabet","-27%","Single company; no basket protection",chip("Mixed","zone")],
+ ["Gold miners","-30%","5 years after 20%, 30% and 40% falls: -32%, -42%, -29%",chip("Poor","on")],
+ ["Silver","-57%","After a 40% fall: one gain, one 41% loss at 3 years",chip("Poor","on")],
+ ["Long US Treasuries","-54% from 2020","Still falling in 2026 while inflation rises",chip("Poor","on")]
+].map(r=>[r[0],`<span class="num neg">${r[1]}</span>`,r[2],r[3]]));
+
+const sp=[["1929-32",-86,989,8148,"Boom, then the Dow fell 13% on 28 Oct 1929"],["1937-38",-54,386,2861,"Fed doubled bank reserve requirements"],
+ ["1946-49",-30,1111,361,"Post-war adjustment"],["1956-57",-21,446,337,""],["1961-62",-28,196,434,"Steel-price dispute"],["1966",-22,240,209,""],
+ ["1968-70",-36,543,650,"Tight money; Penn Central failed"],["1973-74",-48,630,2114,"Oil embargo; oil from $2.90 to $11.65"],
+ ["1980-82",-27,622,83,"Volcker's rates near 20%"],["1987",-34,101,600,"Dow fell 22.6% in one day"],["1990",-20,87,125,"Gulf oil spike, credit crunch"],
+ ["1998",-19,45,84,"Russia default, LTCM"],["2000-02",-49,929,1694,"Technology bubble"],["2007-09",-57,517,1480,"US mortgage crisis"],
+ ["2011",-19,157,144,"Euro debt crisis"],["2018",-20,95,120,"Fed raising rates"],["2020",-34,33,148,"Pandemic"],["2022",-25,282,464,"Inflation, rate rises"],
+ ["2025",-19,48,80,"US tariffs"],["2026",-9,62,16,"Iran war, oil shock"]];
+$("dd").innerHTML=sp.map(r=>`<span class="lab">${r[0]}</span><span><span class="bar" style="display:block;width:${-r[1]}%"></span></span><span class="num neg">${r[1]}%</span>`).join("")+
+ `<span></span><span class="ax"><span>0</span><span>-25%</span><span>-50%</span><span>-75%</span><span>-100%</span></span><span></span>`;
+table("tHist",["Fall","Depth","Days down","Days from low to old peak","Setup and trigger"],
+ sp.map(r=>[r[0],pct(r[1]),`<span class="num">${r[2].toLocaleString()}</span>`,`<span class="num">${r[3].toLocaleString()}</span>`,r[4]||'<span class="muted small">not found</span>']),[1,2,3]);
+
+table("tWorld",["Market","Peak to low","Fall","Back to old peak"],[
+ ["Japan, Nikkei","Dec 1989 to Aug 1992",-63,"Feb 2024, 34 years"],["Japan, Nikkei","Dec 1989 to Apr 2003",-80.5,"same"],
+ ["Canada, TSX","Nov 1980 to Jul 1982",-44,"302 days after the low"],["Canada, TSX","Sep 2000 to Sep 2001",-43,"1,565 days"],
+ ["Canada, TSX","Jun to Nov 2008",-49,"2,036 days"],["Canada, TSX","Feb to Mar 2020",-37,"290 days"],
+ ["UK, FTSE 100","Jun 2007 to Oct 2008",-43,"1,666 days"],["Mexico","Sep 1994 to Feb 1995",-49,"309 days"],
+ ["Hong Kong","Aug 1997 to Aug 1998",-60,"498 days"],["Indonesia","Jul 1997 to Sep 1998",-65,"1,936 days"],
+ ["Emerging markets fund","Oct 2007 to Nov 2008",-66,"3,224 days"],["UK 1973-74","","","Index data not found"]
+].map(r=>[r[0],r[1],r[2]===""?"":pct(r[2]),r[3]]),[2]);
+
+table("tDuring",["Fall","S&P 500","Made money or held up","Lost most"],[
+ ["1973-74",-48,"Oil +213%, bonds +1% to +5%","Coca-Cola -68%, Nasdaq -60%, IBM -51%"],
+ ["1980-82",-27,"US dollar +35%, bonds +21%, Walmart +84%","TSX -42%, Intel -41%"],
+ ["1990",-20,"Oil +93%","Citigroup -51%, Nikkei -32%, small companies -29%"],
+ ["2000-02",-49,"Bonds +33% to +39%, Royal Bank +56%, Enbridge +78%, staples +1%","Technology -82%, Nasdaq -78%, Cisco -88%"],
+ ["2007-09",-57,"US dollar vs Canadian +32%, long Treasuries +25%, gold +24%","Financials -82%, real estate -69%, emerging -59%, TSX -47%"],
+ ["2011",-19,"Long Treasuries +35%, US dollar vs Canadian +10%, gold +6%","Silver -37%, oil -32%, emerging -31%"],
+ ["2020",-34,"Long Treasuries +14%, US dollar vs Canadian +10%","Energy -56%, financials -43%, small companies -41%, bitcoin -33%"],
+ ["2022",-25,"Energy +44%, trend funds +32% and +48%, US dollar +18%","Bitcoin -59%, Nvidia -62%, Nasdaq -34%, long Treasuries -29%"],
+ ["2026 dip",-9,"Oil +65%, energy +26%, utilities +6%","Silver -33%, bitcoin -25%, gold miners -22%, technology -14%"]
+].map(r=>[r[0],pct(r[1]),r[2],r[3]]),[1]);
+
+table("tAfter",["After the low of","S&P 500, 1 / 3 / 5 years","Best performers, 1 year after"],[
+ ["Oct 1974","+38 / +55 / +76%","Walmart +103%, Exxon +79%"],
+ ["Aug 1982","+58 / +83 / +225%","Walmart +236%, Intel +182%, TSX +72%"],
+ ["Oct 1990","+29 / +56 / +96%","Cisco +296%, banks +91%, small companies +47%; oil -35%"],
+ ["Oct 2002","+34 / +54 / +102%","Technology +68%, small companies +59%, utilities +51%, gold miners +48%"],
+ ["Mar 2009","+69 / +103 / +178%","Financials +150%, real estate +130%, emerging +102%, small companies +95%, TSX +58%"],
+ ["Mar 2020","+75 / +76 / +153%","Bitcoin +753%, small companies +118%, energy +114%, financials +92%; long Treasuries -16%"],
+ ["Oct 2022","+22 / +83%","Nvidia +308%, technology +48%; trend funds -10% to -13%"],
+ ["Apr 2025","+36%","Gold miners +138%, silver +154%, emerging +61%, gold +60%"]
+].map(r=>[r[0],`<span class="num">${r[1]}</span>`,r[2]]));
+
+const hz=(id,name,rows)=>table(id,[name,"Cases","Further fall, median / worst","5 years later, median","Positive"],
+ rows.map(r=>[r[0],`<span class="num">${r[1]}</span>`,`<span class="num neg">${r[2]}</span>`,`<span class="num pos">${r[3]}</span>`,`<span class="num">${r[4]}</span>`]),[1,2,3,4]);
+hz("tSP","S&P 500 with dividends, bought at",[["10% below peak",32,"-9% / -81%","+72%","80%"],["20% below",12,"-8% / -77%","+61%","91%"],["30% below",7,"-21% / -75%","+64%","86%"],["40% below",4,"-18% / -72%","+97%","75%"]]);
+hz("tTSX","TSX, price only, bought at",[["20% below peak",8,"-18% / -36%","+32%","100%"],["30% below",6,"-15% / -28%","+44%","100%"],["40% below",3,"-11% / -15%","+75%","100%"]]);
+table("tOther",["5 years after the first close","20% below","30% below","40% below","Note"],[
+ ["Nasdaq","+101%, 91% positive","+98%, 83%","+16%, 50%","The 40% cases are 1973 and 2000"],
+ ["Small US companies","+44%, 100%","+79%, 100%","+109%, 100%","Never negative at 5 years"],
+ ["Technology fund","+166%, 67%","+73%, 50%","-45%, one case","2000 dominates"],
+ ["Financials fund","+34%, 75%","+71%, 67%","+84%, 50%","Worst further fall 79%"],
+ ["Gold","+73%, 67%","-1%, one case","+60%, one case",""],
+ ["Gold miners","-32%, 33%","-42%, 0%","-29%, 0%","Buying dips lost money"],
+ ["Oil","+77%, 80%","+110%, 100%","+96%, 100%",""],
+ ["Bitcoin","+589%, 100%","+742%, 100%","+107%, 100%","1 year after a 40% fall: median -28%"]
+].map(r=>[r[0],`<span class="num">${r[1]}</span>`,`<span class="num">${r[2]}</span>`,`<span class="num">${r[3]}</span>`,r[4]]));
+
+table("tPred",["Fall","Who warned","How early","What went wrong later"],[
+ ["1929","Roger Babson, 5 Sep 1929","7 weeks","Irving Fisher, the same month, said no large break was coming"],
+ ["1987","Elaine Garzarelli","About 1 month","Reputation faded in the 1990s"],
+ ["2000","Robert Shiller, Dec 1996","3.3 years; prices doubled first","Not a timing tool by his own account"],
+ ["2000","Jeremy Grantham, from 1998","2 years; lost many clients","2022 call for S&P 2,500; it hit a record instead"],
+ ["2008","Nouriel Roubini, Sep 2006","13 months","Repeated later warnings"],
+ ["2008","John Paulson","Firm made about $15bn in 2007","One fund -47% in 2011; assets halved"],
+ ["2020","Bill Ackman, Feb 2020","About 3 weeks","Lost over $430m on Netflix in 2022"],
+ ["Always","John Hussman, Albert Edwards, Harry Dent","","Bearish for a decade; Hussman fund's deepest loss 60%"],
+ ["Now","IMF, Bank of England, Grantham, Burry, Dalio","","Open"]
+]);
+table("tWin",["Who","What they did","Result","Habit to copy"],[
+ ["John Templeton, 1939","Bought 100 shares of each of 104 stocks under $1","Only 4 went to zero; held about 4 years","A basket, not one name"],
+ ["Bill Ackman, 2020","Bought credit insurance for about $27m in February","$2.6bn by 23 March, put straight into shares","Cheap hedge bought in calm, sold into panic"],
+ ["Universa, 2020","Crash insurance sized at about 1% of client money","+3,612% in March 2020","Small and permanent"],
+ ["Howard Marks, 2008","Raised $11bn before the crash","Invested about $450m a week for 15 weeks","Cash ready, bought in steps"],
+ ["David Tepper, 2009","Bought bank shares in Feb-Mar 2009","About $7.5bn profit","Bought what forced sellers dumped"],
+ ["Warren Buffett, 2008","Lent Goldman Sachs $5bn at 10%","Repaid $5.5bn in 2011","Early by five months and still won"],
+ ["Lost it later","Livermore, LTCM, Steinhardt, Paulson","","Leverage or one oversized bet"]
+]);
+
+table("tLog",["Date","Done"],[
+ ["14 Nov","Crash tables computed for 194 episodes across 76 assets"],["14 Nov","13 signals back-tested to 1927"],
+ ["14 Nov","Buy-level statistics for 24 indexes and funds"],["14 Nov","Full report written"],
+ ["15 Nov","Monitor extension to all assets under construction"]
+].map(r=>[`<span class="num">${r[0]}</span>`,r[1]]));
+table("tNext",["Coming up","Why it matters"],[
+ ["16 Nov","Canada October inflation"],["17 Nov","Nvidia results"],["4 Dec","US November jobs"],
+ ["8-9 Dec","Fed decision"],["9 Dec","Bank of Canada decision"],["Month-end","S&P 500 against 7,302: the main alarm line"]
+].map(r=>[`<span class="num">${r[0]}</span>`,r[1]]));
+$("unv").innerHTML=[
+ "Fed rate level and 2026 decisions: the Fed's site could not be reached; figures come from search summaries.",
+ "Sectors, small and value shares before 1998; gold, silver and copper before 2000; UK 1973-74.",
+ "Most investor stories rest on search excerpts from CNBC, Forbes, Fortune and Bloomberg, not full pages.",
+ "US October inflation of 3.95% is an estimate; no official figure was published.",
+ "Shiller valuation after June 2026 uses estimated earnings."
+].map(t=>`<li>${t}</li>`).join("");
+</script>
