@@ -16,6 +16,9 @@ SHILLER_URL = "https://raw.githubusercontent.com/datasets/s-and-p-500/main/data/
 YAHOO_URL = ("https://query1.finance.yahoo.com/v8/finance/chart/{sym}"
              "?period1=-2000000000&period2=9999999999&interval=1d")
 FRED_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}"
+FINRA_URL = "https://www.finra.org/sites/default/files/2021-03/margin-statistics.xlsx"
+BOC_URL = "https://www.bankofcanada.ca/valet/observations/{sid}/json?recent=3000"
+BOC_SERIES = {"V39079": "Bank of Canada policy rate (%)", "BD.CDN.5YR.DQ.YLD": "Canada 5-year bond yield (%)"}
 
 YAHOO_SYMBOLS = ["^GSPC", "^TNX", "^IRX", "^VIX", "^GSPTSE", "XEQT.TO", "CAD=X", "NVDA", "GOOG",
                  "HYG", "RSP", "SPY", "BZ=F", "GC=F", "DX-Y.NYB", "^IXIC", "BTC-USD"]
@@ -170,6 +173,31 @@ def fetch_official(now):
     return df, {"xls_url": url, "xls_sha256": _sha(content)}
 
 
+def parse_finra(content):
+    """FINRA margin statistics xlsx -> DataFrame(date = first day of month, debit = $ millions, free_credit_cash,
+    free_credit_margin), ascending."""
+    df = pd.read_excel(io.BytesIO(content))
+    df = df.iloc[:, :4]
+    df.columns = ["ym", "debit", "free_credit_cash", "free_credit_margin"]
+    df["date"] = pd.to_datetime(df["ym"].astype(str), format="%Y-%m", errors="coerce")
+    df["debit"] = pd.to_numeric(df["debit"], errors="coerce")
+    df = df.dropna(subset=["date", "debit"]).sort_values("date")
+    if df.empty:
+        raise RuntimeError("no monthly rows in FINRA file")
+    return df[["date", "debit", "free_credit_cash", "free_credit_margin"]]
+
+
+def parse_boc(raw, sid):
+    """Bank of Canada Valet JSON -> DataFrame(date, value), ascending."""
+    j = json.loads(raw)
+    rows = [(o["d"], float(o[sid]["v"])) for o in j["observations"] if o.get(sid, {}).get("v") not in (None, "")]
+    if not rows:
+        raise RuntimeError("Valet returned no observations")
+    df = pd.DataFrame(rows, columns=["date", "value"])
+    df["date"] = pd.to_datetime(df["date"])
+    return df.sort_values("date")
+
+
 def refresh(root=None, only=None):
     """Download everything; on failure keep cached file (if any) and record the failure."""
     rd = raw_dir(root)
@@ -185,6 +213,8 @@ def refresh(root=None, only=None):
              for s in yahoo_symbols(root)]
     jobs += [("shiller_official", "https://shillerdata.com/", "shiller_official.csv")]
     jobs += [(f"fred:{s}", FRED_URL.format(sid=s), f"fred_{s}.csv") for s in FRED_SERIES]
+    jobs += [("finra:margin", FINRA_URL, "finra_margin.csv")]
+    jobs += [(f"boc:{s}", BOC_URL.format(sid=s), f"boc_{s}.csv") for s in BOC_SERIES]
     def one(job):
         key, url, fname = job
         path = os.path.join(rd, fname)
@@ -196,6 +226,14 @@ def refresh(root=None, only=None):
                 df, extra = fetch_official(now)
                 ent.update(extra)
                 dates = df["Date"]
+                body = df.to_csv(index=False).encode()
+            elif key == "finra:margin":
+                df = parse_finra(raw)
+                dates = df["date"]
+                body = df.to_csv(index=False).encode()
+            elif key.startswith("boc:"):
+                df = parse_boc(raw, key[4:])
+                dates = df["date"]
                 body = df.to_csv(index=False).encode()
             elif key == "shiller":
                 df = pd.read_csv(io.BytesIO(raw))
@@ -294,6 +332,21 @@ def _last_valid_pe(df):
     return v.index[-1] if len(v) else None
 
 
+def load_finra(root=None):
+    """FINRA margin debt ($ millions) indexed by month start; None if never downloaded."""
+    p = os.path.join(raw_dir(root), "finra_margin.csv")
+    if not os.path.exists(p):
+        return None
+    return pd.read_csv(p, parse_dates=["date"]).set_index("date")["debit"].astype(float)
+
+
+def load_boc(sid, root=None):
+    p = os.path.join(raw_dir(root), f"boc_{sid}.csv")
+    if not os.path.exists(p):
+        return None
+    return pd.read_csv(p, parse_dates=["date"]).set_index("date")["value"].astype(float)
+
+
 def load_shiller_mirror(root=None):
     p = os.path.join(raw_dir(root), "shiller.csv")
     return pd.read_csv(p, parse_dates=["Date"]).set_index("Date")
@@ -307,23 +360,15 @@ def load_shiller_official(root=None):
 
 
 def load_shiller(root=None):
-    """Official Shiller file if it has a valid PE10 later than the mirror, else the mirror."""
-    m = load_shiller_mirror(root)
-    o = load_shiller_official(root)
-    if o is not None:
-        lo, lm = _last_valid_pe(o), _last_valid_pe(m)
-        if lo is not None and (lm is None or lo > lm):
-            return o
-    return m
+    """Official Shiller ie_data.xls (current) whenever it downloaded and has a valid PE10; the GitHub mirror
+    only as fallback."""
+    return load_shiller_official(root) if shiller_source(root) == "official" else load_shiller_mirror(root)
 
 
 def shiller_source(root=None):
-    m = load_shiller_mirror(root)
     o = load_shiller_official(root)
-    if o is not None:
-        lo, lm = _last_valid_pe(o), _last_valid_pe(m)
-        if lo is not None and (lm is None or lo > lm):
-            return "official"
+    if o is not None and _last_valid_pe(o) is not None:
+        return "official"
     return "mirror"
 
 
@@ -345,4 +390,5 @@ def load_all(root=None):
     return {"shiller": load_shiller(root), "shiller_source": shiller_source(root), "cape_anchor": load_anchor(root),
             "yahoo": {s: load_yahoo(s, root) for s in YAHOO_SYMBOLS},
             "yahoo_adj": {s: load_yahoo_adj(s, root) for s in ("HYG", "RSP", "SPY")},
-            "fred": {s: load_fred(s, root) for s in FRED_SERIES}}
+            "fred": {s: load_fred(s, root) for s in FRED_SERIES},
+            "finra": load_finra(root), "boc": {s: load_boc(s, root) for s in BOC_SERIES}}

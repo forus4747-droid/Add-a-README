@@ -107,7 +107,12 @@ def build(raw):
     e_lag = e_ff.shift(3)
     F["cape"] = F["close"] / cpi_known / e_lag
     est = pd.Series(np.arange(len(months)), index=months)
-    F["cape_is_estimate"] = (est - 3) > (est[le] if le is not None else -1)   # le = last *official* PE10 month
+    # estimate when the lagged E10 month is past the last month with a valid PE10 or with reported earnings
+    # (Shiller's sheet keeps PE10 moving after the Earnings column goes blank, using an extrapolated E10)
+    last_ok = est[le] if le is not None else -1
+    if "Earnings" in shp.columns and shp["Earnings"].notna().any():
+        last_ok = min(last_ok, est[shp["Earnings"].reindex(months).last_valid_index()])
+    F["cape_is_estimate"] = (est - 3) > last_ok
     c = F["cape"].values
     pct = np.full(len(c), np.nan)
     for i in range(len(c)):

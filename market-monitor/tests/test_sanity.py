@@ -216,6 +216,30 @@ def test_zone_flags_enter_exit():
     print("  ENTERED / EXITED flags OK")
 
 
+def test_parsers_and_cape_flag():
+    import io, json
+    from openpyxl import Workbook
+    wb = Workbook(); ws = wb.active
+    ws.append(["Year-Month", "Debit", "Free cash", "Free margin"])
+    ws.append(["2026-10", 1448360, 210290, 212890]); ws.append(["2026-09", 1480054, 215328, 218581])
+    buf = io.BytesIO(); wb.save(buf)
+    f = data.parse_finra(buf.getvalue())
+    assert list(f["debit"]) == [1480054, 1448360] and str(f["date"].iloc[-1].date()) == "2026-10-01"
+    j = json.dumps({"observations": [{"d": "2026-11-11", "V1": {"v": "2.50"}}, {"d": "2026-11-12", "V1": {"v": ""}},
+                                     {"d": "2026-11-10", "V1": {"v": "2.25"}}]}).encode()
+    b = data.parse_boc(j, "V1")
+    assert list(b["value"]) == [2.25, 2.5] and len(b) == 2
+    # CAPE is flagged as an estimate when the lagged E10 month is past the last reported-earnings month
+    r = raw()
+    F, _, info = features.build(r)
+    sh = r["shiller"]
+    if "Earnings" in sh.columns and r["shiller_source"] == "official":
+        last_e = sh["Earnings"].dropna().index[-1].to_period("M")
+        assert bool(F["cape_is_estimate"].iloc[-1]) == bool(F.index[-1] - 3 > last_e)
+        assert not F["cape_is_estimate"].loc[:last_e].any()
+    print("  FINRA/BoC parsers and cape_is_estimate flag OK")
+
+
 def main():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     fails = 0
