@@ -23,6 +23,20 @@ FRED_SERIES = ["CPIAUCSL", "UNRATE", "TB3MS", "GS10", "BAA", "AAA", "BAMLH0A0HYM
 MAX_STALE_DAYS = 5
 
 
+def asset_tickers(root=None):
+    """Tickers in config/assets.csv (the tracked universe); empty list if the file is missing."""
+    import csv
+    p = os.path.join(root or ROOT, "config", "assets.csv")
+    if not os.path.exists(p):
+        return []
+    with open(p, newline="", encoding="utf-8") as f:
+        return [r["ticker"].strip() for r in csv.DictReader(f) if r.get("ticker", "").strip()]
+
+
+def yahoo_symbols(root=None):
+    return list(dict.fromkeys(YAHOO_SYMBOLS + asset_tickers(root)))
+
+
 def raw_dir(root=None):
     d = os.path.join(root or ROOT, "data", "raw")
     os.makedirs(d, exist_ok=True)
@@ -56,6 +70,7 @@ def _sha(b):
 def _parse_yahoo(raw):
     j = json.loads(raw)
     res = j["chart"]["result"][0]
+    tz = res["meta"].get("exchangeTimezoneName")
     off = res["meta"].get("gmtoffset", 0) or 0
     ts = res["timestamp"]
     close = res["indicators"]["quote"][0]["close"]
@@ -63,7 +78,10 @@ def _parse_yahoo(raw):
     df = pd.DataFrame({"t": ts, "close": close, "adjclose": adj})
     df["adjclose"] = df["adjclose"].fillna(df["close"])
     df = df.dropna(subset=["close"])
-    df["date"] = pd.to_datetime(df["t"] + off, unit="s").dt.normalize()
+    try:   # bar date = calendar date at the exchange (handles daylight saving; a fixed offset does not)
+        df["date"] = pd.to_datetime(df["t"], unit="s", utc=True).dt.tz_convert(tz).dt.tz_localize(None).dt.normalize()
+    except Exception:  # unknown or missing time zone name
+        df["date"] = pd.to_datetime(df["t"] + off, unit="s").dt.normalize()
     df = df.drop_duplicates("date", keep="last")[["date", "close", "adjclose"]]
     return df
 
@@ -160,10 +178,11 @@ def refresh(root=None, only=None):
         manifest = json.load(open(mpath))
     except Exception:
         manifest = {}
+    manifest.pop("extras", None)          # entry left by an earlier version
     now = datetime.now(timezone.utc)
     jobs = [("shiller", SHILLER_URL, "shiller.csv")]
     jobs += [(f"yahoo:{s}", YAHOO_URL.format(sym=urllib.parse.quote(s, safe="")), f"yahoo_{s}.csv")
-             for s in YAHOO_SYMBOLS]
+             for s in yahoo_symbols(root)]
     jobs += [("shiller_official", "https://shillerdata.com/", "shiller_official.csv")]
     jobs += [(f"fred:{s}", FRED_URL.format(sid=s), f"fred_{s}.csv") for s in FRED_SERIES]
     def one(job):
@@ -220,12 +239,6 @@ def refresh(root=None, only=None):
     with ThreadPoolExecutor(8) as ex:
         for key, ent in ex.map(one, jobs):
             manifest[key] = ent
-    try:
-        from . import extras
-        for k, e in extras.refresh_extras(root, now).items():
-            manifest[k] = e
-    except Exception as e:  # never let optional blocks break the refresh
-        manifest["extras"] = {"status": "failed", "error": str(e)[:300]}
     with open(mpath, "w") as f:
         json.dump(manifest, f, indent=1, sort_keys=True)
     check_fresh(root)

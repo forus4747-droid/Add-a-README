@@ -9,7 +9,7 @@ from datetime import date
 import numpy as np
 import pandas as pd
 
-from mm import ROOT, data, features, targets, episodes, ledger, selfcorrect, news
+from mm import ROOT, data, features, targets, episodes, ledger, selfcorrect, news, assets
 
 _cache = {}
 
@@ -171,6 +171,49 @@ def test_targets_basic():
     D = targets.daily_forward(g)
     assert abs(D["fwd_min_21"].iloc[0] - (-0.2)) < 1e-12 and abs(D["fwd_ret_21"].iloc[0] - 0.0) < 1e-12
     print("  targets arithmetic OK")
+
+
+def test_zone_arithmetic_and_history():
+    # 100 -> 200 (record) -> 150 (-25%) -> 100 (-50%, low) -> 210 (new record); later 210 -> 180 (-14%) open episode
+    px = [100.0, 200.0, 150.0, 120.0, 100.0, 130.0, 210.0, 190.0, 180.0]
+    s = pd.Series(px, index=pd.bdate_range("2020-01-01", periods=len(px)))
+    a = {"ticker": "T", "name": "t", "asset_class": "x", "currency": "USD", "use_adjclose": False,
+         "zones": (10, 20, 30, 40), "note": ""}
+    r = assets.compute_asset(a, s)
+    assert r["record_close"] == 210.0 and abs(r["pct_below_record"] - (1 - 180 / 210) * 100) < 1e-9
+    assert abs(r["zone_prices"][10] - 189.0) < 1e-9 and abs(r["zone_prices"][40] - 126.0) < 1e-9
+    assert abs(r["zone_distance_pct"][10] - (180 / 189 - 1) * 100) < 1e-9
+    assert r["deepest_zone"] == 10, r["deepest_zone"]
+    zh = r["zone_history"]
+    # zone 10: first episode (peak 200) crossed at 150; second (peak 210) crossed at 180 and is still open
+    assert zh[10]["n_episodes"] == 2 and zh[10]["n_open"] == 1 and zh[10]["n_completed"] == 1
+    # zone 40 (level 120) crossed only in the first episode, at 120; low 100 one bar later
+    assert zh[40]["n_episodes"] == 1 and abs(zh[40]["further_fall_median"] - (100 / 120 - 1)) < 1e-12
+    assert zh[40]["days_to_low_median"] == 1
+    # zone 20: first close <= 160 is 150, low 100 -> further fall -1/3, 2 bars later
+    assert abs(zh[20]["further_fall_median"] - (100 / 150 - 1)) < 1e-12 and zh[20]["days_to_low_median"] == 2
+    # no 252-day history after the cross: forward stats are empty, not invented
+    assert zh[20]["fwd_1y_n"] == 0 and zh[20]["fwd_1y_median"] is None
+    print("  zone prices, distances, episode stats OK")
+
+
+def test_zone_flags_enter_exit():
+    d = tempfile.mkdtemp()
+    try:
+        def row(t, z):
+            return {"ticker": t, "name": t, "deepest_zone": z}
+        r1 = [row("A", 0), row("B", 20)]
+        ch, _ = assets.flag_changes(r1, "2026-01-02", d)
+        assert ch == [] and all(r["flag"] == "" for r in r1)
+        r2 = [row("A", 10), row("B", 10)]
+        ch, prev = assets.flag_changes(r2, "2026-01-09", d)
+        assert [r["flag"] for r in r2] == ["ENTERED", "EXITED"] and prev == "2026-01-02"
+        r3 = [row("A", 10), row("B", 10)]            # same as-of date again: same flags, state not rolled
+        ch, _ = assets.flag_changes(r3, "2026-01-09", d)
+        assert [r["flag"] for r in r3] == ["ENTERED", "EXITED"]
+    finally:
+        shutil.rmtree(d)
+    print("  ENTERED / EXITED flags OK")
 
 
 def main():
