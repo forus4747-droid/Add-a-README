@@ -135,7 +135,9 @@ def outcome_for(g, asof_date, question):
     return float(mn <= thr + 1e-12)
 
 
-def resolve(g, root=None, now=None):
+def resolve(g, root=None, now=None, series_for=None):
+    """Score matured predictions. g: S&P close Series for the model questions; series_for(ticker) gives the close
+    Series for asset questions (ids like dd10_3m@NVDA); without it asset predictions stay pending."""
     _, rp = _paths(root)
     preds = read_predictions(root)
     done = {r["prediction_id"] for r in read_resolutions(root)}
@@ -144,7 +146,11 @@ def resolve(g, root=None, now=None):
     for r in preds:
         if r["id"] in done:
             continue
-        o = outcome_for(g, r["asof_date"], r["question_id"])
+        q, _, tk = r["question_id"].partition("@")
+        ser = g
+        if tk:
+            ser = series_for(tk) if series_for else None
+        o = outcome_for(ser, r["asof_date"], q) if ser is not None and q in EVENTS else None
         if o is None:
             continue
         pf, pb = float(r["p_final"]), float(r["p_base"])

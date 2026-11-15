@@ -44,6 +44,12 @@ def init_weights(defaults, root=None):
     return w
 
 
+def weight_key(question_id):
+    """S&P model questions keep their own weight; asset questions share one weight per question type."""
+    q, _, t = question_id.partition("@")
+    return f"asset_{q}" if t else q
+
+
 def run(root=None, now=None):
     wp, cp = _paths(root)
     w = load_weights(root)
@@ -51,9 +57,9 @@ def run(root=None, now=None):
     res = ledger.read_resolutions(root)
     now = now or datetime.now(timezone.utc).isoformat(timespec="seconds")
     changes = []
-    for q in EVENTS:
-        rr = [r for r in res if r["prediction_id"] in preds and preds[r["prediction_id"]]["question_id"] == q]
-        if len(rr) < MIN_N or q not in w:
+    for q in sorted(w):
+        rr = [r for r in res if r["prediction_id"] in preds and weight_key(preds[r["prediction_id"]]["question_id"]) == q]
+        if len(rr) < MIN_N:
             continue
         bf = float(np.mean([float(r["brier_final"]) for r in rr]))
         bb = float(np.mean([float(r["brier_base"]) for r in rr]))
