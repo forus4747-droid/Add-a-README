@@ -1,0 +1,17 @@
+{
+ "asof": "2026-11-13",
+ "previous_asof": null,
+ "zone_changes": [],
+ "signal_flips": [],
+ "signal_previous_asof": null,
+ "new_resolved": [],
+ "weight_changes": [],
+ "data_failures": [],
+ "new_predictions": {
+  "sp500": 0,
+  "assets": 0
+ },
+ "lines": [
+  "First run with change tracking: nothing to compare with yet. Today's zones and signals are the baseline."
+ ]
+}

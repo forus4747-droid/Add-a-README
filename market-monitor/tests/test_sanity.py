@@ -1,4 +1,5 @@
 """Plain-assert sanity tests. Run: python -m tests.test_sanity   (uses cached data in data/raw)."""
+import json
 import os
 import shutil
 import sys
@@ -9,7 +10,7 @@ from datetime import date
 import numpy as np
 import pandas as pd
 
-from mm import ROOT, data, features, targets, episodes, ledger, selfcorrect, news, assets, signals
+from mm import ROOT, data, features, targets, episodes, ledger, selfcorrect, news, assets, signals, assetpred, run as runmod, changes
 
 _cache = {}
 
@@ -265,6 +266,79 @@ def test_signal_board_no_lookahead_and_stats():
     assert abs(rows["cape30"]["base_rate_12m"] - T["dd20_12m"][m].mean()) < 1e-12
     assert rows["count_ge4"]["state"] == ("ON" if b["base_on"] >= 4 else "OFF")
     print(f"  board: {b['base_on']} of 13 ON, no look-ahead through 1999/2015")
+
+
+def test_asset_predictions_no_lookahead_and_ledger():
+    s = raw()["yahoo"]["NVDA"].dropna()
+    f = assetpred.backtest_series(s, "dd10_3m")
+    for k in (500, 2000, len(f) - 1):
+        row = f.iloc[k]
+        t = s.index.get_loc(row["date"])
+        p = assetpred.predict_one(s.values[: t + 1], "dd10_3m")        # only data up to t
+        assert abs(p["base"] - row["base"]) < 1e-12 and abs(p["cond"] - row["cond"]) < 1e-12, (k, p, row.to_dict())
+        # outcome used for scoring is the one after t, never part of the estimate
+        fut = s.values[t + 1: t + 64]
+        assert (fut.min() / s.values[t] - 1 <= -0.10 + 1e-12) == bool(row["y"])
+    # a series shorter than 10 years is not eligible
+    assert not assetpred.eligible(s[s.index > s.index[-1] - pd.DateOffset(years=9)])
+    assert assetpred.eligible(s)
+    # ledger: asset ids chain, are idempotent, resolve against the asset series, and move the shared weight
+    d = tempfile.mkdtemp()
+    try:
+        os.makedirs(os.path.join(d, "config"))
+        shutil.copy(os.path.join(ROOT, "config", "assets.csv"), os.path.join(d, "config", "assets.csv"))
+        g = _synthetic_g()
+        asofs = [str(g.index[i].date()) for i in range(0, 40)]
+        outs = [ledger.outcome_for(g, a, "dd10_3m") for a in asofs]
+        assert all(o is not None for o in outs)
+        mk = lambda a, o: _pred(a, q="dd10_3m@FAKE", h=63, p=0.9 if o == 1 else 0.1)
+        assert ledger.issue([mk(a, o) for a, o in zip(asofs, outs)], d) == 40
+        assert ledger.issue([mk(a, o) for a, o in zip(asofs, outs)], d) == 0
+        assert ledger.resolve(g, d) == 0, "asset predictions need their own series"
+        assert ledger.resolve(g, d, series_for=lambda t: g if t == "FAKE" else None) == 40
+        assert ledger.verify(d)[0]
+        selfcorrect.save_weights({"asset_dd10_3m": 0.5, "dd10_3m": 0.5}, d)
+        ch = selfcorrect.run(d)
+        assert [c[1] for c in ch] == ["asset_dd10_3m"] and abs(selfcorrect.load_weights(d)["asset_dd10_3m"] - 0.55) < 1e-9
+        assert selfcorrect.load_weights(d)["dd10_3m"] == 0.5, "S&P weight untouched by asset predictions"
+        acc = {(a["question"], a["asset_class"]): a for a in assetpred.accuracy(d)}
+        # FAKE is not in the universe -> class 'unknown'
+        assert acc[("dd10_3m", "unknown")]["n_resolved"] == 40 and acc[("dd10_3m", "unknown")]["skill"] > 0
+    finally:
+        shutil.rmtree(d)
+    print("  asset predictions: no look-ahead, eligibility, ledger, resolution, shared weight OK")
+
+
+def test_news_cannot_change_numbers():
+    r = raw()
+    last = r["yahoo"]["^GSPC"].index[-1].date()
+    outs = []
+    for with_news in (False, True):
+        d = tempfile.mkdtemp()
+        try:
+            os.makedirs(os.path.join(d, "data"))
+            os.symlink(os.path.join(ROOT, "data", "raw"), os.path.join(d, "data", "raw"))
+            shutil.copytree(os.path.join(ROOT, "config"), os.path.join(d, "config"))
+            if with_news:
+                items = [{"date": str(date.today()), "url": "https://www.bls.gov/x", "source_domain": "bls.gov",
+                          "headline": "Everything is on fire", "tag": "crash", "direction": "risk_up", "note": "n"}]
+                acc, _ = news.ingest(items, d)
+                assert len(acc) == 1
+            L = runmod.weekly(d, refresh=False, quiet=True, today=last)
+            L = json.load(open(os.path.join(d, "state", "latest.json")))
+            preds = [{k: v for k, v in p.items() if k not in ("issued_at_utc", "prev_hash", "row_hash")}
+                     for p in ledger.read_predictions(d)]
+            outs.append((L, preds, json.load(open(os.path.join(d, "state", "alerts.json")))))
+        finally:
+            shutil.rmtree(d)
+    (a, pa, aa), (b, pb, ab) = outs
+    assert a["news"] == [] and len(b["news"]) == 1, "news must reach the report only as text"
+    for L in (a, b):
+        for k in ("news", "generated_at_utc", "runtime_seconds"):
+            L.pop(k)
+    assert a == b, "news changed a number in state/latest.json"
+    assert pa == pb and aa == ab, "news changed predictions or alerts"
+    print("  news item changes nothing in latest.json, ledger probabilities or alerts")
 
 
 def main():

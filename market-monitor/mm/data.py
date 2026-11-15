@@ -294,6 +294,26 @@ def check_fresh(root=None, today=None):
     return age
 
 
+def key_data_problems(root=None, today=None):
+    """Stale key inputs (list of messages, empty if all fresh). Ages are measured from the last observation date."""
+    today = pd.Timestamp(today or datetime.now(timezone.utc).date())
+    man = load_manifest(root)
+    limits = {"yahoo:^GSPC": 5, "yahoo:^VIX": 7, "fred:CPIAUCSL": 100, "fred:TB3MS": 100, "fred:UNRATE": 100,
+              "fred:BAA": 100, "finra:margin": 100, "boc:V39079": 20}
+    limits["shiller_official" if shiller_source(root) == "official" else "shiller"] = 150
+    out = []
+    for k, lim in limits.items():
+        e = man.get(k)
+        if not e or not e.get("last_date"):
+            out.append(f"{k}: no data")
+            continue
+        age = (today - pd.Timestamp(e["last_date"])).days
+        if age > lim:
+            out.append(f"{k}: last observation {e['last_date']} is {age} days old (limit {lim})"
+                       + (f"; download failed: {e.get('error')}" if e.get("status") != "ok" else ""))
+    return out
+
+
 def load_manifest(root=None):
     try:
         return json.load(open(os.path.join(raw_dir(root), "manifest.json")))

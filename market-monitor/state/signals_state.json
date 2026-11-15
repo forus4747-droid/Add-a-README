@@ -1,0 +1,32 @@
+{
+ "asof": "2026-11-13",
+ "current": {
+  "rule:credit_stress": "OFF",
+  "rule:curve_inverted": "OFF",
+  "rule:inflation_reaccelerating": "ON",
+  "rule:leader_crack": "ON",
+  "rule:narrow_market": "OFF",
+  "rule:oil_shock": "ON",
+  "rule:tightening": "ON",
+  "rule:trend_break": "OFF",
+  "rule:valuation": "ON",
+  "rule:volatility_regime": "OFF",
+  "tested:cape30": "ON",
+  "tested:cape90": "ON",
+  "tested:combo_cape90_trend": "OFF",
+  "tested:count_ge4": "ON",
+  "tested:credit_baa_aaa": "OFF",
+  "tested:curve_inv": "OFF",
+  "tested:fed_tight": "OFF",
+  "tested:hy_oas": "OFF",
+  "tested:infl": "ON",
+  "tested:margin_yoy30": "ON",
+  "tested:narrow": "OFF",
+  "tested:oil_up50": "ON",
+  "tested:sahm": "OFF",
+  "tested:trend_break": "OFF",
+  "tested:vix30": "OFF"
+ },
+ "prev": null,
+ "prev_asof": null
+}

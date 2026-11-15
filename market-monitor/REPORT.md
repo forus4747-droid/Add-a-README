@@ -1,10 +1,12 @@
 # Market monitor report (as of 2026-11-13)
 
-Generated 2026-11-15T01:51:55+00:00 UTC. S&P 500 last close 7561.67. This is a statistical history check, not investment advice; every probability below is a historical frequency adjusted by simple models, and the models have only weak out-of-sample skill (see the skill columns).
+Generated 2026-11-15T02:00:15+00:00 UTC. S&P 500 last close 7561.67. This is a statistical history check, not investment advice; every probability below is a historical frequency adjusted by simple models, and the models have only weak out-of-sample skill (see the skill columns).
 
 ## Data status
 
-27 of 28 sources downloaded. FRED reachable: yes. Failed: extras.
+72 of 72 sources downloaded. FRED reachable: yes.
+
+CAUTION: the Shiller file's last valid CAPE input is 2026-10. Since then the earnings base is held constant (in real terms), so today's CAPE is an estimate and probably reads a little high if real earnings kept growing.
 
 The latest feature row is a partial month (2026-11) using the last close.
 
@@ -59,7 +61,7 @@ Months whose valuation, inflation, rates, momentum, trend, volatility and drawdo
 
 ## Ten-year outlook from valuation
 
-CAPE 39.8 implies an annualised real return of about 0.6% per year over ten years, with a one-standard-deviation band of -3.8% to 5.0% (regression R-squared 0.26, in-sample, 1623 overlapping months).
+CAPE 39.8 (estimate) implies an annualised real return of about 0.6% per year over ten years, with a one-standard-deviation band of -3.8% to 5.0% (regression R-squared 0.26, in-sample, 1623 overlapping months).
 
 ## Signals board (5 vulnerability and 0 trigger rules ON)
 
@@ -68,7 +70,7 @@ CAPE 39.8 implies an annualised real return of about 0.6% per year over ten year
 | valuation | vulnerability | ON | 0.979 | 494 | 21.5% | 14.8% | 1881-04 |
 | tightening | vulnerability | ON | 0.425 | 494 | 11.2% | 21.3% | 1882-01 |
 | inflation_reaccelerating | vulnerability | ON | 4.035 | 448 | 26.5% | 14.1% | 1883-02 |
-| oil_shock | vulnerability | ON | 0.521 | 47 | 16.7% | 9.0% | 2008-07 |
+| oil_shock | vulnerability | ON | 0.521 | 48 | 16.7% | 9.0% | 2008-07 |
 | leader_crack | vulnerability | ON | -0.319 | 0 | n/a | n/a | current only |
 | narrow_market | vulnerability | OFF | 0.060 | 47 | 7.1% | 13.4% | 2004-05 |
 | trend_break | trigger | OFF | 0.026 | 627 | 28.0% | 12.0% | 1881-10 |
@@ -124,9 +126,9 @@ CAPE 39.8 implies an annualised real return of about 0.6% per year over ten year
 
 ## Live scorecard
 
-14 predictions issued, 0 resolved, 14 pending. Nothing has resolved yet, so there is no live skill estimate.
+112 predictions issued, 0 resolved, 112 pending. Nothing has resolved yet, so there is no live skill estimate.
 
-Ledger check: ok: 14 predictions, 0 resolutions.
+Ledger check: ok: 112 predictions, 0 resolutions.
 
 ## Market snapshot
 
