@@ -179,3 +179,170 @@ def board(F, T, raw):
     vuln_on = sum(1 for r in rows if r["type"] == "vulnerability" and r["state"] == "ON")
     trig_on = sum(1 for r in rows if r["type"] == "trigger" and r["state"] == "ON")
     return {"asof": str(asof.date()), "rules": rows, "vulnerability_on": vuln_on, "trigger_on": trig_on}
+
+
+# ---------------------------------------------------------------------------------------------------------
+# Tested signal board: 13 base signals + combo + count, each backtested against S&P 500 bear markets.
+# Monthly grid = the feature table's month-ends. Every threshold is fixed here; every statistic is computed at
+# run time from downloaded data. A signal value at month t uses only data published by the end of month t
+# (CPI/UNRATE lagged one month and Shiller E10 lagged three months inside features.py, FINRA lagged one month).
+
+BOARD = [  # name, label, definition
+    ("cape30", "CAPE above 30", "Shiller CAPE (month-end price, lagged E10) > 30"),
+    ("cape90", "CAPE in its top 10%", "CAPE above its own expanding 90th percentile (history from 1881, min 10 years)"),
+    ("curve_inv", "Yield curve inverted", "10-year yield minus 3-month bill < 0"),
+    ("fed_tight", "Fed tightening", "3-month bill up >= 1.5 points over 12 months"),
+    ("infl", "Inflation above 4% and rising", "CPI year-on-year > 4% and above its level 12 months earlier"),
+    ("credit_baa_aaa", "BAA-AAA spread widening", "Moody's BAA minus AAA yield up >= 0.3 points over 6 months"),
+    ("hy_oas", "High-yield spread (OAS)", "ICE BofA HY OAS > 5% and up >= 1.5 points over 3 months (FRED serves ~3 years only)"),
+    ("trend_break", "S&P below 10-month average", "S&P 500 month-end close below its 10-month average"),
+    ("sahm", "Sahm-style unemployment rise", "Unemployment rate >= 0.5 points above its trailing 12-month low"),
+    ("oil_up50", "Oil up 50%", "WTI monthly average up >= 50% over 12 months"),
+    ("narrow", "Narrow market", "Equal-weight (RSP) 12m return minus cap-weight (SPY) <= -5 points (adjusted prices)"),
+    ("margin_yoy30", "Margin debt up 30%", "FINRA margin debt up > 30% year on year (lagged one month)"),
+    ("vix30", "VIX above 30", "VIX month-end close > 30"),
+    ("combo_cape90_trend", "CAPE top 10% and trend broken", "cape90 and trend_break both ON"),
+    ("count_ge4", "4 or more base signals ON", "At least 4 of the 13 base signals ON (no-data counts as OFF)"),
+]
+BASE = [b[0] for b in BOARD[:13]]
+
+
+def _monthly(s, idx, how="last"):
+    """Daily/monthly Series -> value per Period in idx (last observation of the month)."""
+    s = s.dropna()
+    if s.empty:
+        return pd.Series(np.nan, index=idx)
+    p = s.groupby(s.index.to_period("M")).last()
+    return p.reindex(idx)
+
+
+def board_series(F, raw):
+    """Return (S, V): S = 1/0/NaN signal table, V = numeric reading per signal, both indexed like F."""
+    idx = F.index
+    S, V = pd.DataFrame(index=idx), pd.DataFrame(index=idx)
+
+    def put(name, cond, val, ok):
+        S[name] = np.where(ok, cond.astype(float), np.nan)
+        V[name] = val
+
+    cape = F["cape"]
+    thr = cape.expanding(min_periods=120).quantile(0.9)
+    put("cape30", cape > 30, cape, cape.notna())
+    put("cape90", cape > thr, cape - thr, cape.notna() & thr.notna())
+    put("curve_inv", F["curve"] < 0, F["curve"], F["curve"].notna())
+    put("fed_tight", F["bill_chg_12m"] >= 1.5, F["bill_chg_12m"], F["bill_chg_12m"].notna())
+    y, y0 = F["infl_yoy"], F["infl_yoy"].shift(12)
+    put("infl", (y > 4) & (y > y0), y, y.notna() & y0.notna())
+    c6 = F["credit_spread"] - F["credit_spread"].shift(6)
+    put("credit_baa_aaa", c6 >= 0.3, c6, c6.notna())
+    hy = raw["fred"].get("BAMLH0A0HYM2")
+    hym = _monthly(hy, idx) if hy is not None else pd.Series(np.nan, index=idx)
+    h3 = hym - hym.shift(3)
+    put("hy_oas", (hym > 5) & (h3 >= 1.5), hym, hym.notna() & h3.notna())
+    put("trend_break", F["trend_10m"] < 0, F["trend_10m"], F["trend_10m"].notna())
+    ug = F["unemp_gap"]
+    put("sahm", ug >= 0.5, ug, ug.notna())
+    wti = raw["fred"].get("WTISPLC")
+    wm = _monthly(wti, idx) if wti is not None else pd.Series(np.nan, index=idx)
+    o12 = wm / wm.shift(12) - 1
+    put("oil_up50", o12 >= 0.5, o12, o12.notna())
+    rsp, spy = raw["yahoo_adj"].get("RSP"), raw["yahoo_adj"].get("SPY")
+    if rsp is not None and spy is not None:
+        r, s_ = _monthly(rsp, idx), _monthly(spy, idx)
+        nr = (r / r.shift(12)) - (s_ / s_.shift(12))
+    else:
+        nr = pd.Series(np.nan, index=idx)
+    put("narrow", nr <= -0.05, nr, nr.notna())
+    fin = raw.get("finra")
+    if fin is not None:
+        f = fin.copy()
+        f.index = f.index.to_period("M")
+        f = f.shift(1).reindex(idx)               # published ~3 weeks after month end: use last month's figure
+    else:
+        f = pd.Series(np.nan, index=idx)
+    mg = f / f.shift(12) - 1
+    put("margin_yoy30", mg > 0.30, mg, mg.notna())
+    vix = raw["yahoo"].get("^VIX")
+    vm = _monthly(vix, idx) if vix is not None else pd.Series(np.nan, index=idx)
+    put("vix30", vm > 30, vm, vm.notna())
+    both = S["cape90"].notna() & S["trend_break"].notna()
+    put("combo_cape90_trend", (S["cape90"] == 1) & (S["trend_break"] == 1), np.nan, both)
+    V["combo_cape90_trend"] = np.where(both, S["combo_cape90_trend"], np.nan)
+    cnt = S[BASE].fillna(0).sum(axis=1)
+    put("count_ge4", cnt >= 4, cnt, pd.Series(True, index=idx))
+    return S, V
+
+
+def _bear_windows(eps):
+    return [(pd.Timestamp(e["peak_date"]), pd.Timestamp(e["trough_date"]), e["depth"]) for e in eps]
+
+
+def tested_board(F, T, g, raw, eps):
+    """Backtest and today's state for every board signal. eps: output of episodes.episodes (>=20% bears)."""
+    S, V = board_series(F, raw)
+    complete = ~F["partial_month"].values
+    dates = pd.DatetimeIndex(F["date"])
+    e12 = T["dd20_12m"].copy()
+    c = g.values.astype(float)
+    pos = T["idx"].values
+    e24 = np.full(len(F), np.nan)
+    if len(c) > 505:
+        mn = np.full(len(c), np.nan)
+        mn[: len(c) - 504] = np.lib.stride_tricks.sliding_window_view(c, 505).min(axis=1) / c[: len(c) - 504] - 1
+        ok = pos >= 0
+        e24[ok] = mn[pos[ok]]
+        e24 = np.where(np.isnan(e24), np.nan, (e24 <= -0.2 + 1e-12).astype(float))
+    e24 = pd.Series(e24, index=F.index)
+    bears = _bear_windows(eps)
+    asof = pd.Timestamp(F["date"].iloc[-1])
+    rows = []
+    for name, label, desc in BOARD:
+        v = S[name].where(pd.Series(complete, index=F.index))
+        dv = v.dropna()
+        on = v == 1
+        r = {"signal": name, "label": label, "definition": desc,
+             "first_month": str(dv.index[0]) if len(dv) else None, "months_defined": int(len(dv)),
+             "months_on": int(on.sum())}
+        for h, e in ((12, e12), (24, e24)):
+            m = on & e.notna()
+            el = v.notna() & e.notna()
+            r[f"n_on_{h}m"] = int(m.sum())
+            r[f"hit_rate_{h}m"] = float(e[m].mean()) if m.sum() else None
+            r[f"base_rate_{h}m"] = float(e[el].mean()) if el.sum() else None
+        r["false_alarm_24m"] = None if r["hit_rate_24m"] is None else 1 - r["hit_rate_24m"]
+        elig = caught = 0
+        leads = []
+        for pk, lo, dep in bears:
+            if not len(dv) or pk.to_period("M") < dv.index[0]:
+                continue
+            elig += 1
+            w = (dates <= pk) & (dates > pk - pd.DateOffset(months=12)) & on.values
+            if w.any():
+                caught += 1
+                leads.append((pk - dates[w][0]).days / 30.44)
+        r["bears_eligible"], r["bears_caught"] = elig, caught
+        r["bears_caught_rate"] = caught / elig if elig else None
+        r["median_lead_months"] = float(np.median(leads)) if leads else None
+        # today: last row, else the latest of the previous 2 months (monthly sources publish with a delay)
+        st, val, dd = np.nan, np.nan, None
+        for k in (1, 2, 3):
+            if len(S) >= k and not np.isnan(S[name].iloc[-k]):
+                st, val, dd = S[name].iloc[-k], V[name].iloc[-k], str(S.index[-k])
+                break
+        r["state"] = "n/a" if np.isnan(st) else ("ON" if st == 1 else "OFF")
+        r["value"] = None if val is None or pd.isna(val) else float(val)
+        r["data_month"] = dd
+        rows.append(r)
+    st = {r["signal"]: r["state"] for r in rows}
+    # today's combo and count use each signal's latest available reading (monthly sources publish late)
+    by = {r["signal"]: r for r in rows}
+    n_on = sum(1 for b in BASE if st[b] == "ON")
+    if "n/a" not in (st["cape90"], st["trend_break"]):
+        by["combo_cape90_trend"]["state"] = "ON" if st["cape90"] == "ON" and st["trend_break"] == "ON" else "OFF"
+        st["combo_cape90_trend"] = by["combo_cape90_trend"]["state"]
+    by["count_ge4"].update(state="ON" if n_on >= 4 else "OFF", value=float(n_on))
+    st["count_ge4"] = by["count_ge4"]["state"]
+    return {"asof": str(asof.date()), "signals": rows, "base_on": n_on,
+            "n_base": len(BASE), "bears_in_sample": len(bears),
+            "alarm_trend_and_cape90": st["combo_cape90_trend"],
+            "event_definition": "S&P 500 daily close falls >= 20% below the month-end close within 12 (24) months"}

@@ -9,7 +9,7 @@ from datetime import date
 import numpy as np
 import pandas as pd
 
-from mm import ROOT, data, features, targets, episodes, ledger, selfcorrect, news, assets
+from mm import ROOT, data, features, targets, episodes, ledger, selfcorrect, news, assets, signals
 
 _cache = {}
 
@@ -238,6 +238,33 @@ def test_parsers_and_cape_flag():
         assert bool(F["cape_is_estimate"].iloc[-1]) == bool(F.index[-1] - 3 > last_e)
         assert not F["cape_is_estimate"].loc[:last_e].any()
     print("  FINRA/BoC parsers and cape_is_estimate flag OK")
+
+
+def test_signal_board_no_lookahead_and_stats():
+    r = raw()
+    F, g, _ = features.build(r)
+    S, V = signals.board_series(F, r)
+    assert list(S.columns) == [b[0] for b in signals.BOARD]
+    for cutoff in ("1999-12-31", "2015-12-31"):
+        rt = features.truncate_raw(r, cutoff)
+        Ft, _, _ = features.build(rt)
+        St, _ = signals.board_series(Ft, rt)
+        cut = pd.Period(cutoff, "M")
+        pd.testing.assert_frame_equal(S.loc[:cut], St.loc[:cut], check_exact=False, rtol=1e-9, atol=1e-12)
+    T = targets.month_targets(F, g)
+    b = signals.tested_board(F, T, g, r, episodes.episodes(g, F))
+    rows = {x["signal"]: x for x in b["signals"]}
+    assert len(rows) == 15 and b["n_base"] == 13
+    for x in rows.values():
+        for k in ("hit_rate_12m", "base_rate_12m", "false_alarm_24m", "bears_caught_rate"):
+            assert x[k] is None or 0 <= x[k] <= 1
+        assert x["bears_caught"] <= x["bears_eligible"] and x["state"] in ("ON", "OFF", "n/a")
+    # base rate of the 12m event over all complete months equals the mean of the target
+    done = ~F["partial_month"]
+    m = done & T["dd20_12m"].notna() & S["cape30"].notna()
+    assert abs(rows["cape30"]["base_rate_12m"] - T["dd20_12m"][m].mean()) < 1e-12
+    assert rows["count_ge4"]["state"] == ("ON" if b["base_on"] >= 4 else "OFF")
+    print(f"  board: {b['base_on']} of 13 ON, no look-ahead through 1999/2015")
 
 
 def main():

@@ -22,6 +22,8 @@ def truncate_raw(raw, cutoff):
            "cape_anchor": None,
            "yahoo": {k: (v[v.index <= c] if v is not None else None) for k, v in raw["yahoo"].items()},
            "fred": {k: (v[v.index <= c] if v is not None else None) for k, v in raw["fred"].items()}}
+    if raw.get("finra") is not None:
+        out["finra"] = raw["finra"][raw["finra"].index <= c]
     if "yahoo_adj" in raw:
         out["yahoo_adj"] = {k: (v[v.index <= c] if v is not None else None) for k, v in raw["yahoo_adj"].items()}
     return out
